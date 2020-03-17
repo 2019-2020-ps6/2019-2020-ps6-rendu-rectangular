@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
+import { Question } from '../models/question.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -61,4 +62,29 @@ export class QuizService {
   getNumberOfQuizzes(): number {
     return this.quizzes.length;
   }
+
+  /*
+  Provient de la correction
+  */
+  addQuestion(quiz: Quiz, question: Question) {
+    quiz.questions.push(question);
+    const index = this.quizzes.findIndex((q: Quiz) => q.id === quiz.id);
+    if (index) {
+      this.updateQuizzes(quiz, index);
+    }
+  }
+  deleteQuestion(quiz: Quiz, question: Question) {
+    const index = quiz.questions.findIndex((q) => q.label === question.label);
+    if (index !== -1) {
+      quiz.questions.splice(index, 1)
+      this.updateQuizzes(quiz, index);
+    }
+  }
+  private updateQuizzes(quiz: Quiz, index: number) {
+    this.quizzes[index] = quiz;
+    this.quizzes$.next(this.quizzes);
+  }
+  /*
+  Fin de la partie provenant de la correction
+  */
 }

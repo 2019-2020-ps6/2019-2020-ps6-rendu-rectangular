@@ -1,8 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { Component, OnInit, Output, Input } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { Question } from 'src/models/question.model';
 import { QuestionListComponent } from '../question-list/question-list.component';
 import { EventEmitter } from 'protractor';
+import { Quiz } from 'src/models/quiz.model';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-question-form',
@@ -13,16 +15,16 @@ export class QuestionFormComponent implements OnInit {
 
   public questionForm: FormGroup;
 
-  //@Output()
-  //questionToAdd: EventEmitter <Question> = new EventEmitter<Question>();
+  @Input()
+  quiz: Quiz;
 
-  constructor(public formBuilder: FormBuilder) { 
+  constructor(public formBuilder: FormBuilder, private quizService: QuizService) { 
     this.initializeQuestionForm();
   }
 
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
-      name: [''],
+      label: ['', Validators.required],
       answers: this.formBuilder.array([])
     });
   }
@@ -43,8 +45,13 @@ export class QuestionFormComponent implements OnInit {
     this.answers.push(this.createAnswer());
   }
 
-  onSubmitForm() {
-    //this.questionList.addQuestion(this.questionForm);
+  addQuestion() {
+    if(this.questionForm.valid) {
+      const question = this.questionForm.getRawValue() as Question;
+      console.log(question);
+      this.quizService.addQuestion(this.quiz, question);
+      this.initializeQuestionForm();
+    }
   }
 
   ngOnInit() {

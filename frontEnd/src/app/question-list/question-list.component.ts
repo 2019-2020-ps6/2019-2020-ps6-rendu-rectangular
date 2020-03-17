@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Question } from 'src/models/question.model';
 import { FormGroup } from '@angular/forms';
+import { QuizService } from 'src/services/quiz.service';
+import { Quiz } from '../../models/quiz.model';
 
 @Component({
   selector: 'app-question-list',
@@ -9,15 +11,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class QuestionListComponent implements OnInit {
 
-  questions: Question[] = [];
+  @Input()
+  quiz: Quiz;
 
-  constructor() { }
+  constructor(private quizService: QuizService) { }
 
   ngOnInit() {
   }
 
-  addQuestion(formGroup: FormGroup) {
-    this.questions.push(formGroup.getRawValue() as Question);
+  deleteQuestion(question: Question) {
+    this.quizService.deleteQuestion(this.quiz, question);
   }
 
 }
