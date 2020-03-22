@@ -1,7 +1,7 @@
 <div class="card">
     <h3>{{question.label}}</h3>
-    <div *ngFor="let answer of question.answers">
-        Réponse: {{answer.value}} <i *ngIf="answer.isCorrect " class="fas fa-check"></i>
+    <div *ngFor="let answer of question.answers, let i=index">
+        Réponse {{i+1}}: {{answer.value}} <i *ngIf="answer.isCorrect " class="fas fa-check"></i>
     </div>
     <button class="button-card" (click)="deleteQuestion()">Delete</button>
 </div>
