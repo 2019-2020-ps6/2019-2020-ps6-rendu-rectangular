@@ -1,6 +1,7 @@
 <div class="card">
-    <div class="answer" *ngFor="let answer of question.answers; let i=index">
-        {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
+    <h3>{{question.label}}</h3>
+    <div *ngFor="let answer of question.answers">
+        Réponse: {{answer.value}} <i *ngIf="answer.isCorrect " class="fas fa-check"></i>
     </div>
-    <button class="button-card" (click)="delete()">Delete</button>
+    <button class="button-card" (click)="deleteQuestion()">Delete</button>
 </div>

@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { Question } from 'src/models/question.model';
 import { QuestionListComponent } from '../question-list/question-list.component';
-import { EventEmitter } from 'protractor';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 
@@ -45,13 +44,11 @@ export class QuestionFormComponent implements OnInit {
     this.answers.push(this.createAnswer());
   }
 
-  addQuestion() {
-    if(this.questionForm.valid) {
-      const question = this.questionForm.getRawValue() as Question;
-      console.log(question);
-      this.quizService.addQuestion(this.quiz, question);
-      this.initializeQuestionForm();
-    }
+  addQuestion() { 
+    const questionToCreate = this.questionForm.getRawValue() as Question;
+    console.log(questionToCreate);
+    this.quizService.addQuestion(questionToCreate, this.quiz);
+    this.initializeQuestionForm();
   }
 
   ngOnInit() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-list',
@@ -11,7 +12,7 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(public quizService: QuizService) {
+  constructor(public quizService: QuizService, private router: Router) {
     this.quizService.quizzes$.subscribe((quiz) => this.quizList = quiz);
   }
 
@@ -29,5 +30,10 @@ export class QuizListComponent implements OnInit {
   quizToDelete(selected: Quiz) {
     console.log('quiz received from child:', selected);
     this.quizService.deleteQuiz(selected);
+  }
+
+  editQuiz(quiz: Quiz) {
+    console.log('Captured quiz is:',  quiz);
+    this.router.navigate(['/edit-quiz/' + quiz.id]);
   }
 }

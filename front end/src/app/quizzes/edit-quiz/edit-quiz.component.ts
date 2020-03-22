@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
+import { Question } from 'src/models/question.model'
 
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from 'src/services/quiz.service';
@@ -22,12 +23,19 @@ export class EditQuizComponent implements OnInit {
     
   }
 
+  
   getQuiz(): void {
     const id = this.route.snapshot.paramMap.get('id');
-      this.quizService.getQuiz(id.charAt(1))
+      this.quizService.getQuiz(id)
         .subscribe(quiz => {
           this.quiz = quiz;
         });
   }
+
+  questionAdd(selected : Question){ 
+    console.log('edit :',selected);
+    this.quizService.addQuestion(selected, this.quiz);
+  }
+  
 
 }

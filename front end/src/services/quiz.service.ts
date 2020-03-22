@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { Question } from '../models/question.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
@@ -27,9 +27,16 @@ export class QuizService {
    * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
    */
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
+  public selectedQuiz$: Subject <Quiz> = new Subject();
 
   constructor(public http: HttpClient) {
     this.setQuizzesFromUrl();
+  }
+
+  setSelectedQuiz(quizId: string) {
+    const quiz = this.quizzes.find((quiz) => quiz.id === quizId);
+    console.log(quiz);
+    this.selectedQuiz$.next(quiz);
   }
 
   addQuiz(quiz: Quiz) {
@@ -63,28 +70,16 @@ export class QuizService {
     return this.quizzes.length;
   }
 
-  /*
-  Provient de la correction
-  */
-  addQuestion(quiz: Quiz, question: Question) {
-    quiz.questions.push(question);
-    const index = this.quizzes.findIndex((q: Quiz) => q.id === quiz.id);
-    if (index) {
-      this.updateQuizzes(quiz, index);
-    }
-  }
-  deleteQuestion(quiz: Quiz, question: Question) {
-    const index = quiz.questions.findIndex((q) => q.label === question.label);
-    if (index !== -1) {
-      quiz.questions.splice(index, 1)
-      this.updateQuizzes(quiz, index);
-    }
-  }
-  private updateQuizzes(quiz: Quiz, index: number) {
-    this.quizzes[index] = quiz;
+  addQuestion(question: Question, quiz: Quiz) {
+    const found = this.quizzes.find((elt) => elt == quiz);
+    found.questions.push(question);
     this.quizzes$.next(this.quizzes);
   }
-  /*
-  Fin de la partie provenant de la correction
-  */
+
+  deleteQuestion(question: Question, quiz: Quiz) {
+    const found = this.quizzes.find((elt) => elt == quiz);
+    found.questions.splice(found.questions.indexOf(question), 1);
+    this.quizzes$.next(this.quizzes);
+  }
+  
 }

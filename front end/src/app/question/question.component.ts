@@ -12,15 +12,15 @@ export class QuestionComponent implements OnInit {
   question: Question;
 
   @Output()
-  deleteQuestion: EventEmitter<Question> = new EventEmitter<Question>();
+  questionDelete: EventEmitter<Question> = new EventEmitter<Question>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  delete() {
-    this.deleteQuestion.emit(this.question);
+  deleteQuestion() {
+    this.questionDelete.emit(this.question);
   }
 
 }

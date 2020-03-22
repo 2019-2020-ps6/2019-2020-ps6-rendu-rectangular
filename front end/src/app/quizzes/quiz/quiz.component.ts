@@ -28,13 +28,17 @@ export class QuizComponent implements OnInit {
 
   selectQuiz() {
     this.quizSelected.emit(true);
+    console.log('select event emitted');
   }
 
   deleteQuiz(){
     this.quizToDelete.emit(this.quiz);
+    console.log('delete event emitted');
+    console.log('deleted quiz is: ', this.quiz);
   }
 
   edit() {
     this.editQuiz.emit(this.quiz);
+    console.log('emitted quiz is: ',  this.quiz);
   }
 }
