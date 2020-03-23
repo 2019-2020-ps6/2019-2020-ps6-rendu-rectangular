@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     Quiz.get().forEach(element => {
       result.push([element].concat([Question.get().filter(a=>a.quizId==element.id)]))
     });
-
+    console.log(result);
     res.status(200).json(result)
   } catch (err) {
     res.status(500).json(err)

@@ -7,9 +7,6 @@
     <h3>
         {{quiz.theme}}
     </h3>
-    <h3>
-        {{quiz.creationDate | date: "dd/MM/yy HH:mm"}}
-    </h3>
     <h4>Nombre de questions: {{quiz.questions.length}}</h4>
     <button class="button-card edit" (click)="edit()" routerLink="/edit-quiz/{{quiz.id}}">Edit</button>
     <br>

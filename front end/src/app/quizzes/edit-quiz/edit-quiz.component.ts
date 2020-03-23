@@ -13,29 +13,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EditQuizComponent implements OnInit {
 
-  quiz: Quiz;
+  public quiz: Quiz;
 
   constructor(private route: ActivatedRoute, private quizService : QuizService) { 
-    this.getQuiz();
+    this.quizService.selectedQuiz$.subscribe((quiz) => this.quiz = quiz);
   }
 
   ngOnInit() {
-    
-  }
-
-  
-  getQuiz(): void {
     const id = this.route.snapshot.paramMap.get('id');
-      this.quizService.getQuiz(id)
-        .subscribe(quiz => {
-          this.quiz = quiz;
-        });
+    this.quizService.setSelectedQuiz(id);
   }
-
-  questionAdd(selected : Question){ 
-    console.log('edit :',selected);
-    this.quizService.addQuestion(selected, this.quiz);
-  }
-  
-
 }
