@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app.routing.module';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
+import { AcceuilComponent } from './acceuil/acceuil.component';
+import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component'
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
 
@@ -27,7 +29,9 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     QuestionFormComponent,
     QuestionComponent,
     QuestionListComponent,
-    FourOhFourComponent
+    FourOhFourComponent, 
+    AcceuilComponent,
+    QuizSelectionComponent
   ],
   imports: [
     BrowserModule,
