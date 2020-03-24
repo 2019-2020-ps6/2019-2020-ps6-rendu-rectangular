@@ -14,6 +14,8 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { QuestionListComponent } from './question-list/question-list.component';
     EditQuizComponent,
     QuestionFormComponent,
     QuestionComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
