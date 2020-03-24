@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/services/quiz.service';
+import { Quiz } from 'src/models/quiz.model'
 
 @Component({
   selector: 'app-quiz-selection',
@@ -8,7 +9,14 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class QuizSelectionComponent implements OnInit {
 
-  constructor(private quizService: QuizService) { }
+  quizList: Quiz[] = [];
+
+  constructor(private quizService: QuizService) { 
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;
+      console.log('Quizzes in selection page are', this.quizList);
+    });
+  }
 
   ngOnInit() {
   }
