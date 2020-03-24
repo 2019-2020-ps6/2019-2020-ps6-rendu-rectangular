@@ -35,7 +35,7 @@ export class QuizService {
   public selectedQuiz$: Subject <Quiz> = new Subject();
 
   constructor(public http: HttpClient) {
-    this.setQuizzesFromUrl();
+    //this.setQuizzesFromUrl();
   }
 
   setSelectedQuiz(quizId: string) {
@@ -107,7 +107,10 @@ export class QuizService {
   */
  addQuestion(question: Question, quiz: Quiz) {
   const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
-  this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+  this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => {
+    this.setSelectedQuiz(quiz.id);
+    //this.setQuizzesFromUrl();
+    });
 }
 
 deleteQuestion(question: Question, quiz: Quiz){

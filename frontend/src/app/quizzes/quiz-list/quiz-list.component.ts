@@ -20,7 +20,7 @@ export class QuizListComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.quizService.setQuizzesFromUrl();
   }
 
   quizSelected(selected: boolean) {
