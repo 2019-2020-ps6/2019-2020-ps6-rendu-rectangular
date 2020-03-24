@@ -7,7 +7,7 @@ import { AcceuilComponent } from './acceuil/acceuil.component'
 const routes: Routes = [
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
-    {path: '', redirectTo: '/quiz-list', pathMatch: 'full'},
+    {path: '', redirectTo: '/acceuil', pathMatch: 'full'},
     {path: 'acceuil', component: AcceuilComponent},
 ];
 
