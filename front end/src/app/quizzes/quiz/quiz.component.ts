@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
+import { Question } from 'src/models/question.model';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { QuizService } from 'src/services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
