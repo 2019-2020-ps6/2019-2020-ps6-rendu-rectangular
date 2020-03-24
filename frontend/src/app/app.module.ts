@@ -14,6 +14,7 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
+import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
     QuestionFormComponent,
     QuestionComponent,
     QuestionListComponent,
-    AcceuilComponent
+    AcceuilComponent,
+    QuizSelectionComponent
   ],
   imports: [
     BrowserModule,
