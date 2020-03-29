@@ -9,7 +9,7 @@ import { Quiz } from 'src/models/quiz.model'
 })
 export class QuizSelectionComponent implements OnInit {
 
-  quizList: Quiz[] = [];
+  public quizList: Quiz[] = [];
 
   constructor(private quizService: QuizService) { 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -19,6 +19,7 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.quizService.setQuizzesFromUrl();
   }
 
 }

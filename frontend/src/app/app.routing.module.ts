@@ -4,14 +4,16 @@ import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
 import { AcceuilComponent } from './acceuil/acceuil.component'
+import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 
 const routes: Routes = [
     {path: 'quiz-list', component: QuizListComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
     {path: '', redirectTo: '/acceuil', pathMatch: 'full'},
     {path: 'acceuil', component: AcceuilComponent},
-    { path: 'not-found', component: FourOhFourComponent },
-    { path: '**', redirectTo: 'not-found' }
+    {path: 'quiz-selection', component: QuizSelectionComponent},
+    {path: 'not-found', component: FourOhFourComponent},
+    {path: '**', redirectTo: 'not-found'}
 ];
 
 @NgModule({

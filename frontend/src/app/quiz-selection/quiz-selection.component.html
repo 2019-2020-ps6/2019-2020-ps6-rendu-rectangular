@@ -1,4 +1,6 @@
-<p>quiz-selection works!</p>
-<div *ngFor="let quiz of quizList">
-    <app-quiz [quiz]="quiz"></app-quiz>
+<div class="quiz-selection">
+    <div class="quiz" *ngFor="let quiz of quizList">
+        <app-quiz-selection-view [quiz]="quiz"></app-quiz-selection-view>
+    </div>
 </div>
+

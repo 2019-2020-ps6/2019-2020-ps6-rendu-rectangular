@@ -17,6 +17,7 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component'
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
+import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-selection-view.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
     QuestionListComponent,
     FourOhFourComponent, 
     AcceuilComponent,
-    QuizSelectionComponent
+    QuizSelectionComponent,
+    QuizSelectionViewComponent
   ],
   imports: [
     BrowserModule,
