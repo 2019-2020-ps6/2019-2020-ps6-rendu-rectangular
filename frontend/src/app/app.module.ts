@@ -14,7 +14,8 @@ import { QuestionFormComponent } from './question-form/question-form.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component'
+import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
+import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
 import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-selection-view.component';
@@ -34,6 +35,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
     QuestionListComponent,
     FourOhFourComponent, 
     AcceuilComponent,
+    AcceuilJoueurComponent,
     QuizSelectionComponent,
     QuizSelectionViewComponent,
     QuestionViewQuizComponent,
