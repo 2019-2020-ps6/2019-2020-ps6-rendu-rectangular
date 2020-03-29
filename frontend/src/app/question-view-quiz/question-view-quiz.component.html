@@ -1,0 +1,6 @@
+<h1>{{ question.label }}</h1>
+<div class="answer" *ngFor="let answer of question.answers">
+    <div class="value">
+        <button class="button-card" (click)="onButtonClick()">{{answer.value}}</button>
+    </div>
+</div>

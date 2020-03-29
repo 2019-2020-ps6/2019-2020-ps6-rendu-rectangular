@@ -1,6 +1,6 @@
 <div class="quiz-selection">
     <div class="quiz" *ngFor="let quiz of quizList">
-        <app-quiz-selection-view [quiz]="quiz"></app-quiz-selection-view>
+        <app-quiz-selection-view [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
     </div>
 </div>
 
