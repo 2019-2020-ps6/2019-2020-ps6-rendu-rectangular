@@ -31,3 +31,4 @@ export class QuizSelectionComponent implements OnInit {
   }
 
 }
+  

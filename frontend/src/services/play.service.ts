@@ -14,6 +14,7 @@ export class PlayService {
     questionList: Question[];
 
     index: number = 0;
+    public nbCorrectAnswers = 0;
 
     //currentQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject<Quiz>(this.currentQuiz);
     currentQuestion$: BehaviorSubject<Question> = new BehaviorSubject<Question>(this.currentQuestion);
@@ -35,7 +36,24 @@ export class PlayService {
             this.index++;
             this.currentQuestion = this.questionList[this.index];
             this.currentQuestion$.next(this.currentQuestion);
+            return true;
+        } else {
+            console.log('In else of nextQuestion()');
+            return false;
         }
+    }
+
+    addAPoint() {
+        this.nbCorrectAnswers++;
+    }
+
+    clear() {
+        this.currentQuiz = null;
+        this.currentQuestion = null;
+        this.questionList = null;
+        this.index = 0;
+        this.nbCorrectAnswers = 0;
+        this.currentQuestion$.next(this.currentQuestion);
     }
 
 

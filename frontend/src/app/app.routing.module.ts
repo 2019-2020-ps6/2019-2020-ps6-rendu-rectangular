@@ -6,6 +6,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AcceuilComponent } from './acceuil/acceuil.component'
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 const routes: Routes = [
     {path: 'quiz-list', component: QuizListComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
     {path: 'acceuil', component: AcceuilComponent},
     {path: 'quiz-selection', component: QuizSelectionComponent},
     {path: 'question-view-in-quiz', component: QuestionViewQuizComponent},
+    {path: 'result-page', component: ResultPageComponent},
     {path: 'not-found', component: FourOhFourComponent},
     {path: '**', redirectTo: 'not-found'}
 ];

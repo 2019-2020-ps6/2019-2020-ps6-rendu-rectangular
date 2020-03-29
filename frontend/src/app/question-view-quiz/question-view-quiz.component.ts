@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from 'src/models/question.model';
+import { Question, Answer } from 'src/models/question.model';
 import { PlayService } from 'src/services/play.service';
 import { Router } from '@angular/router';
 
@@ -22,9 +22,16 @@ export class QuestionViewQuizComponent implements OnInit {
   ngOnInit() {
   }
 
-  onButtonClick() {
-    this.playService.nextQuestion();
-    this.router.navigate(['/question-view-in-quiz']);
+  onButtonClick(answer: Answer) {
+    if(answer.isCorrect) {
+      console.log('Ajout dun point!!!!');
+      this.playService.addAPoint();
+    }
+    if (this.playService.nextQuestion()) {
+      this.router.navigate(['/question-view-in-quiz']);
+    } else {
+      this.router.navigate(['/result-page']);
+    }
   }
 
 }
