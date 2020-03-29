@@ -14,25 +14,26 @@
     justify-content: center;
 }
 
-.button-selection {
-    position: relative;
-    background-color: $lightGray;
-    border: solid 1px $blue;
-    color: $white;
-    left: 25%;
-    font-size: 40px;
-    font-weight: bold;
-    padding: 0.5em 1em;
+.selection {
+    display: flex;
+    margin: auto;
 }
 
-.button-edition {
+.card {
+    display: block;
+    margin: auto;
+}
+
+.button {
     position: relative;
     background-color: $lightGray;
     border: solid 1px $blue;
     color: $white;
-    float: right;
-    right: 25%;
+    margin: auto;
+    margin-top: 25%;
+    display: block;
     font-size: 40px;
     font-weight: bold;
     padding: 0.5em 1em;
+    width: 100%;
 }
