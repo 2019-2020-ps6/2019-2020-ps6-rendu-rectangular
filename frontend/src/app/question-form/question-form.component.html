@@ -2,12 +2,11 @@
     <h2>Create a new question</h2>
     <form class="questionForm" [formGroup]="questionForm">
         <label for="label">
-            Title 
+            Question: 
             <br>
             <input class="input-custom" type="text" id="label" [formControlName]="'label'">
         </label>
         <br>
-        <button type="submit" class="button-card" (click)="addAnswer()">Add answer</button>
         <div class="answer" formArrayName="answers">
             <div *ngFor="let address of answers.controls; let i = index">
                 <div class="answer-form" [formGroupName]="i">
@@ -21,6 +20,8 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
+        <button type="submit" class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
+        <br>
+        <button type="submit" class="button-card" (click)="addQuestion()">Valider</button>
     </form>
 </div>
