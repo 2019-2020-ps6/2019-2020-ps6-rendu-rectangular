@@ -1,1 +1,21 @@
-@import '../../../styles/card.scss'
+@import "../../../styles/variables";
+
+.result {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+.button {
+    position: relative;
+    background-color: $lightGray;
+    border: solid 1px $blue;
+    color: $white;
+    margin: auto;
+    margin-top: 0%;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    width: 50%;
+}
