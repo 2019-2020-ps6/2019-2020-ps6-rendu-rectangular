@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../../styles/variables.scss";
 
 /**
  Use :host to apply some style to your entire component #24c6dc, #514a9d
@@ -14,14 +14,8 @@
     justify-content: center;
 }
 
-.selection {
-    display: flex;
-    margin: auto;
-}
-
 .card {
     display: block;
-    margin: auto;
 }
 
 .button {
@@ -30,10 +24,10 @@
     border: solid 1px $blue;
     color: $white;
     margin: auto;
-    margin-top: 25%;
+    margin-top: 5%;
     display: block;
     font-size: 40px;
     font-weight: bold;
     padding: 0.5em 1em;
-    width: 100%;
+    width: 50%;
 }

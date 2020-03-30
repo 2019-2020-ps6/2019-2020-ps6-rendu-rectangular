@@ -16,6 +16,7 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
+import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
 import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-selection-view.component';
@@ -39,7 +40,8 @@ import { ResultPageComponent } from './result-page/result-page.component';
     QuizSelectionComponent,
     QuizSelectionViewComponent,
     QuestionViewQuizComponent,
-    ResultPageComponent
+    ResultPageComponent,
+    ConnexionPageComponent
   ],
   imports: [
     BrowserModule,

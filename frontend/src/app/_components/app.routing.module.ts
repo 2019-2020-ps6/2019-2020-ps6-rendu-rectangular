@@ -8,6 +8,8 @@ import { QuizSelectionComponent } from './quiz-selection/quiz-selection.componen
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
+import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
+
 
 
 const routes: Routes = [
@@ -20,7 +22,8 @@ const routes: Routes = [
     {path: 'question-view-in-quiz', component: QuestionViewQuizComponent},
     {path: 'result-page', component: ResultPageComponent},
     {path: 'not-found', component: FourOhFourComponent},
-    {path: '**', redirectTo: 'not-found'}
+    {path: '**', redirectTo: 'not-found'},
+    {path: 'connexion-page', component: ConnexionPageComponent}
 ];
 
 @NgModule({
