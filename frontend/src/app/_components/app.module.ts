@@ -18,10 +18,11 @@ import { QuizSelectionComponent } from './quiz-selection/quiz-selection.componen
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
 import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
 
-import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-selection-view.component';
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
     QuestionFormComponent,
     QuestionComponent,
     QuestionListComponent,
-    FourOhFourComponent, 
+    FourOhFourComponent,
     AcceuilComponent,
     AcceuilJoueurComponent,
     QuizSelectionComponent,
@@ -47,7 +48,8 @@ import { ResultPageComponent } from './result-page/result-page.component';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

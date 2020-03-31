@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
-import { Question } from 'src/models/question.model'
+import { Question } from 'src/models/question.model';
 
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from 'src/services/quiz.service';
@@ -15,7 +15,7 @@ export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
 
-  constructor(private route: ActivatedRoute, private quizService : QuizService) { 
+  constructor(private route: ActivatedRoute, private quizService: QuizService) {
     this.quizService.selectedQuiz$.subscribe((quiz) => this.quiz = quiz);
   }
 

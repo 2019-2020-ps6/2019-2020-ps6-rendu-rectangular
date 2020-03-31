@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
-import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'; 
-import { AcceuilComponent } from './acceuil/acceuil.component'
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AcceuilComponent } from './acceuil/acceuil.component';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';

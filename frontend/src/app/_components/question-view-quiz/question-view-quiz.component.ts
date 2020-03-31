@@ -12,7 +12,7 @@ export class QuestionViewQuizComponent implements OnInit {
 
   question: Question;
 
-  constructor(private playService: PlayService, private router: Router) { 
+  constructor(private playService: PlayService, private router: Router) {
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
       console.log('First question is', question);
@@ -23,7 +23,7 @@ export class QuestionViewQuizComponent implements OnInit {
   }
 
   onButtonClick(answer: Answer) {
-    if(answer.isCorrect) {
+    if (answer.isCorrect) {
       console.log('Ajout dun point!!!!');
       this.playService.addAPoint();
     }

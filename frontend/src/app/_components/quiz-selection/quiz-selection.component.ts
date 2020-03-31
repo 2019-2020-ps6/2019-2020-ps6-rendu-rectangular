@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/services/quiz.service';
-import { Quiz } from 'src/models/quiz.model'
+import { Quiz } from 'src/models/quiz.model';
 import { PlayService } from 'src/services/play.service';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class QuizSelectionComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private quizService: QuizService, private playService: PlayService, private router: Router) { 
+  constructor(private quizService: QuizService, private playService: PlayService, private router: Router) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
       console.log('Quizzes in selection page are', this.quizList);
@@ -31,4 +31,4 @@ export class QuizSelectionComponent implements OnInit {
   }
 
 }
-  
+

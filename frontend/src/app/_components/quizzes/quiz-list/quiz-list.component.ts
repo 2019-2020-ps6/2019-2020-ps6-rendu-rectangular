@@ -28,7 +28,7 @@ export class QuizListComponent implements OnInit {
   }
   /*
   On passe par la quizList pour interagir avec les quiz.
-  On remarque que dans le quizList.html, on récupère le quiz à traiter par l'intermédiaire 
+  On remarque que dans le quizList.html, on récupère le quiz à traiter par l'intermédiaire
   de la balise <app-quiz>. Cela est possible grâce au décorateur @Input() dans QuizComponent.
   */
   quizToDelete(selected: Quiz) {

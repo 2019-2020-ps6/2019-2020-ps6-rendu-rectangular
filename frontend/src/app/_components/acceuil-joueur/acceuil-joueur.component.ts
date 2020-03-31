@@ -10,10 +10,10 @@ export class AcceuilJoueurComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private router: Router){
+  constructor(private router: Router) {
   }
-  
-  private goToPage(pageName:string){
+
+  private goToPage(pageName: string) {
     this.router.navigate([`${pageName}`]);
   }
 

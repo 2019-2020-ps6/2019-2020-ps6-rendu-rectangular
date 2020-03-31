@@ -13,15 +13,17 @@ export class PlayService {
     currentQuestion: Question;
     questionList: Question[];
 
-    index: number = 0;
+    index = 0;
     public nbCorrectAnswers = 0;
 
-    //currentQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject<Quiz>(this.currentQuiz);
+    // currentQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject<Quiz>(this.currentQuiz);
     currentQuestion$: BehaviorSubject<Question> = new BehaviorSubject<Question>(this.currentQuestion);
 
     constructor() {
-        
+
     }
+
+
 
     setQuiz(quiz: Quiz) {
         console.log('Quiz in playService is', quiz);
@@ -32,7 +34,7 @@ export class PlayService {
     }
 
     nextQuestion() {
-        if (this.index+1 < this.questionList.length) {
+        if (this.index + 1 < this.questionList.length) {
             this.index++;
             this.currentQuestion = this.questionList[this.index];
             this.currentQuestion$.next(this.currentQuestion);
@@ -55,7 +57,6 @@ export class PlayService {
         this.nbCorrectAnswers = 0;
         this.currentQuestion$.next(this.currentQuestion);
     }
-
 
 
 

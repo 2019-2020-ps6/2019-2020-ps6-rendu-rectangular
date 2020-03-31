@@ -17,7 +17,7 @@ export class QuestionFormComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService) { 
+  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     this.initializeQuestionForm();
   }
 
@@ -44,7 +44,7 @@ export class QuestionFormComponent implements OnInit {
     this.answers.push(this.createAnswer());
   }
 
-  addQuestion() { 
+  addQuestion() {
     const questionToCreate = this.questionForm.getRawValue() as Question;
     console.log(questionToCreate);
     this.quizService.addQuestion(questionToCreate, this.quiz);
