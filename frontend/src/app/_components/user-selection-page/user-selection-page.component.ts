@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlayService } from 'src/services/play.service';
 import { User } from 'src/models/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-selection-page',
@@ -12,7 +13,7 @@ export class UserSelectionPageComponent implements OnInit {
 
   availableUsers: User[];
 
-  constructor(private playService: PlayService) { 
+  constructor(private playService: PlayService, private router: Router) { 
     this.setUsers();
   }
 
@@ -27,6 +28,8 @@ export class UserSelectionPageComponent implements OnInit {
     });
   }
 
-
-
+  onSelectUser(user: User) {
+    this.playService.setCurrentUser(user);
+    this.router.navigate(['/acceuil-joueur']);
+  } 
 }
