@@ -23,6 +23,7 @@ import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-s
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     QuizSelectionViewComponent,
     QuestionViewQuizComponent,
     ResultPageComponent,
-    ConnexionPageComponent
+    ConnexionPageComponent,
+    UserSelectionPageComponent
   ],
   imports: [
     BrowserModule,
