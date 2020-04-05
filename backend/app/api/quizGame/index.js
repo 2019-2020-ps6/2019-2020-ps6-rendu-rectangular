@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const manageAllErrors = require('../../utils/routes/error-management')
 const { QuizGame } = require('../../models')
-const { buildOneQuizGame } = require('./manager')
+const { buildOneQuizGame, buildQuizGames } = require('./manager')
 
 const router = new Router()
 
@@ -9,7 +9,9 @@ module.exports = router
 
 router.get('/', (req, res) => {
     try {
-      res.status(200).json(QuizGame.get())
+      //res.status(200).json(QuizGame.get())
+      const quizGames = buildQuizGames()
+      res.status(200).json(quizGames)
     } catch (err) {
       manageAllErrors(res, err)
     }

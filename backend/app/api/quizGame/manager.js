@@ -10,6 +10,12 @@ const buildOneQuizGame = (quizGameId) => {
     return {...user, quiz, usersAnswers}
 }
 
+const buildQuizGames = () => {
+    const quizGames = QuizGame.get()
+    return quizGames.map((quizGame) => buildOneQuizGame(quizGame.id))
+}
+
 module.exports = {
-    buildOneQuizGame
+    buildOneQuizGame,
+    buildQuizGames
 }
