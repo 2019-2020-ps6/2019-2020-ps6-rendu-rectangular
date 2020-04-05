@@ -35,3 +35,11 @@ router.post('/', (req, res) => {
     manageAllErrors(res, err)
   }
 })
+
+router.put('/:quizGameId', (req, res) => {
+  try {
+    res.status(200).json(QuizGame.update(req.params.quizGameId, req.body))
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})

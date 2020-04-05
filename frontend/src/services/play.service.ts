@@ -92,6 +92,7 @@ export class PlayService {
         const indexOfCurrentQuestion = this.gameQuiz.usersAnswers.length;
         this.currentQuestion = this.gameQuiz.quiz.questions[indexOfCurrentQuestion];
         console.log('Current question in playService is', this.gameQuiz.quiz.questions[indexOfCurrentQuestion]);
+        console.log('QuizGame id is', this.gameQuiz.quizGameId);
         this.currentQuestion$.next(this.currentQuestion);
     }
 
