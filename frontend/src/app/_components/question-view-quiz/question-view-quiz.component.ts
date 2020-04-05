@@ -15,13 +15,15 @@ export class QuestionViewQuizComponent implements OnInit {
   constructor(private playService: PlayService, private router: Router) {
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
+      console.log('Question in question-view-quiz is', this.question);
     });
   }
 
   ngOnInit() {
   }
 
-  onButtonClick(answer: Answer) {
+  onButtonClick(usersChoice: number) {
+    this.playService.updateUsersAnswers(usersChoice);
     /*
     if (answer.isCorrect) {
       console.log('Ajout dun point!!!!');

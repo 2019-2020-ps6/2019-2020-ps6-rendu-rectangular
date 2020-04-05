@@ -49,20 +49,19 @@ export class PlayService {
         this.http.get<QuizGame[]>(this.gameQuizzesUrl).subscribe((gameQuizzes: QuizGame[]) => {
             this.gameQuizzes = gameQuizzes;
             this.gameQuizzes$.next(this.gameQuizzes);
-            console.log('Game quizzes from url are', this.gameQuizzes);
             this.setGameQuiz();
+            this.findCurrentQuestion();
             
         });
     }
 
     setGameQuiz() {
-        //this.gameQuiz = 
-        this.findLastGame(this.currentUser, this.currentQuiz);
+        this.gameQuiz = this.findLastGame(this.currentUser, this.currentQuiz);
+        console.log('GameQuiz in playService is', this.gameQuiz);
     }
 
-    findLastGame(user: User, quiz: Quiz) {
-        //console.log(this.gameQuizzes.find((game) => game.user.id === user.id));
-        console.log(this.gameQuizzes.filter((game) => game.id === user.id));
+    findLastGame(user: User, quiz: Quiz): QuizGame {
+        return this.gameQuizzes.find((game) => game.user.id === user.id && game.quiz.id === quiz.id);
     }
 
 
@@ -87,6 +86,18 @@ export class PlayService {
         this.http.get<User[]>(this.usersUrl).subscribe((users: User[]) => {
             this.availableUsers$.next(users);
         });
+    }
+
+    findCurrentQuestion() {
+        const indexOfCurrentQuestion = this.gameQuiz.usersAnswers.length;
+        this.currentQuestion = this.gameQuiz.quiz.questions[indexOfCurrentQuestion];
+        console.log('Current question in playService is', this.gameQuiz.quiz.questions[indexOfCurrentQuestion]);
+        this.currentQuestion$.next(this.currentQuestion);
+    }
+
+    updateUsersAnswers(usersChoice: number) {
+        this.gameQuiz.usersAnswers.push(usersChoice);
+        //this.http.put<QuizGame>(this.gameQuizzesUrl+'/'+this.gameQuiz.id, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl())
     }
     /*
 
