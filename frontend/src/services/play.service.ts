@@ -61,8 +61,8 @@ export class PlayService {
     }
 
     findLastGame(user: User, quiz: Quiz) {
-        //console.log(this.gameQuizzes.find((game) => game.user === user && game.quiz === quiz));
-        console.log(this.gameQuizzes[0]);
+        //console.log(this.gameQuizzes.find((game) => game.user.id === user.id));
+        console.log(this.gameQuizzes.filter((game) => game.id === user.id));
     }
 
 
