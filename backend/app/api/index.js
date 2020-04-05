@@ -7,6 +7,6 @@ const router = new Router()
 router.get('/status', (req, res) => res.status(200).json('ok'))
 router.use('/quizzes', QuizzesRouter)
 router.use('/users', UserRouter)
-router.use('/quizGame', QuizGameRouter)
+router.use('/quiz-game', QuizGameRouter)
 
 module.exports = router

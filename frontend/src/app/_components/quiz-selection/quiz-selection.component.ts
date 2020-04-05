@@ -27,6 +27,7 @@ export class QuizSelectionComponent implements OnInit {
   selectQuiz(quiz: Quiz) {
     console.log('Quiz selected is', quiz);
     this.playService.setCurrentQuiz(quiz);
+    this.playService.setGameQuizzesFromUrl();
     this.router.navigate(['/question-view-in-quiz']);
   }
 

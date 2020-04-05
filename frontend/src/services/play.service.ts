@@ -49,15 +49,20 @@ export class PlayService {
         this.http.get<QuizGame[]>(this.gameQuizzesUrl).subscribe((gameQuizzes: QuizGame[]) => {
             this.gameQuizzes = gameQuizzes;
             this.gameQuizzes$.next(this.gameQuizzes);
+            console.log('Game quizzes from url are', this.gameQuizzes);
+            this.setGameQuiz();
+            
         });
     }
 
     setGameQuiz() {
-        this.gameQuiz = this.findLastGame(this.currentUser, this.currentQuiz);
+        //this.gameQuiz = 
+        this.findLastGame(this.currentUser, this.currentQuiz);
     }
 
-    findLastGame(user: User, quiz: Quiz): QuizGame {
-        return this.gameQuizzes.find((game) => game.user === user && game.quiz === quiz);
+    findLastGame(user: User, quiz: Quiz) {
+        //console.log(this.gameQuizzes.find((game) => game.user === user && game.quiz === quiz));
+        console.log(this.gameQuizzes[0]);
     }
 
 
