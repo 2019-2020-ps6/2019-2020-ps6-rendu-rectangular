@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class ResultPageComponent implements OnInit {
 
-  nbOfCorrectAnswers: number;
-  nbOfQuestions: number;
   pourcentageReponsesJustes: number;
 
   constructor(private playService: PlayService, private router: Router) {
@@ -19,16 +17,14 @@ export class ResultPageComponent implements OnInit {
     this.nbOfCorrectAnswers = this.playService.nbCorrectAnswers;
     this.pourcentageReponsesJustes = (this.nbOfCorrectAnswers / this.nbOfQuestions) * 100;
     */
+    this.pourcentageReponsesJustes = this.playService.calculateScore();
   }
 
   ngOnInit() {
   }
 
   onButtonClick() {
-    /*
     this.router.navigate(['/quiz-selection']);
-    this.playService.clear();
-    */
   }
 
 }

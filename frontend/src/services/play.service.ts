@@ -23,23 +23,12 @@ export class PlayService {
     currentUser: User;
     currentQuiz: Quiz;
 
-    /*
-    currentQuiz: Quiz;
-    currentQuestion: Question;
-    questionList: Question[];
-
-    index = 0;
-    public nbCorrectAnswers = 0;
-
-    // currentQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject<Quiz>(this.currentQuiz);
+    gameQuizzes$: BehaviorSubject<QuizGame[]> = new BehaviorSubject<QuizGame[]>(this.gameQuizzes);
     currentQuestion$: BehaviorSubject<Question> = new BehaviorSubject<Question>(this.currentQuestion);
-    */
-   gameQuizzes$: BehaviorSubject<QuizGame[]> = new BehaviorSubject<QuizGame[]>(this.gameQuizzes);
-   currentQuestion$: BehaviorSubject<Question> = new BehaviorSubject<Question>(this.currentQuestion);
-   currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(this.currentUser);
-   currentQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject<Quiz>(this.currentQuiz);
+    currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(this.currentUser);
+    currentQuiz$: BehaviorSubject<Quiz> = new BehaviorSubject<Quiz>(this.currentQuiz);
 
-   public availableUsers$:Subject<User[]> = new Subject<User[]>();
+    public availableUsers$:Subject<User[]> = new Subject<User[]>();
 
     constructor(private http: HttpClient) {
 
@@ -50,7 +39,7 @@ export class PlayService {
             this.gameQuizzes = gameQuizzes;
             this.gameQuizzes$.next(this.gameQuizzes);
             this.setGameQuiz();
-            this.findCurrentQuestion();
+            this.nextQuestion();
             
         });
     }
@@ -61,13 +50,20 @@ export class PlayService {
     }
 
     findLastGame(user: User, quiz: Quiz): QuizGame {
-        return this.gameQuizzes.find((game) => game.user.id === user.id && game.quiz.id === quiz.id);
+        let quizGames: QuizGame[];
+        quizGames = this.gameQuizzes.filter((game) => game.user.id === user.id && game.quiz.id === quiz.id);
+        return quizGames[quizGames.length-1];
     }
 
 
     createNewGameQuiz() {
-        const newGame = new QuizGame(this.currentQuiz, this.currentUser);
-        this.http.post<QuizGame>(this.gameQuizzesUrl, newGame, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
+        //const newGame = new QuizGame(this.currentQuiz, this.currentUser);
+        const newGameJson = {
+            "userId": this.currentUser.id,
+            "quizId": this.currentQuiz.id,
+            "usersAnswers": []
+        }
+        this.http.post(this.gameQuizzesUrl, newGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
 
     setCurrentUser(user: User) {
@@ -88,12 +84,16 @@ export class PlayService {
         });
     }
 
-    findCurrentQuestion() {
+    nextQuestion(): boolean {
         const indexOfCurrentQuestion = this.gameQuiz.usersAnswers.length;
-        this.currentQuestion = this.gameQuiz.quiz.questions[indexOfCurrentQuestion];
-        console.log('Current question in playService is', this.gameQuiz.quiz.questions[indexOfCurrentQuestion]);
-        console.log('QuizGame id is', this.gameQuiz.quizGameId);
-        this.currentQuestion$.next(this.currentQuestion);
+        if (indexOfCurrentQuestion < this.gameQuiz.quiz.questions.length) {
+            this.currentQuestion = this.gameQuiz.quiz.questions[indexOfCurrentQuestion];
+            console.log('Current question in playService is', this.gameQuiz.quiz.questions[indexOfCurrentQuestion]);
+            console.log('QuizGame id is', this.gameQuiz.quizGameId);
+            this.currentQuestion$.next(this.currentQuestion);
+            return true;
+        }
+        return false;
     }
 
     updateUsersAnswers(usersChoice: number) {
@@ -106,41 +106,13 @@ export class PlayService {
         this.http.put(this.gameQuizzesUrl+'/'+this.gameQuiz.quizGameId, quizGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
 
-    /*
-
-    setQuiz(quiz: Quiz) {
-        console.log('Quiz in playService is', quiz);
-        this.currentQuiz = quiz;
-        this.questionList = quiz.questions;
-        this.currentQuestion = this.questionList[this.index];
-        this.currentQuestion$.next(this.currentQuestion);
-    }
-
-    nextQuestion() {
-        if (this.index + 1 < this.questionList.length) {
-            this.index++;
-            this.currentQuestion = this.questionList[this.index];
-            this.currentQuestion$.next(this.currentQuestion);
-            return true;
-        } else {
-            console.log('In else of nextQuestion()');
-            return false;
+    calculateScore(): number {
+        const usersAnswers = this.gameQuiz.usersAnswers;
+        const questions = this.gameQuiz.quiz.questions;
+        let score = 0;
+        for (let i = 0; i < usersAnswers.length; i++) {
+            if (questions[i].answers[usersAnswers[i]].isCorrect) score++;
         }
+        return (score/usersAnswers.length)*100;
     }
-
-    addAPoint() {
-        this.nbCorrectAnswers++;
-    }
-
-    clear() {
-        this.currentQuiz = null;
-        this.currentQuestion = null;
-        this.questionList = null;
-        this.index = 0;
-        this.nbCorrectAnswers = 0;
-        this.currentQuestion$.next(this.currentQuestion);
-    }
-    */
-
-
 }
