@@ -24,6 +24,8 @@ export class QuestionViewQuizComponent implements OnInit {
 
   onButtonClick(usersChoice: number) {
     this.playService.updateUsersAnswers(usersChoice);
+    this.playService.findCurrentQuestion();
+    this.router.navigate(['/question-view-in-quiz']);
     /*
     if (answer.isCorrect) {
       console.log('Ajout dun point!!!!');

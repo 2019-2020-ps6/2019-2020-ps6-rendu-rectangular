@@ -98,8 +98,14 @@ export class PlayService {
 
     updateUsersAnswers(usersChoice: number) {
         this.gameQuiz.usersAnswers.push(usersChoice);
-        //this.http.put<QuizGame>(this.gameQuizzesUrl+'/'+this.gameQuiz.id, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl())
+        const quizGameJson = {
+            "userId": this.currentUser.id,
+            "quizId": this.currentQuiz.id,
+            "usersAnswers": this.gameQuiz.usersAnswers
+        };
+        this.http.put(this.gameQuizzesUrl+'/'+this.gameQuiz.quizGameId, quizGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
+
     /*
 
     setQuiz(quiz: Quiz) {
