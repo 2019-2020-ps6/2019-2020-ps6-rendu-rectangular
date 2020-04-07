@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./acceuil-joueur.component.scss']
 })
 export class AcceuilJoueurComponent implements OnInit {
+  size = 40;
+
   ngOnInit() {
   }
 
