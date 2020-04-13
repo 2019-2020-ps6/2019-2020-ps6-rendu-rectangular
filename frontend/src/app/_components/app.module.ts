@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
@@ -19,11 +20,15 @@ import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.componen
 import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { BottomSheetVisualPreferenceComponent, BottomSheetVisualPreferenceSheet } from './bottom-sheet-visual-preference/bottom-sheet-visual-preference.component'; 
 import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-selection-view.component';
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
+import { MatSliderModule } from '@angular/material/slider'; 
+import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material';
+import { MatBottomSheetModule } from '@angular/material'; 
 
 @NgModule({
   declarations: [
@@ -44,16 +49,25 @@ import { UserSelectionPageComponent } from './user-selection-page/user-selection
     QuestionViewQuizComponent,
     ResultPageComponent,
     ConnexionPageComponent,
-    UserSelectionPageComponent
+    UserSelectionPageComponent, 
+    BottomSheetVisualPreferenceComponent, 
+    BottomSheetVisualPreferenceSheet
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule, 
+    MatNativeDateModule, 
+    MatBottomSheetModule
   ],
-  providers: [],
+  entryComponents: [
+    BottomSheetVisualPreferenceComponent, 
+    BottomSheetVisualPreferenceSheet
+  ],
+  providers: [{provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
