@@ -16,6 +16,8 @@ export class PlayService {
 
     private gameQuizzesUrl = serverUrl + '/quiz-game';
     private usersUrl = serverUrl + '/users';
+    private httpOptions = httpOptionsBase;
+
 
     gameQuizzes: QuizGame[];
     gameQuiz: QuizGame;
@@ -64,6 +66,10 @@ export class PlayService {
             "usersAnswers": []
         }
         this.http.post(this.gameQuizzesUrl, newGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
+    }
+
+    addUser(user: User) {
+        this.http.post<User>(this.usersUrl, user, this.httpOptions).subscribe(() => this.setUsersFromUrl());
     }
 
     setCurrentUser(user: User) {

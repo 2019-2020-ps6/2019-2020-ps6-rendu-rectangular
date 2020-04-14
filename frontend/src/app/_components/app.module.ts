@@ -29,6 +29,7 @@ import { UserSelectionPageComponent } from './user-selection-page/user-selection
 import { MatSliderModule } from '@angular/material/slider'; 
 import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material';
 import { MatBottomSheetModule } from '@angular/material'; 
+import { InscriptionPageComponent } from './inscription-page/inscription-page.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MatBottomSheetModule } from '@angular/material';
     ConnexionPageComponent,
     UserSelectionPageComponent, 
     BottomSheetVisualPreferenceComponent, 
-    BottomSheetVisualPreferenceSheet
+    BottomSheetVisualPreferenceSheet,
+    InscriptionPageComponent
   ],
   imports: [
     BrowserModule,

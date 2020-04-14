@@ -7,7 +7,6 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
   styleUrls: ['./bottom-sheet-visual-preference.component.scss']
 })
 export class BottomSheetVisualPreferenceComponent implements OnInit {
-
   ngOnInit() {
   }
 

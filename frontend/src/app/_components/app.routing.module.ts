@@ -10,7 +10,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
 import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
 import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
-
+import { InscriptionPageComponent } from './inscription-page/inscription-page.component';
 
 
 const routes: Routes = [
@@ -25,6 +25,7 @@ const routes: Routes = [
     {path: 'connexion-page', component: ConnexionPageComponent},
     {path: 'user-selection-page', component: UserSelectionPageComponent},
     {path: 'not-found', component: FourOhFourComponent},
+    {path: 'inscription-page', component: InscriptionPageComponent},
     {path: '**', redirectTo: 'not-found'}
 ];
 

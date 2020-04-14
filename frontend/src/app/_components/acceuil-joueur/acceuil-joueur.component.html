@@ -1,4 +1,4 @@
-<h1 class="acceuil">Joueur</h1>
+<h1 class="acceuil">{{user.firstName}} {{user.lastName}}</h1>
 <div class="selection">
     <div class="card">
         <button [ngStyle]="{'font-size': size + 'px'}" class="button" (click)="goToPage('/quiz-list')">Créer un Quiz</button>
@@ -14,3 +14,6 @@
     <button (click)="size = size + 2">+</button>
     <button (click)="size = size - 2">-</button>
 </div>
+
+<br><br>
+<app-bottom-sheet-visual-preference></app-bottom-sheet-visual-preference>

@@ -13,7 +13,7 @@ export class UserSelectionPageComponent implements OnInit {
 
   availableUsers: User[];
 
-  constructor(private playService: PlayService, private router: Router) { 
+  constructor(private playService: PlayService, private router: Router) {
     this.setUsers();
   }
 
@@ -22,7 +22,7 @@ export class UserSelectionPageComponent implements OnInit {
 
   setUsers() {
     this.playService.setUsersFromUrl();
-    this.playService.availableUsers$.subscribe((users: User[])=> {
+    this.playService.availableUsers$.subscribe((users: User[]) => {
       this.availableUsers = users;
       console.log(this.availableUsers);
     });
@@ -31,5 +31,5 @@ export class UserSelectionPageComponent implements OnInit {
   onSelectUser(user: User) {
     this.playService.setCurrentUser(user);
     this.router.navigate(['/acceuil-joueur']);
-  } 
+  }
 }

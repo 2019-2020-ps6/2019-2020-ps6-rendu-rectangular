@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PlayService } from 'src/services/play.service';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'app-acceuil-joueur',
@@ -8,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class AcceuilJoueurComponent implements OnInit {
   size = 40;
+  user: User;
 
   ngOnInit() {
   }
 
-  constructor(private router: Router) {
+  constructor(private playService: PlayService, private router: Router) {
+    this.user = this.playService.currentUser;
   }
 
   private goToPage(pageName: string) {
