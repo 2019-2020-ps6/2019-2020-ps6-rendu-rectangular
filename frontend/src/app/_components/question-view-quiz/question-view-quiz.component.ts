@@ -13,33 +13,25 @@ export class QuestionViewQuizComponent implements OnInit {
   question: Question;
 
   constructor(private playService: PlayService, private router: Router) {
+    this.playService.setGameQuizzesFromUrl();
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
       console.log('Question in question-view-quiz is', this.question);
     });
+    
   }
 
   ngOnInit() {
   }
 
   onButtonClick(usersChoice: number) {
+    /*
     this.playService.updateUsersAnswers(usersChoice);
     if (this.playService.nextQuestion()) {
       this.router.navigate(['/question-view-in-quiz']);
     } else {
       this.router.navigate(['/result-page']);
     }
-    
-    /*
-    if (answer.isCorrect) {
-      console.log('Ajout dun point!!!!');
-      this.playService.addAPoint();
-    }
-    if (this.playService.nextQuestion()) {
-      this.router.navigate(['/question-view-in-quiz']);
-    } else {
-      this.router.navigate(['/result-page']);
-    }
-  */
+    */
   }
 }
