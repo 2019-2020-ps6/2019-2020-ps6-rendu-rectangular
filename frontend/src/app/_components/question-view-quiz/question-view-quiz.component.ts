@@ -25,13 +25,13 @@ export class QuestionViewQuizComponent implements OnInit {
   }
 
   onButtonClick(usersChoice: number) {
-    /*
+    
     this.playService.updateUsersAnswers(usersChoice);
     if (this.playService.nextQuestion()) {
       this.router.navigate(['/question-view-in-quiz']);
     } else {
       this.router.navigate(['/result-page']);
     }
-    */
+    
   }
 }
