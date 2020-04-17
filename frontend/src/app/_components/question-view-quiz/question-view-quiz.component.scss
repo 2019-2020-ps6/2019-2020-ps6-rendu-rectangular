@@ -7,9 +7,9 @@
 
 .button {
     position: relative;
-    background-color: $lightGray;
+    background-color: $white;
     border: solid 1px $blue;
-    color: $white;
+    color: #000000;
     margin: auto;
     margin-top: 5%;
     display: block;
@@ -17,4 +17,12 @@
     font-weight: bold;
     padding: 0.5em 1em;
     width: 50%;
+    transition: background-color 1s;
 }
+
+.button:hover {
+    cursor: pointer;
+    background-color: $blue;
+    border:  solid 1px $white;
+    color: $white;
+  }

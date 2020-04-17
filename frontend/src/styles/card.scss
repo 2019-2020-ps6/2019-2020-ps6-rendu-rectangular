@@ -16,8 +16,13 @@
   color: $blue;
   font-weight: bold;
   padding: 0.5em 1em;
+  transition: background-color 1s;
 }
+
 
 .button-card:hover {
   cursor: pointer;
+  background-color: $blue;
+  border:  solid 1px $white;
+  color: $white;
 }
