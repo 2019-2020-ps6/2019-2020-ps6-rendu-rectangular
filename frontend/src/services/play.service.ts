@@ -98,6 +98,10 @@ export class PlayService {
         console.log('Current user in playService is: ', this.currentUser);
     }
 
+    changeUsersFontSize() {
+        console.log('FONT CHANGED');
+    }
+
     /////////////////// UTILS /////////////////////////////
 
     calculateScore(): number {
