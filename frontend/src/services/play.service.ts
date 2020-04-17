@@ -106,6 +106,7 @@ export class PlayService {
         const newUserJson = {
             "firstName": firstName,
             "lastName": lastName,
+            "fontSizePreference": 40
         };
         this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
     }
