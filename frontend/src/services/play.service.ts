@@ -101,6 +101,14 @@ export class PlayService {
     changeUsersFontSize() {
         console.log('FONT CHANGED');
     }
+    
+    createNewUser(firstName: string, lastName: string) {
+        const newUserJson = {
+            "firstName": firstName,
+            "lastName": lastName,
+        };
+        this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
+    }
 
     /////////////////// UTILS /////////////////////////////
 

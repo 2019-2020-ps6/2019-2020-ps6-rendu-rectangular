@@ -1,0 +1,19 @@
+<div class="card">
+    <h2>Inscription</h2>
+    <form class="userForm" [formGroup]="userForm">
+        <label for="label">
+            Prénom: 
+            <br>
+            <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
+        </label>
+        <br>
+        <label for="label">
+            nom: 
+            <br>
+            <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
+        </label>
+        <br>
+    
+        <button type="submit" class="button-card" (click)="addUser()">Valider</button>
+    </form>
+</div>

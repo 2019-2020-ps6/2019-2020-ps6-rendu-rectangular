@@ -53,6 +53,4 @@ export class QuestionFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
 }
