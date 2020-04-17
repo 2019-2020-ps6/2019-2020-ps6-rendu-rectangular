@@ -33,10 +33,10 @@ export class BottomSheetVisualPreferenceSheet {
   }
 
   onShrinkSize() {
-    this.playService.changeUsersFontSize();
+    this.playService.changeUsersFontSize(-10);
   }
 
   onEnlargeSize() {
-    this.playService.changeUsersFontSize();
+    this.playService.changeUsersFontSize(+10);
   }
 }

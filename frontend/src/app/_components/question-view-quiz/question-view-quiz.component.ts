@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
 import { PlayService } from 'src/services/play.service';
 import { Router } from '@angular/router';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'app-question-view-quiz',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class QuestionViewQuizComponent implements OnInit {
 
   question: Question;
+  size = 40;
 
   constructor(private playService: PlayService, private router: Router) {
     this.playService.setGameQuizzesFromUrl();
@@ -18,7 +20,9 @@ export class QuestionViewQuizComponent implements OnInit {
       this.question = question;
       console.log('Question in question-view-quiz is', this.question);
     });
-    
+    this.playService.currentUser$.subscribe((user: User) => {
+        this.size = user.fontSizePreference;
+    });
   }
 
   ngOnInit() {

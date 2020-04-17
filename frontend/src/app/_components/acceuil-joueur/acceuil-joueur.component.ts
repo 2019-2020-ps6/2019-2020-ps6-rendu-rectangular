@@ -16,7 +16,11 @@ export class AcceuilJoueurComponent implements OnInit {
   }
 
   constructor(private playService: PlayService, private router: Router) {
-    this.user = this.playService.currentUser;
+    //this.user = this.playService.currentUser;
+    this.playService.currentUser$.subscribe((user: User) => {
+        this.user = user;
+        this.size = user.fontSizePreference;
+    });
   }
 
   private goToPage(pageName: string) {

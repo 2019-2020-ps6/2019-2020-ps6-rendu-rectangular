@@ -98,8 +98,19 @@ export class PlayService {
         console.log('Current user in playService is: ', this.currentUser);
     }
 
-    changeUsersFontSize() {
+    changeUsersFontSize(sizeChange: number) {
         console.log('FONT CHANGED');
+        this.currentUser.fontSizePreference += sizeChange;
+        const modifiedUserJSON = {
+            "firstName": this.currentUser.firstName,
+            "lastName": this.currentUser.lastName,
+            "fontSizePreference": this.currentUser.fontSizePreference
+        }
+        this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJSON, httpOptionsBase).subscribe(()=> {
+            this.setCurrentUser(this.currentUser);
+            this.setUsersFromUrl();
+            console.log('new size is', this.currentUser.fontSizePreference);
+        });
     }
     
     createNewUser(firstName: string, lastName: string) {
