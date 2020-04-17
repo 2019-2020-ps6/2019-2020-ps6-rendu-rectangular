@@ -20,7 +20,7 @@ export class QuestionViewQuizComponent implements OnInit {
       this.question = question;
       console.log('Question in question-view-quiz is', this.question);
     });
-    this.playService.currentUser$.subscribe((user: User) => {
+    this.playService.currentUser$$.subscribe((user: User) => {
         this.size = user.fontSizePreference;
     });
   }

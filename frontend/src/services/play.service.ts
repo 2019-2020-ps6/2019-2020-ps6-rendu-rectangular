@@ -36,9 +36,11 @@ export class PlayService {
                 this.quizGames = quizgames;
                 const currentQuizGame = quizgames[quizgames.length - 1];
                 const currentQuestion = currentQuizGame.quiz.questions[currentQuizGame.usersAnswers.length];
+                const currentUser = currentQuizGame.user;
                 this.currentQuestion$.next(currentQuestion);
                 this.currentQuiz = currentQuizGame.quiz;
-                this.currentUser = currentQuizGame.user;
+                this.currentUser = currentUser;
+                this.currentUser$$.next(currentUser);
                 this.currentQuizGame = currentQuizGame;
             });
     }
@@ -84,6 +86,7 @@ export class PlayService {
 
     currentUser: User;
     currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(this.currentUser);
+    currentUser$$: Subject<User> = new Subject<User>();
     availableUsers$: Subject<User[]> = new Subject<User[]>();
 
     setUsersFromUrl() {
@@ -95,6 +98,7 @@ export class PlayService {
     setCurrentUser(user: User) {
         this.currentUser = user;
         this.currentUser$.next(this.currentUser);
+        this.currentUser$$.next(this.currentUser);
         console.log('Current user in playService is: ', this.currentUser);
     }
 
