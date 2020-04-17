@@ -17,7 +17,7 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
-import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
+import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component'
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { BottomSheetVisualPreferenceComponent, BottomSheetVisualPreferenceSheet } from './bottom-sheet-visual-preference/bottom-sheet-visual-preference.component'; 
@@ -29,7 +29,6 @@ import { UserSelectionPageComponent } from './user-selection-page/user-selection
 import { MatSliderModule } from '@angular/material/slider'; 
 import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material';
 import { MatBottomSheetModule } from '@angular/material'; 
-import { InscriptionPageComponent } from './inscription-page/inscription-page.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +48,10 @@ import { InscriptionPageComponent } from './inscription-page/inscription-page.co
     QuizSelectionViewComponent,
     QuestionViewQuizComponent,
     ResultPageComponent,
-    ConnexionPageComponent,
     UserSelectionPageComponent, 
     BottomSheetVisualPreferenceComponent, 
     BottomSheetVisualPreferenceSheet,
-    InscriptionPageComponent
+    UserCreationPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,4 @@ export class QuestionListComponent implements OnInit {
   deleteQuestion(question: Question) {
     this.quizService.deleteQuestion(question, this.quiz);
   }
-
-
-
 }

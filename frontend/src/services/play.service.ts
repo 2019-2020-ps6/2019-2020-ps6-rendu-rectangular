@@ -98,6 +98,14 @@ export class PlayService {
         console.log('Current user in playService is: ', this.currentUser);
     }
 
+    createNewUser(firstName: string, lastName: string) {
+        const newUserJson = {
+            "firstName": firstName,
+            "lastName": lastName,
+        };
+        this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
+    }
+
     /////////////////// UTILS /////////////////////////////
 
     calculateScore(): number {

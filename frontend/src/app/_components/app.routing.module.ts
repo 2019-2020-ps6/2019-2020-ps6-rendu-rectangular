@@ -8,9 +8,8 @@ import { QuizSelectionComponent } from './quiz-selection/quiz-selection.componen
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
-import { ConnexionPageComponent } from './connexion-page/connexion-page.component';
 import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
-import { InscriptionPageComponent } from './inscription-page/inscription-page.component';
+import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component'
 
 
 const routes: Routes = [
@@ -22,10 +21,9 @@ const routes: Routes = [
     {path: 'quiz-selection', component: QuizSelectionComponent},
     {path: 'question-view-in-quiz', component: QuestionViewQuizComponent},
     {path: 'result-page', component: ResultPageComponent},
-    {path: 'connexion-page', component: ConnexionPageComponent},
     {path: 'user-selection-page', component: UserSelectionPageComponent},
+    {path: 'user-creation-page', component: UserCreationPageComponent},
     {path: 'not-found', component: FourOhFourComponent},
-    {path: 'inscription-page', component: InscriptionPageComponent},
     {path: '**', redirectTo: 'not-found'}
 ];
 
