@@ -29,6 +29,7 @@ import { UserSelectionPageComponent } from './user-selection-page/user-selection
 import { MatSliderModule } from '@angular/material/slider'; 
 import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material';
 import { MatBottomSheetModule } from '@angular/material'; 
+import { ScorePageComponent } from './score-page/score-page.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MatBottomSheetModule } from '@angular/material';
     BottomSheetVisualPreferenceComponent, 
     BottomSheetVisualPreferenceSheet,
     UserCreationPageComponent,
+    ScorePageComponent
   ],
   imports: [
     BrowserModule,

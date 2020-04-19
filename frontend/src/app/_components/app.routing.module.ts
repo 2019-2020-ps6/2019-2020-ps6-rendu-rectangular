@@ -10,6 +10,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
 import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
 import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component'
+import { ScorePageComponent } from './score-page/score-page.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path: 'result-page', component: ResultPageComponent},
     {path: 'user-selection-page', component: UserSelectionPageComponent},
     {path: 'user-creation-page', component: UserCreationPageComponent},
+    {path: 'score-page', component: ScorePageComponent},
     {path: 'not-found', component: FourOhFourComponent},
     {path: '**', redirectTo: 'not-found'}
 ];
