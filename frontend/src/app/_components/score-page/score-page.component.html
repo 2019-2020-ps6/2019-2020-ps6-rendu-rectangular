@@ -1,1 +1,6 @@
-<p>score-page works!</p>
+<h1 *ngIf="user">Scores de {{user.firstName}} {{user.lastName}}</h1>
+<div class="games" *ngFor="let quizgame of playersQuizGame">
+    <div class="game">
+        <h3>{{quizgame.quiz.name}}</h3>
+    </div>
+</div>

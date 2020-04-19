@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
 import { Question } from 'src/models/question.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { QuizGame } from 'src/models/gameQuiz.model';
 import { User } from 'src/models/user.model';
@@ -28,12 +28,18 @@ export class PlayService {
     ///////////////// QUIZ GAMES ////////////////////////
 
     quizGames: QuizGame[];
+    quizGames$: BehaviorSubject<QuizGame[]> = new BehaviorSubject<QuizGame[]>(this.quizGames);
     currentQuizGame: QuizGame;
+
+    quizgamesObservable(): Observable<QuizGame[]> {
+        return this.http.get<QuizGame[]>(this.gameQuizzesUrl);
+    }
 
     setGameQuizzesFromUrl(){
         this.http.get<QuizGame[]>(this.gameQuizzesUrl)
             .subscribe((quizgames: QuizGame[]) => {
                 this.quizGames = quizgames;
+                this.quizGames$.next(this.quizGames);
                 const currentQuizGame = quizgames[quizgames.length - 1];
                 const currentQuestion = currentQuizGame.quiz.questions[currentQuizGame.usersAnswers.length];
                 const currentUser = currentQuizGame.user;
