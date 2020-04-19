@@ -17,18 +17,18 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { QuizSelectionComponent } from './quiz-selection/quiz-selection.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
-import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component'
+import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component';
 
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
-import { BottomSheetVisualPreferenceComponent, BottomSheetVisualPreferenceSheet } from './bottom-sheet-visual-preference/bottom-sheet-visual-preference.component'; 
+import { BottomSheetVisualPreferenceComponent, BottomSheetVisualPreferenceSheet } from './bottom-sheet-visual-preference/bottom-sheet-visual-preference.component';
 import { QuizSelectionViewComponent } from './quizzes/quiz-selection-view/quiz-selection-view.component';
 import { QuestionViewQuizComponent } from './question-view-quiz/question-view-quiz.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
-import { MatSliderModule } from '@angular/material/slider'; 
+import { MatSliderModule } from '@angular/material/slider';
 import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material';
-import { MatBottomSheetModule } from '@angular/material'; 
+import { MatBottomSheetModule } from '@angular/material';
 import { ScorePageComponent } from './score-page/score-page.component';
 
 @NgModule({
@@ -49,8 +49,8 @@ import { ScorePageComponent } from './score-page/score-page.component';
     QuizSelectionViewComponent,
     QuestionViewQuizComponent,
     ResultPageComponent,
-    UserSelectionPageComponent, 
-    BottomSheetVisualPreferenceComponent, 
+    UserSelectionPageComponent,
+    BottomSheetVisualPreferenceComponent,
     BottomSheetVisualPreferenceSheet,
     UserCreationPageComponent,
     ScorePageComponent
@@ -61,12 +61,12 @@ import { ScorePageComponent } from './score-page/score-page.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule, 
-    MatNativeDateModule, 
+    MatSliderModule,
+    MatNativeDateModule,
     MatBottomSheetModule
   ],
   entryComponents: [
-    BottomSheetVisualPreferenceComponent, 
+    BottomSheetVisualPreferenceComponent,
     BottomSheetVisualPreferenceSheet
   ],
   providers: [{provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],

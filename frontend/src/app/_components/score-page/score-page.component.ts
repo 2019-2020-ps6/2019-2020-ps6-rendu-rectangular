@@ -14,7 +14,7 @@ export class ScorePageComponent implements OnInit {
   playersQuizGame: QuizGame[];
   scores: number[];
 
-  constructor(private playService: PlayService) { 
+  constructor(private playService: PlayService) {
     this.playService.currentUser$.subscribe((user: User) => {
       this.user = user;
       this.playService.quizgamesObservable().subscribe((quizGames: QuizGame[]) => {

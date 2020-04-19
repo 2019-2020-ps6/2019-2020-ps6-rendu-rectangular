@@ -9,7 +9,7 @@ import { QuestionViewQuizComponent } from './question-view-quiz/question-view-qu
 import { ResultPageComponent } from './result-page/result-page.component';
 import { AcceuilJoueurComponent } from './acceuil-joueur/acceuil-joueur.component';
 import { UserSelectionPageComponent } from './user-selection-page/user-selection-page.component';
-import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component'
+import { UserCreationPageComponent } from './user-creation-page/user-creation-page.component';
 import { ScorePageComponent } from './score-page/score-page.component';
 
 

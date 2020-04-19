@@ -1,7 +1,7 @@
 import { Quiz } from './quiz.model';
 import { User } from './user.model';
 
-export class QuizGame{
+export class QuizGame {
 
     quizGameId: number;
     usersAnswers: number[] = [];

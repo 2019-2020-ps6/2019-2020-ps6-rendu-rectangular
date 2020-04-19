@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   size = 40;
-  
+
   title = 'starter-quiz';
 }

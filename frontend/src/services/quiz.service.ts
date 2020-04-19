@@ -12,8 +12,8 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
   providedIn: 'root'
 })
 export class QuizService {
-  
-  private quizzes: Quiz[]; 
+
+  private quizzes: Quiz[];
   private quizUrl = serverUrl + '/quizzes';
   private questionsPath = 'questions';
   private httpOptions = httpOptionsBase;
@@ -22,7 +22,7 @@ export class QuizService {
   public selectedQuiz$: Subject <Quiz> = new Subject();
 
   constructor(public http: HttpClient) {
-    
+
   }
 
   setSelectedQuiz(quizId: string) {
@@ -31,16 +31,16 @@ export class QuizService {
       this.selectedQuiz$.next(quiz);
     });
   }
-  
+
   addQuiz(quiz: Quiz) {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
   }
- 
+
   deleteQuiz(quiz: Quiz) {
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
   }
-  
+
   setQuizzesFromUrl() {
     this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
       this.quizzes = quizList;
@@ -53,7 +53,7 @@ export class QuizService {
       map((quizzes) => quizzes.find((quiz) => quiz.id === id))
     );
   }
-  
+
  addQuestion(question: Question, quiz: Quiz) {
   const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
   this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => {

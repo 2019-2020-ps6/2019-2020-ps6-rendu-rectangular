@@ -14,7 +14,7 @@ export class UserCreationPageComponent implements OnInit {
 
   public userForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private playService: PlayService, private router: Router) { 
+  constructor(public formBuilder: FormBuilder, private playService: PlayService, private router: Router) {
     this.initializeUserForm();
   }
 

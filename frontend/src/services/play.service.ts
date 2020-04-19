@@ -14,16 +14,16 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
 })
 export class PlayService {
 
+    constructor(private http: HttpClient) {
+
+    }
+
     private gameQuizzesUrl = serverUrl + '/quiz-game';
     private usersUrl = serverUrl + '/users';
     private httpOptions = httpOptionsBase;
 
-    
+
     currentQuestion$: Subject<Question> = new Subject<Question>();
-
-    constructor(private http: HttpClient) {
-
-    }
 
     ///////////////// QUIZ GAMES ////////////////////////
 
@@ -31,11 +31,22 @@ export class PlayService {
     quizGames$: BehaviorSubject<QuizGame[]> = new BehaviorSubject<QuizGame[]>(this.quizGames);
     currentQuizGame: QuizGame;
 
+    ///////////////////// QUIZ ///////////////////////////
+
+    currentQuiz: Quiz;
+
+    ///////////////////// USERS //////////////////////////
+
+    currentUser: User;
+    currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(this.currentUser);
+    currentUser$$: Subject<User> = new Subject<User>();
+    availableUsers$: Subject<User[]> = new Subject<User[]>();
+
     quizgamesObservable(): Observable<QuizGame[]> {
         return this.http.get<QuizGame[]>(this.gameQuizzesUrl);
     }
 
-    setGameQuizzesFromUrl(){
+    setGameQuizzesFromUrl() {
         this.http.get<QuizGame[]>(this.gameQuizzesUrl)
             .subscribe((quizgames: QuizGame[]) => {
                 this.quizGames = quizgames;
@@ -53,9 +64,9 @@ export class PlayService {
 
     createNewGameQuiz() {
         const newGameJson = {
-            "userId": this.currentUser.id,
-            "quizId": this.currentQuiz.id,
-            "usersAnswers": []
+            userId: this.currentUser.id,
+            quizId: this.currentQuiz.id,
+            usersAnswers: []
         };
         this.http.post(this.gameQuizzesUrl, newGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
@@ -63,11 +74,11 @@ export class PlayService {
     updateUsersAnswers(usersChoice: number) {
         this.currentQuizGame.usersAnswers.push(usersChoice);
         const quizGameJson = {
-            "userId": this.currentUser.id,
-            "quizId": this.currentQuiz.id,
-            "usersAnswers": this.currentQuizGame.usersAnswers
+            userId: this.currentUser.id,
+            quizId: this.currentQuiz.id,
+            usersAnswers: this.currentQuizGame.usersAnswers
         };
-        this.http.put(this.gameQuizzesUrl+'/'+this.currentQuizGame.quizGameId, quizGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
+        this.http.put(this.gameQuizzesUrl + '/' + this.currentQuizGame.quizGameId, quizGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
 
     nextQuestion(): boolean {
@@ -80,20 +91,9 @@ export class PlayService {
         return false;
     }
 
-    ///////////////////// QUIZ ///////////////////////////
-
-    currentQuiz: Quiz;
-
     setCurrentQuiz(quiz: Quiz) {
         this.currentQuiz = quiz;
     }
-
-    ///////////////////// USERS //////////////////////////
-
-    currentUser: User;
-    currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(this.currentUser);
-    currentUser$$: Subject<User> = new Subject<User>();
-    availableUsers$: Subject<User[]> = new Subject<User[]>();
 
     setUsersFromUrl() {
         this.http.get<User[]>(this.usersUrl).subscribe((users: User[]) => {
@@ -111,22 +111,22 @@ export class PlayService {
     changeUsersFontSize(sizeChange: number) {
         this.currentUser.fontSizePreference += sizeChange;
         const modifiedUserJSON = {
-            "firstName": this.currentUser.firstName,
-            "lastName": this.currentUser.lastName,
-            "fontSizePreference": this.currentUser.fontSizePreference
-        }
-        this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJSON, httpOptionsBase).subscribe(()=> {
+            firstName: this.currentUser.firstName,
+            lastName: this.currentUser.lastName,
+            fontSizePreference: this.currentUser.fontSizePreference
+        };
+        this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJSON, httpOptionsBase).subscribe(() => {
             this.setCurrentUser(this.currentUser);
             this.setUsersFromUrl();
             console.log('new size is', this.currentUser.fontSizePreference);
         });
     }
-    
+
     createNewUser(firstName: string, lastName: string) {
         const newUserJson = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "fontSizePreference": 40
+            firstName,
+            lastName,
+            fontSizePreference: 40
         };
         this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
     }
@@ -142,8 +142,8 @@ export class PlayService {
         const questions = quizGame.quiz.questions;
         let score = 0;
         for (let i = 0; i < usersAnswers.length; i++) {
-            if (questions[i].answers[usersAnswers[i]].isCorrect) score++;
+            if (questions[i].answers[usersAnswers[i]].isCorrect) { score++; }
         }
-        return +((score/usersAnswers.length)*100).toFixed(0);
+        return +((score / usersAnswers.length) * 100).toFixed(0);
     }
 }
