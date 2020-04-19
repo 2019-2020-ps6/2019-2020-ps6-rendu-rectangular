@@ -24,7 +24,7 @@
     margin: auto;
 }
 
-.button {
+.button-card {
     position: relative;
     background-color: $lightGray;
     border: solid 1px $blue;
@@ -36,3 +36,10 @@
     padding: 0.5em 1em;
     width: 100%;
 }
+
+.button-card:hover {
+    cursor: pointer;
+    background-color: $blue;
+    border:  solid 1px $white;
+    color: $white;
+  }

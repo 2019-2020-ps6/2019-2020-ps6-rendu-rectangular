@@ -145,6 +145,6 @@ export class PlayService {
         for (let i = 0; i < usersAnswers.length; i++) {
             if (questions[i].answers[usersAnswers[i]].isCorrect) score++;
         }
-        return (score/usersAnswers.length)*100;
+        return +((score/usersAnswers.length)*100).toFixed(0);
     }
 }
