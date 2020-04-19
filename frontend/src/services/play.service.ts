@@ -135,8 +135,12 @@ export class PlayService {
     /////////////////// UTILS /////////////////////////////
 
     calculateScore(): number {
-        const usersAnswers = this.currentQuizGame.usersAnswers;
-        const questions = this.currentQuizGame.quiz.questions;
+        return this.calculateScoreOfGame(this.currentQuizGame);
+    }
+
+    calculateScoreOfGame(quizGame: QuizGame): number {
+        const usersAnswers = quizGame.usersAnswers;
+        const questions = quizGame.quiz.questions;
         let score = 0;
         for (let i = 0; i < usersAnswers.length; i++) {
             if (questions[i].answers[usersAnswers[i]].isCorrect) score++;
