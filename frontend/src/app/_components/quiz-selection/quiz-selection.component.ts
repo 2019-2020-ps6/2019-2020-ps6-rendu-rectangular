@@ -16,7 +16,6 @@ export class QuizSelectionComponent implements OnInit {
   constructor(private quizService: QuizService, private playService: PlayService, private router: Router) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
-      console.log('Quizzes in selection page are', this.quizList);
     });
   }
 
@@ -25,7 +24,6 @@ export class QuizSelectionComponent implements OnInit {
   }
 
   selectQuiz(quiz: Quiz) {
-    console.log('Quiz selected is', quiz);
     this.playService.setCurrentQuiz(quiz);
     this.playService.setGameQuizzesFromUrl();
     this.playService.createNewGameQuiz();

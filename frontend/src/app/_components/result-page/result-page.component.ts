@@ -12,11 +12,6 @@ export class ResultPageComponent implements OnInit {
   pourcentageReponsesJustes: number;
 
   constructor(private playService: PlayService, private router: Router) {
-    /*
-    this.nbOfQuestions = this.playService.questionList.length;
-    this.nbOfCorrectAnswers = this.playService.nbCorrectAnswers;
-    this.pourcentageReponsesJustes = (this.nbOfCorrectAnswers / this.nbOfQuestions) * 100;
-    */
     this.pourcentageReponsesJustes = this.playService.calculateScore();
   }
 

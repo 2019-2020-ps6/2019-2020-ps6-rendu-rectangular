@@ -109,7 +109,6 @@ export class PlayService {
     }
 
     changeUsersFontSize(sizeChange: number) {
-        console.log('FONT CHANGED');
         this.currentUser.fontSizePreference += sizeChange;
         const modifiedUserJSON = {
             "firstName": this.currentUser.firstName,

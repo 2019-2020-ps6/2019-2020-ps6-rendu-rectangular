@@ -15,7 +15,6 @@ export class QuizListComponent implements OnInit {
   constructor(public quizService: QuizService, private router: Router) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
-      console.log('Quizzes in quizListComponent are:', this.quizList);
     });
   }
 
@@ -32,7 +31,6 @@ export class QuizListComponent implements OnInit {
   de la balise <app-quiz>. Cela est possible grâce au décorateur @Input() dans QuizComponent.
   */
   quizToDelete(selected: Quiz) {
-    console.log('quiz received from child:', selected);
     this.quizService.deleteQuiz(selected);
   }
 

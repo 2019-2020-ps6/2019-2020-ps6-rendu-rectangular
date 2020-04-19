@@ -18,7 +18,6 @@ export class QuestionViewQuizComponent implements OnInit {
     this.playService.setGameQuizzesFromUrl();
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
-      console.log('Question in question-view-quiz is', this.question);
     });
     this.playService.currentUser$$.subscribe((user: User) => {
         this.size = user.fontSizePreference;
