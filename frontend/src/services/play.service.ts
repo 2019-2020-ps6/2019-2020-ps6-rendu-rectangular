@@ -7,6 +7,7 @@ import { QuizGame } from 'src/models/gameQuiz.model';
 import { User } from 'src/models/user.model';
 
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { UserService } from './user.service';
 
 
 @Injectable({
@@ -14,14 +15,18 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
 })
 export class PlayService {
 
-    constructor(private http: HttpClient) {
+    private currentUser: User;
 
+    constructor(private http: HttpClient, private userService: UserService) {
+        this.setUser();
+    }
+
+    private async setUser() {
+        await this.userService.setLastUserFromLogs();
+        this.userService.currentUser$.subscribe((user: User) => this.currentUser = user);
     }
 
     private gameQuizzesUrl = serverUrl + '/quiz-game';
-    private usersUrl = serverUrl + '/users';
-    private httpOptions = httpOptionsBase;
-
 
     currentQuestion$: Subject<Question> = new Subject<Question>();
 
@@ -37,11 +42,6 @@ export class PlayService {
 
     ///////////////////// USERS //////////////////////////
 
-    currentUser: User;
-    currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(this.currentUser);
-    currentUser$$: Subject<User> = new Subject<User>();
-    availableUsers$: Subject<User[]> = new Subject<User[]>();
-
     quizgamesObservable(): Observable<QuizGame[]> {
         return this.http.get<QuizGame[]>(this.gameQuizzesUrl);
     }
@@ -53,28 +53,27 @@ export class PlayService {
                 this.quizGames$.next(this.quizGames);
                 const currentQuizGame = quizgames[quizgames.length - 1];
                 const currentQuestion = currentQuizGame.quiz.questions[currentQuizGame.usersAnswers.length];
-                const currentUser = currentQuizGame.user;
                 this.currentQuestion$.next(currentQuestion);
                 this.currentQuiz = currentQuizGame.quiz;
-                this.currentUser = currentUser;
-                this.currentUser$$.next(currentUser);
                 this.currentQuizGame = currentQuizGame;
             });
     }
 
-    createNewGameQuiz() {
+    async createNewGameQuiz() {
+        const currentUser = await this.userService.setLastUserFromLogs();
         const newGameJson = {
-            userId: this.currentUser.id,
+            userId: currentUser.id,
             quizId: this.currentQuiz.id,
             usersAnswers: []
         };
         this.http.post(this.gameQuizzesUrl, newGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
 
-    updateUsersAnswers(usersChoice: number) {
+    async updateUsersAnswers(usersChoice: number) {
         this.currentQuizGame.usersAnswers.push(usersChoice);
+        const currentUser = await this.userService.setLastUserFromLogs();
         const quizGameJson = {
-            userId: this.currentUser.id,
+            userId: currentUser.id,
             quizId: this.currentQuiz.id,
             usersAnswers: this.currentQuizGame.usersAnswers
         };
@@ -95,41 +94,6 @@ export class PlayService {
         this.currentQuiz = quiz;
     }
 
-    setUsersFromUrl() {
-        this.http.get<User[]>(this.usersUrl).subscribe((users: User[]) => {
-            this.availableUsers$.next(users);
-        });
-    }
-
-    setCurrentUser(user: User) {
-        this.currentUser = user;
-        this.currentUser$.next(this.currentUser);
-        this.currentUser$$.next(this.currentUser);
-        console.log('Current user in playService is: ', this.currentUser);
-    }
-
-    changeUsersFontSize(sizeChange: number) {
-        this.currentUser.fontSizePreference += sizeChange;
-        const modifiedUserJSON = {
-            firstName: this.currentUser.firstName,
-            lastName: this.currentUser.lastName,
-            fontSizePreference: this.currentUser.fontSizePreference
-        };
-        this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJSON, httpOptionsBase).subscribe(() => {
-            this.setCurrentUser(this.currentUser);
-            this.setUsersFromUrl();
-            console.log('new size is', this.currentUser.fontSizePreference);
-        });
-    }
-
-    createNewUser(firstName: string, lastName: string) {
-        const newUserJson = {
-            firstName,
-            lastName,
-            fontSizePreference: 40
-        };
-        this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
-    }
 
     /////////////////// UTILS /////////////////////////////
 

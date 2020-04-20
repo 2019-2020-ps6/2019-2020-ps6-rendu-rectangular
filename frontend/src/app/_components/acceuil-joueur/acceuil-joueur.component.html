@@ -1,4 +1,4 @@
-<h1 class="acceuil">{{user.firstName}} {{user.lastName}}</h1>
+<h1 class="acceuil" *ngIf="user">{{user.firstName}} {{user.lastName}}</h1>
 <div class="selection">
     <div class="card">
         <button [ngStyle]="{'font-size': size + 'px'}" class="button-card" (click)="goToPage('/quiz-list')">Créer un Quiz</button>

@@ -3,6 +3,7 @@ import { QuizService } from 'src/services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { PlayService } from 'src/services/play.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -13,7 +14,7 @@ export class QuizSelectionComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private quizService: QuizService, private playService: PlayService, private router: Router) {
+  constructor(private quizService: QuizService, private playService: PlayService, private userService: UserService, private router: Router) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
@@ -23,9 +24,10 @@ export class QuizSelectionComponent implements OnInit {
     this.quizService.setQuizzesFromUrl();
   }
 
-  selectQuiz(quiz: Quiz) {
+  async selectQuiz(quiz: Quiz) {
     this.playService.setCurrentQuiz(quiz);
     this.playService.setGameQuizzesFromUrl();
+    //await this.userService.setLastUserFromLogs();
     this.playService.createNewGameQuiz();
     this.router.navigate(['/question-view-in-quiz']);
   }

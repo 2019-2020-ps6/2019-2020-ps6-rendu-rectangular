@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayService } from 'src/services/play.service';
+import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ export class UserSelectionPageComponent implements OnInit {
 
   availableUsers: User[];
 
-  constructor(private playService: PlayService, private router: Router) {
+  constructor(private userService: UserService, private router: Router) {
     this.setUsers();
   }
 
@@ -21,15 +21,15 @@ export class UserSelectionPageComponent implements OnInit {
   }
 
   setUsers() {
-    this.playService.setUsersFromUrl();
-    this.playService.availableUsers$.subscribe((users: User[]) => {
+    this.userService.setUsersFromUrl();
+    this.userService.availableUsers$.subscribe((users: User[]) => {
       this.availableUsers = users;
       console.log(this.availableUsers);
     });
   }
 
   onSelectUser(user: User) {
-    this.playService.setCurrentUser(user);
+    this.userService.addUserToLogs(user);
     this.router.navigate(['/acceuil-joueur']);
   }
 }

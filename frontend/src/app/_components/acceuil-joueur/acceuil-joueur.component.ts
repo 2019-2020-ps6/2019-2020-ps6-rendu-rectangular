@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlayService } from 'src/services/play.service';
+import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 
 @Component({
@@ -15,8 +15,9 @@ export class AcceuilJoueurComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private playService: PlayService, private router: Router) {
-    this.playService.currentUser$.subscribe((user: User) => {
+  constructor(private userService: UserService, private router: Router) {
+    this.userService.updateUser();
+    this.userService.currentUser$.subscribe((user: User) => {
         this.user = user;
         this.size = user.fontSizePreference;
     });

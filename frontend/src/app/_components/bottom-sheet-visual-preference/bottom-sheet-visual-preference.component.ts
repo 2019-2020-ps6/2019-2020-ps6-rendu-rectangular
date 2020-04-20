@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import { PlayService } from 'src/services/play.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-bottom-sheet-visual-preference',
@@ -25,7 +25,7 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
 })
 export class BottomSheetVisualPreferenceSheet {
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private playService: PlayService) {}
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private userService: UserService) {}
 
   backQuestion(): void {
     this._bottomSheetRef.dismiss();
@@ -33,10 +33,10 @@ export class BottomSheetVisualPreferenceSheet {
   }
 
   onShrinkSize() {
-    this.playService.changeUsersFontSize(-10);
+    this.userService.changeFontSize(-10);
   }
 
   onEnlargeSize() {
-    this.playService.changeUsersFontSize(+10);
+    this.userService.changeFontSize(+10);
   }
 }
