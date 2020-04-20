@@ -47,6 +47,7 @@ export class UserService {
         }
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise()
         this.updateUser();
+        console.log('New font for user is', this.currentUser);
     }
 
     //////////// USER CREATION ///////////

@@ -26,9 +26,8 @@ export class QuizSelectionComponent implements OnInit {
 
   async selectQuiz(quiz: Quiz) {
     this.playService.setCurrentQuiz(quiz);
-    this.playService.setGameQuizzesFromUrl();
-    //await this.userService.setLastUserFromLogs();
     this.playService.createNewGameQuiz();
+    this.playService.setGameQuizzesFromUrl();
     this.router.navigate(['/question-view-in-quiz']);
   }
 
