@@ -1,15 +1,17 @@
 const { Router } = require('express')
 const manageAllErrors = require('../../utils/routes/error-management')
 const { Log } = require('../../models')
+const { buildAllUsers } = require('./manager')
 
 const router = new Router()
 
 router.get('/', (req, res) => {
     try {
-        res.status(200).json(Log.get())
-      } catch (err) {
-        manageAllErrors(res, err)
-      }
+      const users = buildAllUsers()
+      res.status(200).json(users)
+    } catch (err) {
+      manageAllErrors(res, err)
+    }
 })
 
 router.post('/', (req, res) => {
