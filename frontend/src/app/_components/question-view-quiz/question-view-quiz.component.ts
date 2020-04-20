@@ -15,8 +15,10 @@ export class QuestionViewQuizComponent implements OnInit {
   question: Question;
   size = 40;
 
-  constructor(private playService: PlayService, private router: Router) {
+  constructor(private playService: PlayService, private userService: UserService, private router: Router) {
     this.playService.setGameQuizzesFromUrl();
+    this.userService.updateUser();
+    this.userService.currentUser$.subscribe((user: User) => this.size = user.fontSizePreference);
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
     });
