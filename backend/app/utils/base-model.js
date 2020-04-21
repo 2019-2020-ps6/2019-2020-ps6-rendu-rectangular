@@ -73,10 +73,24 @@ module.exports = class BaseModel {
   }
 
   deleteUserId(id) {
+    console.log(id)
     if (typeof id === 'string') id = parseInt(id, 10)
-    const objIndex = this.items.findIndex((item) => item.userId === id)
-    if (objIndex === -1) throw new NotFoundError(`Cannot delete ${this.name} userId=${id} : not found`)
-    this.items = this.items.filter((item) => item.userId !== id)
+    const objIndex = []
+    console.log("hi")
+    this.items.forEach(function(item) {
+      console.log(item.userId)
+      console.log(id)
+      if (item.userId === id){
+        console.log(item.id)
+        objIndex.push(item.id)
+      }      
+    });
+
+    if (objIndex.length <= 0) throw new NotFoundError(`Cannot delete ${this.name} userId=${id} : not found`)
+    objIndex.forEach(objId => {
+      this.items = this.items.filter((item) => item.id !== objId)
+      console.log(objId)
+    });
     this.save()
   }
 }

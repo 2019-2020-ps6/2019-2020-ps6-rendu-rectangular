@@ -73,7 +73,9 @@ export class UserService {
     deleteUser(user: User) {
         const usersUrlWithId = this.usersUrl + '/' + user.id;
         const quizGameUrlWithId = this.quizGameUrl + '/' + user.id;
+        const logUrlWithId = this.logsUrls + '/' + user.id;
         this.http.delete(quizGameUrlWithId, httpOptionsBase).subscribe(() => {});
+        this.http.delete(logUrlWithId, httpOptionsBase).subscribe(() => {});
         this.http.delete(usersUrlWithId, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
       }
 }
