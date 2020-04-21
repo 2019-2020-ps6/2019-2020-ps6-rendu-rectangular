@@ -71,4 +71,12 @@ module.exports = class BaseModel {
     this.items = this.items.filter((item) => item.id !== id)
     this.save()
   }
+
+  deleteUserId(id) {
+    if (typeof id === 'string') id = parseInt(id, 10)
+    const objIndex = this.items.findIndex((item) => item.userId === id)
+    if (objIndex === -1) throw new NotFoundError(`Cannot delete ${this.name} userId=${id} : not found`)
+    this.items = this.items.filter((item) => item.userId !== id)
+    this.save()
+  }
 }

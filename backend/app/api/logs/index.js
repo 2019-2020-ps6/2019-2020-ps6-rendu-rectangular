@@ -23,4 +23,13 @@ router.post('/', (req, res) => {
     }
 })
 
+router.delete('/:quizUserId', (req, res) => {
+  try {
+    Log.deleteUserId(req.params.userId)
+    res.status(204).end()
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
 module.exports = router

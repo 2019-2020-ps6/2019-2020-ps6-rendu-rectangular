@@ -11,6 +11,7 @@ export class UserService {
 
     private logsUrls = serverUrl + '/logs';
     private usersUrl = serverUrl + '/users';
+    private quizGameUrl = serverUrl + '/quiz-game';
 
     currentUser: User;
     currentUser$: Subject<User> = new Subject<User>();
@@ -68,4 +69,11 @@ export class UserService {
             this.availableUsers$.next(users);
         });
     }
+
+    deleteUser(user: User) {
+        const usersUrlWithId = this.usersUrl + '/' + user.id;
+        const quizGameUrlWithId = this.quizGameUrl + '/' + user.id;
+        this.http.delete(quizGameUrlWithId, httpOptionsBase).subscribe(() => {});
+        this.http.delete(usersUrlWithId, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
+      }
 }

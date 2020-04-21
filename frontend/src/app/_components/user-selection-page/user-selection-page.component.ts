@@ -32,4 +32,8 @@ export class UserSelectionPageComponent implements OnInit {
     this.userService.addUserToLogs(user);
     this.router.navigate(['/acceuil-joueur']);
   }
+
+  deleteUser(user: User) {
+    this.userService.deleteUser(user);
+  }
 }
