@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:quizUserId', (req, res) => {
   try {
-    Log.deleteUserId(req.params.quizUserId)
+    Log.deleteWithParamId(req.params.quizUserId)
     res.status(204).end()
   } catch (err) {
     manageAllErrors(res, err)

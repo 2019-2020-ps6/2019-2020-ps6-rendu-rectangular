@@ -72,11 +72,11 @@ module.exports = class BaseModel {
     this.save()
   }
 
-  deleteUserId(id) {
+  deleteWithParamId(id) {
     if (typeof id === 'string') id = parseInt(id, 10)
     const objIndex = []
     this.items.forEach(function(item) {
-      if (item.userId === id){
+      if (item.userId === id || item.quizId === id){
         objIndex.push(item.id)
       }      
     });

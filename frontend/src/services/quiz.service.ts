@@ -15,6 +15,8 @@ export class QuizService {
 
   private quizzes: Quiz[];
   private quizUrl = serverUrl + '/quizzes';
+  private quizGameUrl = serverUrl + '/quiz-game';
+
   private questionsPath = 'questions';
   private httpOptions = httpOptionsBase;
 
@@ -38,6 +40,8 @@ export class QuizService {
 
   deleteQuiz(quiz: Quiz) {
     const urlWithId = this.quizUrl + '/' + quiz.id;
+    const quizGameUrlWithId = this.quizGameUrl + '/' + quiz.id;
+    this.http.delete(quizGameUrlWithId, httpOptionsBase).subscribe(() => {});
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
   }
 
