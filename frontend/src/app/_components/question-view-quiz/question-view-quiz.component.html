@@ -1,5 +1,5 @@
 <div *ngIf="question">
-    <h1 class="question">{{ question.label }}</h1>
+    <h1 [ngStyle]="{'font-size': size + 'px'}" class="question">{{ question.label }}</h1>
     <div class="answer" *ngFor="let answer of question.answers; let i=index">
         <div class="value">
             <button [ngStyle]="{'font-size': size + 'px'}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
