@@ -1,4 +1,4 @@
-<h1 *ngIf="user">Scores de {{user.firstName}} {{user.lastName}}</h1>
+<h1 class="name" *ngIf="user">Scores de {{user.firstName}} {{user.lastName}}</h1>
 <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
     <div class="game">
         <h3>{{quizgame.quiz.name}}: {{scores[i]}}%</h3>
