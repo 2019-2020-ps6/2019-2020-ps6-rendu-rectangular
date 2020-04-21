@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { QuizService } from '../../../../services/quiz.service';
 import { Quiz } from '../../../../models/quiz.model';
@@ -24,7 +24,7 @@ export class QuizFormComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
     this.quizForm = this.formBuilder.group({
-      name: [''],
+      name: ['', Validators.maxLength(24)],
       theme: ['']
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
@@ -37,9 +37,12 @@ export class QuizFormComponent implements OnInit {
 
   addQuiz() {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
-    const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-    console.log('Add quiz: ', quizToCreate);
-    this.quizService.addQuiz(quizToCreate);
+    if(this.quizForm.valid) {
+      const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+      console.log('Add quiz: ', quizToCreate);
+      this.quizService.addQuiz(quizToCreate);
+    }
+    
   }
 
 }
