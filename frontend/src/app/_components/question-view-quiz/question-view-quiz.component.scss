@@ -20,8 +20,28 @@
     width: 50%;
     transition: background-color 1s;
 }
+.button2 {
+    position: relative;
+    background-color: $white;
+    border: solid 1px $blue;
+    color: #000000;
+    margin: auto;
+    margin-top: 5%;
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    width: 50%;
+    transition: background-color 1s;
+}
 
 .button:hover {
+    cursor: pointer;
+    background-color: $blue;
+    border:  solid 1px $white;
+    color: $white;
+}
+.button2:hover {
     cursor: pointer;
     background-color: $blue;
     border:  solid 1px $white;
