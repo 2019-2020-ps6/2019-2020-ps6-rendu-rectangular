@@ -19,12 +19,12 @@ export class QuizFormComponent implements OnInit {
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
-  public QUIZ_THEMES = ['Sport', 'Actor'];
+  public QUIZ_THEMES = ['Sport', 'TV', 'Nature', 'Culture', 'Musique', 'Autre'];
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
     this.quizForm = this.formBuilder.group({
-      name: ['', Validators.maxLength(24)],
+      name: ['', Validators.maxLength(25)],
       theme: ['']
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!

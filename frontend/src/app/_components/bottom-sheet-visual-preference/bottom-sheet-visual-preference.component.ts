@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { UserService } from 'src/services/user.service';
+const MIN_FONT_SIZE = 50;
+const MAX_FONT_SIZE = 100;
 
 @Component({
   selector: 'app-bottom-sheet-visual-preference',
@@ -33,10 +35,18 @@ export class BottomSheetVisualPreferenceSheet {
   }
 
   onShrinkSize() {
-    this.userService.changeFontSize(-10);
+    if (this.userService.currentUser.fontSizePreference > MIN_FONT_SIZE) {
+      this.userService.changeFontSize(-10);
+    } else {
+      console.log("MIN size reached");
+    }
   }
 
   onEnlargeSize() {
-    this.userService.changeFontSize(+10);
+    if (this.userService.currentUser.fontSizePreference < MAX_FONT_SIZE) {
+      this.userService.changeFontSize(+10);
+    } else {
+      console.log('MAX size reached');
+    }
   }
 }

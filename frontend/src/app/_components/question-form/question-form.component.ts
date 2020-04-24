@@ -23,7 +23,7 @@ export class QuestionFormComponent implements OnInit {
 
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
-      label: ['', Validators.required],
+      label: ['', Validators.maxLength(35)],
       answers: this.formBuilder.array([])
     });
   }
@@ -34,21 +34,25 @@ export class QuestionFormComponent implements OnInit {
 
   private createAnswer() {
     return this.formBuilder.group({
-      value: '',
+      value: ['', Validators.maxLength(15)],
       isCorrect: false,
     });
   }
 
   addAnswer() {
-    console.log('Answer added');
-    this.answers.push(this.createAnswer());
+    if (this.questionForm.valid) {
+      console.log('Answer added');
+      this.answers.push(this.createAnswer());
+    }
   }
 
   addQuestion() {
-    const questionToCreate = this.questionForm.getRawValue() as Question;
-    console.log(questionToCreate);
-    this.quizService.addQuestion(questionToCreate, this.quiz);
-    this.initializeQuestionForm();
+    if(this.questionForm.valid) {
+      const questionToCreate = this.questionForm.getRawValue() as Question;
+      console.log(questionToCreate);
+      this.quizService.addQuestion(questionToCreate, this.quiz);
+      this.initializeQuestionForm();
+    }
   }
 
   ngOnInit() {

@@ -1,1 +1,5 @@
 @import '../../../styles/card.scss';
+
+button:disabled {
+    background-color: grey;
+}

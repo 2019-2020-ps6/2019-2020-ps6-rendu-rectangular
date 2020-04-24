@@ -20,8 +20,8 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
+        <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addAnswer()">Ajouter une réponse</button>
         <br>
-        <button type="submit" class="button-card" (click)="addQuestion()">Valider</button>
+        <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addQuestion()">Valider</button>
     </form>
 </div>
