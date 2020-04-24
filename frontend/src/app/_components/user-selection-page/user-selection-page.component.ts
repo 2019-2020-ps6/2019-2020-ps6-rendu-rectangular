@@ -33,6 +33,10 @@ export class UserSelectionPageComponent implements OnInit {
     this.router.navigate(['/acceuil-joueur']);
   }
 
+  onNoUserAvailable() {
+    this.router.navigate(['/user-creation-page']);
+  }
+
   deleteUser(user: User) {
     this.userService.deleteUser(user);
   }
