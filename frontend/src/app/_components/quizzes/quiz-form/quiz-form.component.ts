@@ -42,7 +42,6 @@ export class QuizFormComponent implements OnInit {
       console.log('Add quiz: ', quizToCreate);
       this.quizService.addQuiz(quizToCreate);
     }
-    
   }
 
 }
