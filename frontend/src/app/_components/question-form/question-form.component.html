@@ -1,5 +1,5 @@
 <div class="card">
-    <h2>Create a new question</h2>
+    <h2>Ajouter une question</h2>
     <form class="questionForm" [formGroup]="questionForm">
         <label for="label">
             Question: 
@@ -11,10 +11,10 @@
             <div *ngFor="let address of answers.controls; let i = index">
                 <div class="answer-form" [formGroupName]="i">
                     <label>
-                        Answer
+                        Réponse
                         <input type="text" [formControlName]="'value'">
                         <br>
-                        Correct
+                        Cocher si a réponse est correcte:
                         <input type="checkbox" [formControlName]="'isCorrect'">
                     </label>
                 </div>
@@ -22,6 +22,7 @@
         </div>
         <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addAnswer()">Ajouter une réponse</button>
         <br>
-        <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addQuestion()">Valider</button>
+        <button type="submit" class="button-card" [disabled]="!questionForm.valid || nbAnswers==0 || nbAnswers==1 || nbAnswers ==3" (click)="addQuestion()">Valider</button>
+        <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 ou 4 réponses</div>
     </form>
 </div>

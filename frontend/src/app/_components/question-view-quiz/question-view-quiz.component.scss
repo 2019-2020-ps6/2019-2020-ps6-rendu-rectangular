@@ -22,14 +22,13 @@
 }
 .button2 {
     position: relative;
-    background-color: $white;
-    border: solid 1px $blue;
+    background-color: lightgray;
+    border: solid 3px $blue;
     color: #000000;
     margin: auto;
     margin-top: 5%;
     display: block;
     font-size: 40px;
-    font-weight: bold;
     padding: 0.5em 1em;
     width: 50%;
     transition: background-color 1s;

@@ -23,8 +23,8 @@ export class UserCreationPageComponent implements OnInit {
 
   private initializeUserForm() {
     this.userForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      firstName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
+      lastName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)])
     });
   }
 

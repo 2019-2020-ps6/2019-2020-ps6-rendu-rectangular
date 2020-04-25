@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Question } from 'src/models/question.model';
 import { QuestionListComponent } from '../question-list/question-list.component';
 import { Quiz } from 'src/models/quiz.model';
@@ -13,6 +13,7 @@ import { QuizService } from 'src/services/quiz.service';
 export class QuestionFormComponent implements OnInit {
 
   public questionForm: FormGroup;
+  private nbAnswers = 0;
 
   @Input()
   quiz: Quiz;
@@ -23,9 +24,14 @@ export class QuestionFormComponent implements OnInit {
 
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
-      label: ['', Validators.maxLength(35)],
+      label: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(35)
+      ]),
       answers: this.formBuilder.array([])
     });
+    this.nbAnswers = 0;
   }
 
   get answers() {
@@ -34,15 +40,19 @@ export class QuestionFormComponent implements OnInit {
 
   private createAnswer() {
     return this.formBuilder.group({
-      value: ['', Validators.maxLength(15)],
+      value: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(15)
+      ]),
       isCorrect: false,
     });
   }
 
   addAnswer() {
-    if (this.questionForm.valid) {
-      console.log('Answer added');
+    if (this.questionForm.valid && this.nbAnswers < 4) {
       this.answers.push(this.createAnswer());
+      this.nbAnswers++;
     }
   }
 
@@ -57,4 +67,18 @@ export class QuestionFormComponent implements OnInit {
 
   ngOnInit() {
   }
+}
+
+function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const forbidden = nameRe.test(control.value);
+    return forbidden ? {'forbiddenName': {value: control.value}} : null;
+  };
+}
+
+function correctNbOfAnswersValidator(): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const forbidden = this.answers !== 2 || this.answers !== 4;
+    return forbidden ? {'nb of answers not correct': {value: control.value}} : null;
+  };
 }

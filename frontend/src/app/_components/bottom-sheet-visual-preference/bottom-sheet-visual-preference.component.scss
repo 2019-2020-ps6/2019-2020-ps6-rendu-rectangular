@@ -2,8 +2,8 @@
 
 .button {
     position: left;
-    background-color: $white;
-    border: solid 1px #008000;
+    background-color: rgb(176, 241, 176);
+    border: solid 3px #008000;
     color: #000000;
     margin: left;
     margin-top: 5%;
@@ -12,11 +12,24 @@
     font-weight: bold;
     padding: 0.5em 1em;
     width: 25%;
-    transition: background-color 1s;
+    transition: background-color 0.2s;
+}
+
+.button-card {
+    position: relative;
+    background-color: $lightGray;
+    border: solid 1px $blue;
+    color: $white;
+    margin: auto;
+    margin-top: 5%;
+    display: block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    width: 100%;
 }
 
 .bottom-sheet {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -25,7 +38,7 @@
 .button:hover {
     cursor: pointer;
     background-color: #008000;
-    border:  solid 1px $white;
+    border:  solid 3px #002000;
     color: $white;
 }
   
