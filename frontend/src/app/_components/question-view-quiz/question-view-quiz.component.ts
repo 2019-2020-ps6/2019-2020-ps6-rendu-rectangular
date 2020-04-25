@@ -23,7 +23,7 @@ export class QuestionViewQuizComponent implements OnInit {
     this.userService.currentUser$.subscribe((user: User) => this.size = user.fontSizePreference);
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
-      this.cheminImage = question.image; 
+      this.cheminImage = (typeof question === 'undefined' || typeof question.image === 'undefined') ? undefined : question.image; 
     });
   }
 
