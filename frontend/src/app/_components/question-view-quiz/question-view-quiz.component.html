@@ -1,5 +1,12 @@
 <div *ngIf="question">
     <h1 [ngStyle]="{'font-size': size + 'px'}" class="question">{{ question.label }}</h1>
+    
+    <div class = "imageURL" *ngIf="cheminImage != undefined">
+        <div *ngIf="cheminImage">
+            <img [src]="cheminImage"  *ngIf="cheminImage"/>
+        </div>
+    </div>
+    
     <div *ngIf="question.answers.length===4">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value">
