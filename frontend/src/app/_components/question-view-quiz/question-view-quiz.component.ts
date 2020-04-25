@@ -14,7 +14,7 @@ export class QuestionViewQuizComponent implements OnInit {
 
   question: Question;
   size = 40;
-  cheminImage:any = "https://images.sudouest.fr/2020/01/21/5e27092366a4bd6733ae5f03/widescreen/1000x500/plus-de-14700-bergers.jpg?v1";
+  cheminImage:any;
 
 
   constructor(private playService: PlayService, private userService: UserService, private router: Router) {
