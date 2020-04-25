@@ -15,6 +15,19 @@
     transition: background-color 1s;
 }
 
+.button-card {
+    position: relative;
+    background-color: $lightGray;
+    border: solid 1px $blue;
+    color: $white;
+    margin: auto;
+    margin-top: 5%;
+    display: block;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    width: 100%;
+}
+
 .bottom-sheet {
     position: absolute;
     bottom: 0;

@@ -28,5 +28,7 @@
 }
 
 .button-card:disabled {
-  background-color: grey;
+  background-color: white;
+  color: darkgray;
+  border: solid 1px darkgray;
 }
