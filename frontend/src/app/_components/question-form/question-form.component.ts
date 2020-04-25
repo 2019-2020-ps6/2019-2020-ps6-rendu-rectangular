@@ -13,6 +13,7 @@ import { QuizService } from 'src/services/quiz.service';
 export class QuestionFormComponent implements OnInit {
 
   public questionForm: FormGroup;
+  private nbAnswers = 0;
 
   @Input()
   quiz: Quiz;
@@ -30,6 +31,7 @@ export class QuestionFormComponent implements OnInit {
       ]),
       answers: this.formBuilder.array([])
     });
+    this.nbAnswers = 0;
   }
 
   get answers() {
@@ -48,9 +50,9 @@ export class QuestionFormComponent implements OnInit {
   }
 
   addAnswer() {
-    if (this.questionForm.valid) {
-      console.log('Answer added');
+    if (this.questionForm.valid && this.nbAnswers < 4) {
       this.answers.push(this.createAnswer());
+      this.nbAnswers++;
     }
   }
 
@@ -67,9 +69,16 @@ export class QuestionFormComponent implements OnInit {
   }
 }
 
-export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
+function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {
     const forbidden = nameRe.test(control.value);
     return forbidden ? {'forbiddenName': {value: control.value}} : null;
+  };
+}
+
+function correctNbOfAnswersValidator(): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const forbidden = this.answers !== 2 || this.answers !== 4;
+    return forbidden ? {'nb of answers not correct': {value: control.value}} : null;
   };
 }
