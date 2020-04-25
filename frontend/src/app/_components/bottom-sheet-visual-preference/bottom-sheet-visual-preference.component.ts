@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { UserService } from 'src/services/user.service';
 const MIN_FONT_SIZE = 50;
 const MAX_FONT_SIZE = 100;
@@ -10,13 +10,22 @@ const MAX_FONT_SIZE = 100;
   styleUrls: ['./bottom-sheet-visual-preference.component.scss']
 })
 export class BottomSheetVisualPreferenceComponent implements OnInit {
+  flag = 0;
+
   ngOnInit() {
   }
 
   constructor(private _bottomSheet: MatBottomSheet) { }
 
   openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetVisualPreferenceSheet);
+    if (this.flag == 0) {
+      this._bottomSheet.open(BottomSheetVisualPreferenceSheet);
+      this.flag = 1;
+    }
+    else if (this.flag == 1) {
+      this._bottomSheet.dismiss();
+      this.flag = 0;
+    }
   }
 
 }
@@ -27,7 +36,7 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
 })
 export class BottomSheetVisualPreferenceSheet {
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private userService: UserService) {}
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private userService: UserService) { }
 
   backQuestion(): void {
     this._bottomSheetRef.dismiss();
