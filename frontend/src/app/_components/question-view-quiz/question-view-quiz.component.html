@@ -3,7 +3,7 @@
     
     <div class = "imageURL" *ngIf="cheminImage != undefined">
         <div *ngIf="cheminImage">
-            <img [src]="cheminImage"  *ngIf="cheminImage"/>
+            <img [src]="cheminImage"  *ngIf="cheminImage" width="600" height="450"/>
         </div>
     </div>
     
@@ -14,13 +14,21 @@
             </div>
         </div>
     </div>
-    <div *ngIf="question.answers.length===2">
+    <div *ngIf="question.answers.length===2 && cheminImage==undefined">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value">
                 <button [ngStyle]="{'font-size': size + 'px'}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
-        </div>
-    </div> 
+        </div> 
+    </div>
+    <div *ngIf="question.answers.length===2 && cheminImage!=undefined">
+        <div class="answer" *ngFor="let answer of question.answers; let i=index">
+            <div class="value">
+                <button [ngStyle]="{'font-size': size + 'px'}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
+            </div>
+        </div> 
+    </div>
+
 </div>
 <br><br>
 <app-bottom-sheet-visual-preference></app-bottom-sheet-visual-preference>
