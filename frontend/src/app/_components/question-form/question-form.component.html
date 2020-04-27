@@ -2,11 +2,11 @@
     <h2>Ajouter une question</h2>
     <form class="questionForm" [formGroup]="questionForm">
         <label for="label">
-            Question: 
+            Question (4 à 35 caractères): 
             <br>
             <input class="input-custom" type="text" id="label" [formControlName]="'label'">
             <br>
-            Image (optionnelle):
+            Lien d'une url d'une image (optionnelle):
             <br>
             <input class="input-custom" type="text" id="image" [formControlName]="'image'">
         </label>
@@ -15,7 +15,7 @@
             <div *ngFor="let address of answers.controls; let i = index">
                 <div class="answer-form" [formGroupName]="i">
                     <label>
-                        Réponse
+                        Réponse (4 à 15 caractères):
                         <input type="text" [formControlName]="'value'">
                         <br>
                         Cocher si a réponse est correcte:

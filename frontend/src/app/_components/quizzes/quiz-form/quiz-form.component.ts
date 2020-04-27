@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { QuizService } from '../../../../services/quiz.service';
 import { Quiz } from '../../../../models/quiz.model';
@@ -24,7 +24,11 @@ export class QuizFormComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
     this.quizForm = this.formBuilder.group({
-      name: ['', Validators.maxLength(25)],
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(25)
+      ]),
       theme: ['']
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
