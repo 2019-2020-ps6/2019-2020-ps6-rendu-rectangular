@@ -1,8 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { UserService } from 'src/services/user.service';
-const MIN_FONT_SIZE = 50;
-const MAX_FONT_SIZE = 100;
+const MIN_FONT_SIZE = 30;
+const MAX_FONT_SIZE = 70;
 
 @Component({
   selector: 'app-bottom-sheet-visual-preference',
