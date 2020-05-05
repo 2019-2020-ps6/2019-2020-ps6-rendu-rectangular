@@ -1,5 +1,13 @@
-<h2>Taille des caractères</h2>
- <button class="button-card" (click)="onEnlargeSize()">+</button>
- <button class="button-card" (click)="onShrinkSize()">-</button>
- <br><br>
- <button class="button" (click)="backQuestion()">Fermer</button>
+<style>
+    .openBottomSheet {
+        display: inline-block;
+    }
+</style>
+<div class="openBottomSheet">
+    <h2>Taille des caractères</h2>
+    <button class="button-card" (click)="onEnlargeSize()">+</button>
+    <button class="button-card" (click)="onShrinkSize()">-</button>
+    <br><br>
+    <button class="button" (click)="backQuestion()">Fermer</button>
+</div>
+

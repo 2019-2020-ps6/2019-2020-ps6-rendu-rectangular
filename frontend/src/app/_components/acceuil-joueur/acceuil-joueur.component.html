@@ -1,4 +1,6 @@
-<h1 class="acceuil" [ngStyle]="{'font-size': size + 'px'}" *ngIf="user">{{user.firstName}} {{user.lastName}}</h1>
+<h1 class="acceuil" [ngStyle]="{'font-size': size + 'px'}" *ngIf="user"><u>
+    {{user.firstName}} {{user.lastName}}
+</u></h1>
 <div class="selection">
     <div class="card">
         <button [ngStyle]="{'font-size': size + 'px'}" class="button-card" (click)="goToPage('/quiz-selection')">Faire un Quiz</button>
