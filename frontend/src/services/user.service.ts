@@ -44,11 +44,24 @@ export class UserService {
         const modifiedUserJson = {
             firstName: this.currentUser.firstName,
             lastName: this.currentUser.lastName,
-            fontSizePreference: this.currentUser.fontSizePreference + sizeChange
+            fontSizePreference: this.currentUser.fontSizePreference + sizeChange,
+            fontContrastPreference: this.currentUser.fontContrastPreference
         }
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise()
         this.updateUser();
         console.log('New font for user is', this.currentUser);
+    }
+
+    async changeFontContrast(contrastChange: number) {
+        const modifiedUserJson = {
+            firstName: this.currentUser.firstName,
+            lastName: this.currentUser.lastName,
+            fontSizePreference: this.currentUser.fontSizePreference,
+            fontContrastPreference: this.currentUser.fontContrastPreference + contrastChange
+        }
+        await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise()
+        this.updateUser();
+        console.log('New contrast for user is', this.currentUser);
     }
 
     //////////// USER CREATION ///////////
@@ -59,7 +72,8 @@ export class UserService {
         const newUserJson = {
             firstName,
             lastName,
-            fontSizePreference: 40
+            fontSizePreference: 40,
+            fontContrastPreference: 0
         };
         this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
     }
