@@ -58,4 +58,20 @@ export class BottomSheetVisualPreferenceSheet {
       console.log('MAX size reached');
     }
   }
+
+  onIncreaseContrast() {
+    if (this.userService.currentUser.fontContrastPreference < this.userService.contrast.length-1) {
+      this.userService.changeFontContrast(+1);
+    } else {
+      console.log("MAX contrast reached");
+    }
+  }
+
+  onDecreaseContrast() {
+    if (this.userService.currentUser.fontContrastPreference > 0) {
+      this.userService.changeFontContrast(-1);
+    } else {
+      console.log("MIN contrast reached");
+    }
+  }
 }

@@ -4,6 +4,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 
+
 @Injectable({
     providedIn: 'root'
 })
@@ -12,6 +13,14 @@ export class UserService {
     private logsUrls = serverUrl + '/logs';
     private usersUrl = serverUrl + '/users';
     private quizGameUrl = serverUrl + '/quiz-game';
+
+    contrast = [
+        [0, 0, 0],
+        [64, 64, 64],
+        [128, 128, 128],
+        [192, 192, 192],
+        [224, 224, 224]
+    ];
 
     currentUser: User;
     currentUser$: Subject<User> = new Subject<User>();
@@ -88,8 +97,14 @@ export class UserService {
         const usersUrlWithId = this.usersUrl + '/' + user.id;
         const quizGameUrlWithId = this.quizGameUrl + '/' + user.id;
         const logUrlWithId = this.logsUrls + '/' + user.id;
-        this.http.delete(quizGameUrlWithId, httpOptionsBase).subscribe(() => {});
-        this.http.delete(logUrlWithId, httpOptionsBase).subscribe(() => {});
+        this.http.delete(quizGameUrlWithId, httpOptionsBase);
+        this.http.delete(logUrlWithId, httpOptionsBase);
         this.http.delete(usersUrlWithId, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
-      }
+    }
+
+    convertToHexa(number: Number): string {
+        let numberInHex =  "#" + number.toString(16) + number.toString(16) + number.toString(16);
+        console.log(numberInHex);
+        return numberInHex;
+    }
 }

@@ -14,7 +14,8 @@ export class QuestionViewQuizComponent implements OnInit {
 
   question: Question;
   size = 40;
-  levelOfContrast = 0;
+  rgb = [0, 0, 0];
+  colorInHex="#000";
   cheminImage:any;
 
 
@@ -23,7 +24,8 @@ export class QuestionViewQuizComponent implements OnInit {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
       this.size = user.fontSizePreference;
-      this.levelOfContrast = user.fontContrastPreference;
+      this.rgb = this.userService.contrast[user.fontContrastPreference]
+      this.colorInHex = this.userService.convertToHexa(this.rgb[0]);
     });
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
@@ -42,6 +44,5 @@ export class QuestionViewQuizComponent implements OnInit {
     } else {
       this.router.navigate(['/result-page']);
     }
-
   }
 }
