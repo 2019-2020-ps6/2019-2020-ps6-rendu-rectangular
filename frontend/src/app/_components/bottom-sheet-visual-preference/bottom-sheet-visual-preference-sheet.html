@@ -1,13 +1,53 @@
 <style>
     .openBottomSheet {
+        display: flex;
+    }
+
+    .section {
+        float: left;
+        margin-left: 60px;
+    }
+
+    .button-display {
+        display: flex;
+        justify-content: center;
+    }
+
+    .button {
+        margin-left: 10px;
         display: inline-block;
+        text-align: center;
+        font-size: 40px;
+        line-height: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    .close-button {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: medium;
+        margin-bottom: 10px;
+        margin-left: 10px;
     }
 </style>
 <div class="openBottomSheet">
-    <h2>Taille des caractères</h2>
-    <button class="button-card" (click)="onEnlargeSize()">+</button>
-    <button class="button-card" (click)="onShrinkSize()">-</button>
-    <br><br>
-    <button class="button" (click)="backQuestion()">Fermer</button>
+    <div class="section">
+        <h2>Taille des caractères</h2>
+        <div class="button-display">
+            <button class="button" (click)="onEnlargeSize()">+</button>
+            <button class="button" (click)="onShrinkSize()">-</button>
+        </div>
+        <br><br>
+    </div>
+    <div class="section">
+        <h2>Contraste</h2>
+        <div class="button-display">
+            <button class="button">+</button>
+            <button class="button">-</button>
+        </div>
+        <br><br>
+    </div>
+    <button class="close-button" (click)="backQuestion()">Fermer</button>
 </div>
 
