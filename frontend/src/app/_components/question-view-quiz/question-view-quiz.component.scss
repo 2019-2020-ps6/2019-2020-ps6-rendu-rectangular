@@ -21,12 +21,13 @@
 }
 .button2 {
     position: relative;
-    background-color: lightgray;
-    border: solid 3px $blue;
+    background-color: $white;
+    border: solid 1px $blue;
     color: #000000;
     margin: auto;
     margin-top: 5%;
     display: block;
+    font-weight: bold;
     font-size: 40px;
     padding: 0.5em 1em;
     width: 50%;
@@ -54,5 +55,8 @@
 
 }
   
-  
+.value{
+    width: 75%;
+    margin: auto;
+}
   

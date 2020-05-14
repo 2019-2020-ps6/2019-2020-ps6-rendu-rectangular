@@ -28,7 +28,23 @@
             </div>
         </div> 
     </div>
-
+    <div *ngIf="question.answers.length===3 && cheminImage==undefined">
+        <div class="answer" *ngFor="let answer of question.answers; let i=index">
+            <div class="value">
+                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
+            </div>
+        </div> 
+    </div>
+    <div *ngIf="question.answers.length===3 && cheminImage!=undefined">
+        <div class="answer" *ngFor="let answer of question.answers; let i=index">
+            <div class="value" *ngIf="i < 2">
+                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
+            </div>
+            <div class="value" *ngIf="i == 2">
+                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
+            </div>
+        </div> 
+    </div>
 </div>
 <br><br>
 <app-bottom-sheet-visual-preference></app-bottom-sheet-visual-preference>
