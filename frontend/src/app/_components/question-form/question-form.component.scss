@@ -1,6 +1,39 @@
-@import '../../../styles/card.scss';
+@import "./../../../styles/variables.scss";
 
-.warning {
-    color: red;
-    font-size: 16px;
+.card {
+  background: $white;
+  border-radius: 2px;
+  margin: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  padding: 0 1em 1em 1em;
+}
+
+.button-card {
+  background-color: $white;
+  border: solid 1px $blue;
+  color: $blue;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  transition: background-color 1s;
+}
+
+
+.button-card:hover {
+  cursor: pointer;
+  background-color: $blue;
+  border:  solid 1px $white;
+  color: $white;
+}
+
+.button-card:disabled {
+  background-color: white;
+  color: darkgray;
+  border: solid 1px darkgray;
+}
+
+.nbQuestionPreference {
+    display: inline-block;
+    vertical-align: middle;
 }
