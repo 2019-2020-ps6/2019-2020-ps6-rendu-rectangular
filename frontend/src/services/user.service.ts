@@ -15,11 +15,11 @@ export class UserService {
     private quizGameUrl = serverUrl + '/quiz-game';
 
     contrast = [
-        [0, 0, 0],
-        [64, 64, 64],
-        [128, 128, 128],
+        [224, 224, 224],
         [192, 192, 192],
-        [224, 224, 224]
+        [128, 128, 128],
+        [64, 64, 64],
+        [0, 0, 0]
     ];
 
     currentUser: User;
