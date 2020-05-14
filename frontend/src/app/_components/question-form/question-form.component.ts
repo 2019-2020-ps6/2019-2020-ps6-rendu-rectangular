@@ -30,7 +30,7 @@ export class QuestionFormComponent implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(35)
       ]),
-      answers: this.formBuilder.array([]), 
+      answers: this.formBuilder.array([]),
       image: ['']
     });
     this.nbAnswers = 0;
@@ -59,10 +59,10 @@ export class QuestionFormComponent implements OnInit {
   }
 
   addQuestion() {
-    if(this.questionForm.valid) {
+    if (this.questionForm.valid) {
       const questionToCreate = this.questionForm.getRawValue() as Question;
       console.log(questionToCreate);
-      console.log(questionToCreate.image); 
+      console.log(questionToCreate.image);
       this.quizService.addQuestion(questionToCreate, this.quiz);
       this.initializeQuestionForm();
     }
@@ -75,7 +75,7 @@ export class QuestionFormComponent implements OnInit {
 function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {
     const forbidden = nameRe.test(control.value);
-    return forbidden ? {'forbiddenName': {value: control.value}} : null;
+    return forbidden ? {forbiddenName: {value: control.value}} : null;
   };
 }
 

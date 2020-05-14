@@ -18,11 +18,10 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
   constructor(private _bottomSheet: MatBottomSheet) { }
 
   openBottomSheet(): void {
-    if (this.flag == 0) {
+    if (this.flag === 0) {
       this._bottomSheet.open(BottomSheetVisualPreferenceSheet);
       this.flag = 1;
-    }
-    else if (this.flag == 1) {
+    } else if (this.flag === 1) {
       this._bottomSheet.dismiss();
       this.flag = 0;
     }
@@ -47,7 +46,7 @@ export class BottomSheetVisualPreferenceSheet {
     if (this.userService.currentUser.fontSizePreference > MIN_FONT_SIZE) {
       this.userService.changeFontSize(-10);
     } else {
-      console.log("MIN size reached");
+      console.log('MIN size reached');
     }
   }
 
@@ -60,10 +59,10 @@ export class BottomSheetVisualPreferenceSheet {
   }
 
   onIncreaseContrast() {
-    if (this.userService.currentUser.fontContrastPreference < this.userService.contrast.length-1) {
+    if (this.userService.currentUser.fontContrastPreference < this.userService.contrast.length - 1) {
       this.userService.changeFontContrast(+1);
     } else {
-      console.log("MAX contrast reached");
+      console.log('MAX contrast reached');
     }
   }
 
@@ -71,7 +70,7 @@ export class BottomSheetVisualPreferenceSheet {
     if (this.userService.currentUser.fontContrastPreference > 0) {
       this.userService.changeFontContrast(-1);
     } else {
-      console.log("MIN contrast reached");
+      console.log('MIN contrast reached');
     }
   }
 }

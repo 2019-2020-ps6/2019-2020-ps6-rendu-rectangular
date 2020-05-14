@@ -15,16 +15,11 @@ import { UserService } from './user.service';
 })
 export class PlayService {
 
-    private currentUser: User;
-
     constructor(private http: HttpClient, private userService: UserService) {
         this.setUser();
     }
 
-    private async setUser() {
-        await this.userService.setLastUserFromLogs();
-        this.userService.currentUser$.subscribe((user: User) => this.currentUser = user);
-    }
+    private currentUser: User;
 
     private gameQuizzesUrl = serverUrl + '/quiz-game';
 
@@ -39,6 +34,11 @@ export class PlayService {
     ///////////////////// QUIZ ///////////////////////////
 
     currentQuiz: Quiz;
+
+    private async setUser() {
+        await this.userService.setLastUserFromLogs();
+        this.userService.currentUser$.subscribe((user: User) => this.currentUser = user);
+    }
 
     ///////////////////// USERS //////////////////////////
 

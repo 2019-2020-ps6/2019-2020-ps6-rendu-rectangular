@@ -10,6 +10,10 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
 })
 export class UserService {
 
+    constructor(private http: HttpClient) {
+
+    }
+
     private logsUrls = serverUrl + '/logs';
     private usersUrl = serverUrl + '/users';
     private quizGameUrl = serverUrl + '/quiz-game';
@@ -25,9 +29,9 @@ export class UserService {
     currentUser: User;
     currentUser$: Subject<User> = new Subject<User>();
 
-    constructor(private http: HttpClient) {
+    //////////// USER CREATION ///////////
 
-    }
+    availableUsers$: Subject<User[]> = new Subject<User[]>();
 
     async updateUser() {
         this.currentUser = await this.setLastUserFromLogs();
@@ -36,17 +40,17 @@ export class UserService {
 
     async setLastUserFromLogs(): Promise<User> {
         const users = await this.http.get<User[]>(this.logsUrls).toPromise();
-        const currentUser = users[users.length-1]
+        const currentUser = users[users.length - 1];
         return currentUser;
     }
 
     async addUserToLogs(user: User) {
         const userLogJson = {
             userId: user.id
-        }
+        };
         await this.http.post(this.logsUrls, userLogJson, httpOptionsBase).toPromise();
         this.updateUser();
-    
+
     }
 
     async changeFontSize(sizeChange: number) {
@@ -55,8 +59,8 @@ export class UserService {
             lastName: this.currentUser.lastName,
             fontSizePreference: this.currentUser.fontSizePreference + sizeChange,
             fontContrastPreference: this.currentUser.fontContrastPreference
-        }
-        await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise()
+        };
+        await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
         console.log('New font for user is', this.currentUser);
     }
@@ -67,15 +71,11 @@ export class UserService {
             lastName: this.currentUser.lastName,
             fontSizePreference: this.currentUser.fontSizePreference,
             fontContrastPreference: this.currentUser.fontContrastPreference + contrastChange
-        }
-        await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise()
+        };
+        await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
         console.log('New contrast for user is', this.currentUser);
     }
-
-    //////////// USER CREATION ///////////
-
-    availableUsers$: Subject<User[]> = new Subject<User[]>();
 
     createNewUser(firstName: string, lastName: string) {
         const newUserJson = {
@@ -102,8 +102,8 @@ export class UserService {
         this.http.delete(usersUrlWithId, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
     }
 
-    convertToHexa(number: Number): string {
-        let numberInHex =  "#" + number.toString(16) + number.toString(16) + number.toString(16);
+    convertToHexa(number: number): string {
+        const numberInHex =  '#' + number.toString(16) + number.toString(16) + number.toString(16);
         console.log(numberInHex);
         return numberInHex;
     }

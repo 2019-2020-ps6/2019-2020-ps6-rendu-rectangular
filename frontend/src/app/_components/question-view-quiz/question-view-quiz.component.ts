@@ -15,8 +15,8 @@ export class QuestionViewQuizComponent implements OnInit {
   question: Question;
   size = 40;
   rgb = [0, 0, 0];
-  colorInHex="#000";
-  cheminImage:any;
+  colorInHex = '#000';
+  cheminImage: any;
 
 
   constructor(private playService: PlayService, private userService: UserService, private router: Router) {
@@ -24,12 +24,12 @@ export class QuestionViewQuizComponent implements OnInit {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
       this.size = user.fontSizePreference;
-      this.rgb = this.userService.contrast[user.fontContrastPreference]
+      this.rgb = this.userService.contrast[user.fontContrastPreference];
       this.colorInHex = this.userService.convertToHexa(this.rgb[0]);
     });
     this.playService.currentQuestion$.subscribe((question: Question) => {
       this.question = question;
-      this.cheminImage = (typeof question === 'undefined' || typeof question.image === 'undefined') ? undefined : question.image; 
+      this.cheminImage = (typeof question === 'undefined' || typeof question.image === 'undefined') ? undefined : question.image;
     });
   }
 
