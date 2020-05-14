@@ -1,32 +1,36 @@
 <div class="card">
-    <h2>Ajouter une question</h2>
-    <form class="questionForm" [formGroup]="questionForm">
-        <label for="label">
-            Question (4 à 35 caractères): 
+  <h2>Ajouter une question</h2>
+  <form class="questionForm" [formGroup]="questionForm">
+    <label for="label">
+      Question (4 à 35 caractères):
+      <br>
+      <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      <br>
+      Lien d'une url d'une image (optionnelle):
+      <br>
+      <input class="input-custom" type="text" id="image" [formControlName]="'image'">
+    </label>
+    <br>
+    <div class="answer" formArrayName="answers">
+      <div *ngFor="let address of answers.controls; let i = index">
+        <div class="answer-form" [formGroupName]="i">
+          <label>
+            Réponse (4 à 15 caractères):
+            <input type="text" [formControlName]="'value'">
             <br>
-            <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+            Cocher si la réponse est correcte:
+            <input type="checkbox" [formControlName]="'isCorrect'">
             <br>
-            Lien d'une url d'une image (optionnelle):
-            <br>
-            <input class="input-custom" type="text" id="image" [formControlName]="'image'">
-        </label>
-        <br>
-        <div class="answer" formArrayName="answers">
-            <div *ngFor="let address of answers.controls; let i = index">
-                <div class="answer-form" [formGroupName]="i">
-                    <label>
-                        Réponse (4 à 15 caractères):
-                        <input type="text" [formControlName]="'value'">
-                        <br>
-                        Cocher si la réponse est correcte:
-                        <input type="checkbox" [formControlName]="'isCorrect'">
-                    </label>
-                </div>
-            </div>
+            <button type="submit" class="button-card" (click)="deleteAnswer(i)">Supprimer</button>
+          </label>
         </div>
-        <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addAnswer()">Ajouter une réponse</button>
-        <br>
-        <button type="submit" class="button-card" [disabled]="!questionForm.valid || (nbAnswers != 2 && nbAnswers != 4)" (click)="addQuestion()">Valider</button>
-        <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 ou 4 réponses</div>
-    </form>
+      </div>
+    </div>
+    <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addAnswer()">Ajouter une
+      réponse</button>
+    <br>
+    <button type="submit" class="button-card" [disabled]="!questionForm.valid || (nbAnswers != 2 && nbAnswers != 4)"
+      (click)="addQuestion()">Valider</button>
+    <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 ou 4 réponses</div>
+  </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Question } from 'src/models/question.model';
 import { QuestionListComponent } from '../question-list/question-list.component';
@@ -58,6 +58,11 @@ export class QuestionFormComponent implements OnInit {
     }
   }
 
+  deleteAnswer(i: number) {
+    this.answers.removeAt(i);
+    this.nbAnswers--;
+  }
+
   addQuestion() {
     if (this.questionForm.valid) {
       const questionToCreate = this.questionForm.getRawValue() as Question;
@@ -73,15 +78,15 @@ export class QuestionFormComponent implements OnInit {
 }
 
 function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} | null => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
     const forbidden = nameRe.test(control.value);
-    return forbidden ? {forbiddenName: {value: control.value}} : null;
+    return forbidden ? { forbiddenName: { value: control.value } } : null;
   };
 }
 
 function correctNbOfAnswersValidator(): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} | null => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
     const forbidden = this.answers !== 2 || this.answers !== 4;
-    return forbidden ? {'nb of answers not correct': {value: control.value}} : null;
+    return forbidden ? { 'nb of answers not correct': { value: control.value } } : null;
   };
 }
