@@ -1,0 +1,21 @@
+import { async, TestBed } from '@angular/core/testing';
+import { AcceuilComponent } from './acceuil.component';
+describe('AcceuilComponent', () => {
+    let component;
+    let fixture;
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [AcceuilComponent]
+        })
+            .compileComponents();
+    }));
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AcceuilComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+});
+//# sourceMappingURL=acceuil.component.spec.js.map

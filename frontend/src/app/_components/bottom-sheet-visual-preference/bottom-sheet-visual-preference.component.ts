@@ -73,4 +73,17 @@ export class BottomSheetVisualPreferenceSheet {
       console.log('MIN contrast reached');
     }
   }
+
+  flag = 0;
+  daltonienMode() {
+    if (this.flag === 0) {
+      console.log('Mode daltonien TRUE');
+      this.flag = 1;
+    } else if (this.flag === 1) {
+      console.log('Mode daltonien False');
+      this.flag = 0;
+    }
+  }
 }
+
+
