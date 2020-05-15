@@ -58,7 +58,8 @@ export class UserService {
             firstName: this.currentUser.firstName,
             lastName: this.currentUser.lastName,
             fontSizePreference: this.currentUser.fontSizePreference + sizeChange,
-            fontContrastPreference: this.currentUser.fontContrastPreference
+            fontContrastPreference: this.currentUser.fontContrastPreference,
+            isDaltonian: this.currentUser.isDaltonian
         };
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
@@ -70,11 +71,25 @@ export class UserService {
             firstName: this.currentUser.firstName,
             lastName: this.currentUser.lastName,
             fontSizePreference: this.currentUser.fontSizePreference,
-            fontContrastPreference: this.currentUser.fontContrastPreference + contrastChange
+            fontContrastPreference: this.currentUser.fontContrastPreference + contrastChange,
+            isDaltonian: this.currentUser.isDaltonian
         };
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
         console.log('New contrast for user is', this.currentUser);
+    }
+
+    async changeDaltonianMode(daltonianMode: boolean) {
+        const modifiedUserJson = {
+            firstName: this.currentUser.firstName,
+            lastName: this.currentUser.lastName,
+            fontSizePreference: this.currentUser.fontSizePreference,
+            fontContrastPreference: this.currentUser.fontContrastPreference,
+            isDaltonian: daltonianMode
+        };
+        await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
+        this.updateUser();
+        console.log('New daltonian choice for user is', this.currentUser);
     }
 
     createNewUser(firstName: string, lastName: string) {
@@ -82,7 +97,8 @@ export class UserService {
             firstName,
             lastName,
             fontSizePreference: 40,
-            fontContrastPreference: 0
+            fontContrastPreference: 0,
+            isDaltonian: false
         };
         this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
     }
@@ -104,7 +120,6 @@ export class UserService {
 
     convertToHexa(number: number): string {
         const numberInHex =  '#' + number.toString(16) + number.toString(16) + number.toString(16);
-        console.log(numberInHex);
         return numberInHex;
     }
 }

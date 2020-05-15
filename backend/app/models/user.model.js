@@ -5,5 +5,6 @@ module.exports = new BaseModel('User', {
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   fontSizePreference: Joi.number().required(),
-  fontContrastPreference: Joi.number().required()
+  fontContrastPreference: Joi.number().required(),
+  isDaltonian: Joi.boolean().required()
 })

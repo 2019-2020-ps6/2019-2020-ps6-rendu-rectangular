@@ -77,10 +77,10 @@ export class BottomSheetVisualPreferenceSheet {
   flag = 0;
   daltonienMode() {
     if (this.flag === 0) {
-      console.log('Mode daltonien TRUE');
+      this.userService.changeDaltonianMode(true);
       this.flag = 1;
     } else if (this.flag === 1) {
-      console.log('Mode daltonien False');
+      this.userService.changeDaltonianMode(false);
       this.flag = 0;
     }
   }

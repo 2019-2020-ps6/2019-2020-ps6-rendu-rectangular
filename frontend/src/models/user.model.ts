@@ -4,4 +4,5 @@ export interface User {
     lastName: string;
     fontSizePreference: number;
     fontContrastPreference: number;
+    isDaltonian: boolean;
 }
