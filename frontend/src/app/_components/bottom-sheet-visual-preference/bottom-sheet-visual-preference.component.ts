@@ -13,6 +13,7 @@ const MAX_FONT_SIZE = 70;
 export class BottomSheetVisualPreferenceComponent implements OnInit {
   flag = 0;
   colorButton = 'rgb(176, 241, 176)';
+  colorBorder = 'rgb(0, 0, 0)';
 
   ngOnInit() {
   }
@@ -22,8 +23,10 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
     this.userService.currentUser$.subscribe((user: User) => {
       if (user.isDaltonian) {
         this.colorButton = 'rgb(128, 128, 128)';
+        this.colorBorder = 'rgb(32, 32, 32)';
       } else {
         this.colorButton = 'rgb(176, 241, 176)';
+        this.colorBorder = 'rgb(0, 0, 0)';
       }
     });
   }
