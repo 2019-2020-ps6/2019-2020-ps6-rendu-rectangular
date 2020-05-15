@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { UserService } from 'src/services/user.service';
+import { User } from 'src/models/user.model';
 const MIN_FONT_SIZE = 30;
 const MAX_FONT_SIZE = 70;
 
@@ -11,11 +12,21 @@ const MAX_FONT_SIZE = 70;
 })
 export class BottomSheetVisualPreferenceComponent implements OnInit {
   flag = 0;
+  colorButton = 'rgb(176, 241, 176)';
 
   ngOnInit() {
   }
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor(private _bottomSheet: MatBottomSheet, private userService: UserService) { 
+    this.userService.updateUser();
+    this.userService.currentUser$.subscribe((user: User) => {
+      if (user.isDaltonian) {
+        this.colorButton = 'rgb(128, 128, 128)';
+      } else {
+        this.colorButton = 'rgb(176, 241, 176)';
+      }
+    });
+  }
 
   openBottomSheet(): void {
     if (this.flag === 0) {
