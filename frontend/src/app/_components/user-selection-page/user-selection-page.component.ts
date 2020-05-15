@@ -40,4 +40,8 @@ export class UserSelectionPageComponent implements OnInit {
   deleteUser(user: User) {
     this.userService.deleteUser(user);
   }
+
+  private goToPage(pageName: string) {
+    this.router.navigate([`${pageName}`]);
+  }
 }

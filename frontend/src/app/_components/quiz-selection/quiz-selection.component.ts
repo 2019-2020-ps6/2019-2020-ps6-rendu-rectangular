@@ -32,5 +32,9 @@ export class QuizSelectionComponent implements OnInit {
       this.router.navigate(['/question-view-in-quiz']);
     }
   }
+
+  private goToPage(pageName: string) {
+    this.router.navigate([`${pageName}`]);
+  }
 }
 
