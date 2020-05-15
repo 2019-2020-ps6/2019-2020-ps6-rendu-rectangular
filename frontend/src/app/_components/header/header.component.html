@@ -1,5 +1,5 @@
 <div class="header" [ngStyle]="{'background': colorHeader}">
-    <button class="button-connexion" (click)="goToPage('/acceuil')">Poly'Quiz</button>
+    <button class="button-connexion" [ngStyle]="{'background': colorHeader}" (click)="goToPage('/acceuil')">Poly'Quiz</button>
 
-    <button class="button-acceuil" (click)="goToPage('/acceuil-joueur')">Accueil</button>
+    <button class="button-acceuil" [ngStyle]="{'background': colorHeader}" (click)="goToPage('/acceuil-joueur')">Accueil</button>
 </div>
