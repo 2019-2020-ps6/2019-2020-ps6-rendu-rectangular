@@ -1,47 +1,47 @@
 <div *ngIf="question">
-    <h1 [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="question">{{ question.label }}</h1>
+    <h1 [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="question">{{ question.label }}</h1>
     
     <div class = "imageURL" *ngIf="cheminImage != undefined">
         <div *ngIf="cheminImage">
-            <img [src]="cheminImage"  *ngIf="cheminImage" width="400" height="300"/>
+            <img [src]="cheminImage"  *ngIf="cheminImage" width=auto [ngStyle]= "{'max-width': size/2 + 'vh', 'max-height': size/2 + 'vh'}"/>
         </div>
     </div>
     
     <div *ngIf="question.answers.length===4">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value">
-                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
+                <button [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
         </div>
     </div>
     <div *ngIf="question.answers.length===2 && cheminImage==undefined">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value">
-                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
+                <button [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
         </div> 
     </div>
     <div *ngIf="question.answers.length===2 && cheminImage!=undefined">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value">
-                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
+                <button [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
         </div> 
     </div>
     <div *ngIf="question.answers.length===3 && cheminImage==undefined">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value">
-                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
+                <button [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
         </div> 
     </div>
     <div *ngIf="question.answers.length===3 && cheminImage!=undefined">
         <div class="answer" *ngFor="let answer of question.answers; let i=index">
             <div class="value" *ngIf="i < 2">
-                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
+                <button [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="button" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
             <div class="value" *ngIf="i == 2">
-                <button [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
+                <button [ngStyle]="{'font-size': size/11 + 'vh', 'color': colorInHex}" class="button2" (click)="onButtonClick(i)">{{answer.value}}</button>
             </div>
         </div> 
     </div>

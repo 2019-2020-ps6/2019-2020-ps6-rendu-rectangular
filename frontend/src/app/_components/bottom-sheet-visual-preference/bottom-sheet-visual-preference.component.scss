@@ -1,6 +1,7 @@
 @import "../../../styles/variables.scss";
 
-.button {
+@media screen and (min-height: 601px) {
+  .button {
     position: left;
     background-color: rgb(176, 241, 176);
     border: solid 3px #008000;
@@ -13,33 +14,50 @@
     padding: 0.5em 1em;
     width: 500px;
     transition: background-color 0.2s;
+  }
 }
 
+@media screen and (max-height: 600px) {
+    .button {
+      position: left;
+      background-color: rgb(176, 241, 176);
+      border: solid 3px #008000;
+      color: #000000;
+      margin: left;
+      margin-top: 5%;
+      display: block;
+      font-size: 40px;
+      font-weight: bold;
+      padding: 0.5em 1em;
+      width: 500px;
+      transition: background-color 0.2s;
+      visibility: hidden;
+    }
+  }
+
 .button-card {
-    position: relative;
-    background-color: $lightGray;
-    border: solid 1px $blue;
-    color: $white;
-    margin: auto;
-    margin-top: 5%;
-    display: block;
-    font-weight: bold;
-    padding: 0.5em 1em;
-    width: 100%;
+  position: relative;
+  background-color: $lightGray;
+  border: solid 1px $blue;
+  color: $white;
+  margin: auto;
+  margin-top: 5%;
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  width: 100%;
 }
 
 .bottom-sheet {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: auto;
 }
 
 .button:hover {
-    cursor: pointer;
-    background-color: #008000;
-    border:  solid 3px #002000;
-    color: $white;
+  cursor: pointer;
+  background-color: #008000;
+  border: solid 3px #002000;
+  color: $white;
 }
-
-  

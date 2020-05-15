@@ -12,6 +12,7 @@ const MAX_FONT_SIZE = 70;
 })
 export class BottomSheetVisualPreferenceComponent implements OnInit {
   flag = 0;
+  size = 40;
   colorButton = 'rgb(176, 241, 176)';
   colorBorder = 'rgb(0, 0, 0)';
 
