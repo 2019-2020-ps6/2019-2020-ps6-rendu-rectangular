@@ -11,6 +11,8 @@ import { User } from 'src/models/user.model';
 export class AcceuilJoueurComponent implements OnInit {
   size = 40;
   user: User;
+  colorInHex = '#000';
+  rgb = [0, 0, 0];
 
   ngOnInit() {
   }
@@ -20,6 +22,8 @@ export class AcceuilJoueurComponent implements OnInit {
     this.userService.currentUser$.subscribe((user: User) => {
         this.user = user;
         this.size = user.fontSizePreference;
+        this.rgb = this.userService.contrast[user.fontContrastPreference];
+        this.colorInHex = this.userService.convertToHexa(this.rgb[0]);
     });
   }
 
