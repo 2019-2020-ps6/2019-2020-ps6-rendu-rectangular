@@ -38,4 +38,8 @@ export class QuizListComponent implements OnInit {
     console.log('Captured quiz is:',  quiz);
     this.router.navigate(['/edit-quiz/' + quiz.id]);
   }
+
+  private goToPage(pageName: string) {
+    this.router.navigate([`${pageName}`]);
+  }
 }
