@@ -97,7 +97,7 @@ export class UserService {
             firstName,
             lastName,
             fontSizePreference: 40,
-            fontContrastPreference: 0,
+            fontContrastPreference: this.contrast.length -1,
             isDaltonian: false
         };
         this.http.post(this.usersUrl, newUserJson, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
