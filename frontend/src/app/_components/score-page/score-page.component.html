@@ -1,6 +1,14 @@
 <h1 class="name" *ngIf="user">Scores de {{user.firstName}} {{user.lastName}}</h1>
 <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
     <div class="game">
-        <h3>{{quizgame.quiz.name}}: {{scores[i]}}%</h3>
+        <h3>{{quizgame.quiz.name}}</h3>
+        Pourcentage de réponses justes: {{scores[i][0]}}%
+        <br>
+        Nombre de réponses justes: {{scores[i][1]}}
+        <br>
+        Nombre de questions du quiz: {{scores[i][2]}}
+        <br>
+        Date:
     </div>
 </div>
+<button class="back-button" (click)="this.utilService.goToPage('/acceuil-joueur')">Retour</button>

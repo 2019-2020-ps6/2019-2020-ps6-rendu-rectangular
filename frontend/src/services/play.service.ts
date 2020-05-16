@@ -97,17 +97,19 @@ export class PlayService {
 
     /////////////////// UTILS /////////////////////////////
 
+    //retourne le pourcentage de réponses justes dans la partie courante
     calculateScore(): number {
-        return this.calculateScoreOfGame(this.currentQuizGame);
+        return this.calculateScoreOfGame(this.currentQuizGame)[0];
     }
 
-    calculateScoreOfGame(quizGame: QuizGame): number {
+    // renvoie un tableau du score avec le pourcentage de réponses justes, le nombre de réponses correctes et le nombre de questions
+    calculateScoreOfGame(quizGame: QuizGame): Array<number> { 
         const usersAnswers = quizGame.usersAnswers;
         const questions = quizGame.quiz.questions;
         let score = 0;
         for (let i = 0; i < usersAnswers.length; i++) {
             if (questions[i].answers[usersAnswers[i]].isCorrect) { score++; }
         }
-        return +((score / usersAnswers.length) * 100).toFixed(0);
+        return [+((score / usersAnswers.length) * 100).toFixed(0), score, quizGame.quiz.questions.length];
     }
 }

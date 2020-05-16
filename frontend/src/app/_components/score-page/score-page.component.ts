@@ -3,6 +3,7 @@ import { User } from 'src/models/user.model';
 import { PlayService } from 'src/services/play.service';
 import { UserService } from 'src/services/user.service';
 import { QuizGame } from 'src/models/gameQuiz.model';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-score-page',
@@ -13,9 +14,9 @@ export class ScorePageComponent implements OnInit {
 
   user: User;
   playersQuizGame: QuizGame[];
-  scores: number[];
+  scores: Array<Array<number>>;
 
-  constructor(private playService: PlayService, private userService: UserService) {
+  constructor(private playService: PlayService, private userService: UserService, private utilService: UtilService) {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
       this.user = user;
