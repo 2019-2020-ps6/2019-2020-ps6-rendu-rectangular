@@ -1,6 +1,6 @@
 @import "../../../styles/variables.scss";
 
-@media screen and (min-height: 601px) {
+@media screen and (min-height: 401px) {
   .button {
     position: left;
     background-color: rgb(176, 241, 176);
@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 400px) {
     .button {
       position: left;
       background-color: rgb(176, 241, 176);
