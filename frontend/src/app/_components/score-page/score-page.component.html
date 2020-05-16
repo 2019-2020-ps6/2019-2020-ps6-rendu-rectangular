@@ -8,7 +8,7 @@
         <br>
         Nombre de questions du quiz: {{scores[i][2]}}
         <br>
-        Date: {{quizgame.gameDate}}
+        Date: {{quizgame.gameDate | date:"dd/MM/yyyy à hh:mm"}}
     </div>
 </div>
 <button class="back-button" (click)="this.utilService.goToPage('/acceuil-joueur')">Retour</button>

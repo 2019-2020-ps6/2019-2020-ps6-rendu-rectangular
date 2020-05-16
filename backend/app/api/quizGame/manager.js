@@ -6,8 +6,9 @@ const buildOneQuizGame = (quizGameId) => {
     const user = User.getById(quizGame.userId)
     const quiz = buildQuizz(quizGame.quizId)
     const usersAnswers = quizGame.usersAnswers
+    const gameDate = quizGame.gameDate
 
-    return {user, quiz, usersAnswers, quizGameId}
+    return {user, quiz, gameDate, usersAnswers, quizGameId}
 }
 
 const buildQuizGames = () => {

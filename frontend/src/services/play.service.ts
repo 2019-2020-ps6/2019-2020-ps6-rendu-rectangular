@@ -8,6 +8,7 @@ import { User } from 'src/models/user.model';
 
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { UserService } from './user.service';
+import { GameDate } from 'src/models/gameDate.model';
 
 
 @Injectable({
@@ -56,7 +57,8 @@ export class PlayService {
                 this.currentQuestion$.next(currentQuestion);
                 this.currentQuiz = currentQuizGame.quiz;
                 this.currentQuizGame = currentQuizGame;
-                console.log("Tous les quiz games sont", quizgames);
+                console.log("Le premier quizgame est", quizgames[0]);
+                console.log("La date du premier quizgame est", quizgames[0].gameDate);
             });
     }
 
