@@ -8,19 +8,21 @@ Ce site a été développé avec le framework Angular et Node.js.
 
 # Comment lancer le site
 
-Dans le répertoire que vous souhaitez, comencez par la commande:
+Tout d'abord, assurez vous d'avoir git et node d'installés sur votre ordinateur.
+Dans le répertoire que vous souhaitez, commencez par la commande:
 ```
 git clone https://github.com/2019-2020-ps6/2019-2020-ps6-rendu-rectangular.git
 cd ./2019-2020-ps6-rendu-rectangular
 ```
-Puis:
+Dans ce même terminal, tapez:
 ```
 cd ./backend
 npm run dev
 ```
-Enfin:
+Enfin, dans le répertoire où vous avez installé le projet, ouvrez un second terminal et tapez:
 ```
-cd ./frontend
+cd ./2019-2020-ps6-rendu-rectangular/frontend
 npm install
 ng serve --open
 ```
+Voilà. Normalement vous devriez pouvoir commencer à utiliser notre site. Enjoy!
