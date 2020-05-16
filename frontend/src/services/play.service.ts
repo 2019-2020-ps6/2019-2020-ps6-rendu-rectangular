@@ -8,7 +8,6 @@ import { User } from 'src/models/user.model';
 
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { UserService } from './user.service';
-import { GameDate } from 'src/models/gameDate.model';
 
 
 @Injectable({
