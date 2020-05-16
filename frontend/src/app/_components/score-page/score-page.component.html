@@ -1,3 +1,5 @@
+<app-connected-header class="header"></app-connected-header>
+
 <h1 class="name" *ngIf="user">Scores de {{user.firstName}} {{user.lastName}}</h1>
 <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
     <div class="game">

@@ -1,3 +1,5 @@
+<app-connected-header class="header"></app-connected-header>
+
 <div class="result" *ngIf="quizList === undefined || quizList.length === 0">
     <button class="button" (click)="this.utilService.goToPage('/quiz-list')">Aucun quiz n'a été trouvé. Cliquer pour en créer un.</button>
 </div> 
