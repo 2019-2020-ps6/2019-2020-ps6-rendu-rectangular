@@ -56,6 +56,7 @@ export class PlayService {
                 this.currentQuestion$.next(currentQuestion);
                 this.currentQuiz = currentQuizGame.quiz;
                 this.currentQuizGame = currentQuizGame;
+                console.log("Tous les quiz games sont", quizgames);
             });
     }
 
@@ -64,8 +65,10 @@ export class PlayService {
         const newGameJson = {
             userId: currentUser.id,
             quizId: this.currentQuiz.id,
+            gameDate: new Date(),
             usersAnswers: []
         };
+        console.log(newGameJson);
         this.http.post(this.gameQuizzesUrl, newGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
 
@@ -75,6 +78,7 @@ export class PlayService {
         const quizGameJson = {
             userId: currentUser.id,
             quizId: this.currentQuiz.id,
+            gameDate: this.currentQuizGame.gameDate,
             usersAnswers: this.currentQuizGame.usersAnswers
         };
         this.http.put(this.gameQuizzesUrl + '/' + this.currentQuizGame.quizGameId, quizGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
