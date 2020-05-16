@@ -82,12 +82,11 @@ export class QuizService {
   }
 
   addThemeToServer(newTheme: string) {
-    /*
+  
     const themeJson = {
       theme: newTheme
     }
-    */
-    this.http.post(this.themeUrl, newTheme, this.httpOptions).subscribe(() => this.setThemesFromUrl());
+    this.http.post(this.themeUrl, themeJson, this.httpOptions).subscribe(() => this.setThemesFromUrl());
 
   }
 

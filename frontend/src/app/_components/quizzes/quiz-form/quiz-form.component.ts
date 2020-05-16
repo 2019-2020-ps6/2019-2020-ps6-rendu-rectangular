@@ -49,7 +49,7 @@ export class QuizFormComponent implements OnInit {
 
   addTheme() {
     if (this.themeForm.valid) {
-      const newTheme = this.themeForm.getRawValue() as string;
+      const newTheme = this.themeForm.get('new_theme').value;
       console.log('on ajoute', newTheme);
       this.quizService.addThemeToServer(newTheme);
     }
