@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-acceuil',
@@ -10,11 +11,8 @@ export class AcceuilComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private utilService: UtilService) {
   }
 
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
-  }
 
 }

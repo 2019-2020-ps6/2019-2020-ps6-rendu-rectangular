@@ -4,6 +4,7 @@ import { Quiz } from 'src/models/quiz.model';
 import { PlayService } from 'src/services/play.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -14,7 +15,10 @@ export class QuizSelectionComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private quizService: QuizService, private playService: PlayService, private userService: UserService, private router: Router) {
+  constructor(private quizService: QuizService, 
+    private playService: PlayService,
+    private router: Router,
+    private utilService: UtilService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
@@ -31,10 +35,6 @@ export class QuizSelectionComponent implements OnInit {
       this.playService.setGameQuizzesFromUrl();
       this.router.navigate(['/question-view-in-quiz']);
     }
-  }
-
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
   }
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/services/user.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { UtilService } from 'src/services/util.service';
 
 
 
@@ -14,7 +14,7 @@ export class UserCreationPageComponent implements OnInit {
 
   public userForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(public formBuilder: FormBuilder, private userService: UserService, private utilService: UtilService) {
     this.initializeUserForm();
   }
 
@@ -30,7 +30,7 @@ export class UserCreationPageComponent implements OnInit {
 
   addUser() {
     this.userService.createNewUser(this.userForm.get('firstName').value, this.userForm.get('lastName').value);
-    this.router.navigate(['/user-selection-page']);
+    this.utilService.goToPage('/user-selection-page');
   }
 
 }

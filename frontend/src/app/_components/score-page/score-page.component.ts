@@ -16,7 +16,10 @@ export class ScorePageComponent implements OnInit {
   playersQuizGame: QuizGame[];
   scores: Array<Array<number>>;
 
-  constructor(private playService: PlayService, private userService: UserService, private utilService: UtilService) {
+  constructor(private playService: PlayService, 
+    private userService: UserService, 
+    private utilService: UtilService
+    ) {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
       this.user = user;

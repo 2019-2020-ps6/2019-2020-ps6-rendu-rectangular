@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../../../services/quiz.service';
 import { Quiz } from '../../../../models/quiz.model';
 import { Router } from '@angular/router';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-quiz-list',
@@ -12,7 +13,9 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(public quizService: QuizService, private router: Router) {
+  constructor(public quizService: QuizService, 
+    private utilService: UtilService
+    ){
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
@@ -22,9 +25,6 @@ export class QuizListComponent implements OnInit {
     this.quizService.setQuizzesFromUrl();
   }
 
-  quizSelected(selected: boolean) {
-    console.log('event received from child:', selected);
-  }
   /*
   On passe par la quizList pour interagir avec les quiz.
   On remarque que dans le quizList.html, on récupère le quiz à traiter par l'intermédiaire
@@ -35,11 +35,7 @@ export class QuizListComponent implements OnInit {
   }
 
   editQuiz(quiz: Quiz) {
-    console.log('Captured quiz is:',  quiz);
-    this.router.navigate(['/edit-quiz/' + quiz.id]);
+    this.utilService.goToPage('/edit-quiz/' + quiz.id);
   }
 
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
-  }
 }

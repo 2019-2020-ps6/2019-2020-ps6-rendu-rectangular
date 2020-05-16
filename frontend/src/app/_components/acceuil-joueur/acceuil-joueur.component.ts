@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-acceuil-joueur',
@@ -17,7 +18,7 @@ export class AcceuilJoueurComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private utilService: UtilService) {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
         this.user = user;
@@ -25,10 +26,6 @@ export class AcceuilJoueurComponent implements OnInit {
         this.rgb = this.userService.contrast[user.fontContrastPreference];
         this.colorInHex = this.userService.convertToHexa(this.rgb[0]);
     });
-  }
-
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
   }
 
 }

@@ -3,6 +3,6 @@
     <app-question-form [quiz]="quiz"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
-<button class="back-button" (click)="goToPage('/quiz-list')">Retour</button>
+<button class="back-button" (click)="this.utilService.goToPage('/quiz-list')">Retour</button>
 
 

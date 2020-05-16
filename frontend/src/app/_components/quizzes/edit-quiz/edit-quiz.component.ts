@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuizService } from 'src/services/quiz.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-edit-quiz',
@@ -16,16 +17,16 @@ export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
+  constructor(private route: ActivatedRoute, 
+    private quizService: QuizService, 
+    private router: Router, 
+    private utilService: UtilService
+    ) {
     this.quizService.selectedQuiz$.subscribe((quiz) => this.quiz = quiz);
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(id);
-  }
-
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
   }
 }

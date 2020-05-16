@@ -3,6 +3,7 @@ import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-user-selection-page',
@@ -13,7 +14,7 @@ export class UserSelectionPageComponent implements OnInit {
 
   availableUsers: User[];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private utilService: UtilService) {
     this.setUsers();
   }
 
@@ -30,18 +31,14 @@ export class UserSelectionPageComponent implements OnInit {
 
   onSelectUser(user: User) {
     this.userService.addUserToLogs(user);
-    this.router.navigate(['/acceuil-joueur']);
+    this.utilService.goToPage('/acceuil-joueur');
   }
 
   onNoUserAvailable() {
-    this.router.navigate(['/user-creation-page']);
+    this.utilService.goToPage('/user-creation-page');
   }
 
   deleteUser(user: User) {
     this.userService.deleteUser(user);
-  }
-
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
   }
 }

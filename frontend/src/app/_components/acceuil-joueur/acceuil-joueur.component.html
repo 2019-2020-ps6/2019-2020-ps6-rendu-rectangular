@@ -3,9 +3,9 @@
 </u></h1>
 <div class="selection">
     <div class="card">
-        <button [ngStyle]="{'font-size': size/11 + 'vh'}" class="button-card" (click)="goToPage('/quiz-selection')">Faire un Quiz</button>
-        <button [ngStyle]="{'font-size': size/11 + 'vh'}" class="button-card" (click)="goToPage('/quiz-list')">Editer un Quiz</button>
-        <button [ngStyle]="{'font-size': size/11 + 'vh'}" class="button-card" (click)="goToPage('/score-page')">Mes Scores</button>
+        <button [ngStyle]="{'font-size': size/11 + 'vh'}" class="button-card" (click)="this.utilService.goToPage('/quiz-selection')">Faire un Quiz</button>
+        <button [ngStyle]="{'font-size': size/11 + 'vh'}" class="button-card" (click)="this.utilService.goToPage('/quiz-list')">Editer un Quiz</button>
+        <button [ngStyle]="{'font-size': size/11 + 'vh'}" class="button-card" (click)="this.utilService.goToPage('/score-page')">Mes Scores</button>
     </div>
 </div>
 

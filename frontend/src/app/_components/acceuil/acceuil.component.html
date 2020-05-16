@@ -1,6 +1,6 @@
 <h1 class="acceuil">Bienvenue sur PolyQuiz!</h1>
 
 <div class="card">
-    <button class="button" (click)="goToPage('/user-selection-page')">Connexion</button>
-    <button class="button" (click)="goToPage('/user-creation-page')">Inscription</button>
+    <button class="button" (click)="this.utilService.goToPage('/user-selection-page')">Connexion</button>
+    <button class="button" (click)="this.utilService.goToPage('/user-creation-page')">Inscription</button>
 </div>
