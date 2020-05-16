@@ -3,7 +3,7 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 const MIN_FONT_SIZE = 30;
-const MAX_FONT_SIZE = 70;
+const MAX_FONT_SIZE = 80;
 
 @Component({
   selector: 'app-bottom-sheet-visual-preference',
