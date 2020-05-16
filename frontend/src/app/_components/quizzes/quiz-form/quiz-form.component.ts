@@ -17,7 +17,7 @@ export class QuizFormComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     this.quizService.themes$.subscribe((themes: string[]) => {
-      this.QUIZ_THEMES = this.QUIZ_THEMES.concat(themes);
+      this.QUIZ_THEMES = themes;
     });
     this.themeForm = this.formBuilder.group({
       new_theme: new FormControl('', [
