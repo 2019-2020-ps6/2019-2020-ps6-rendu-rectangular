@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { QuizService } from '../../../../services/quiz.service';
 import { Quiz } from '../../../../models/quiz.model';
@@ -12,9 +12,20 @@ import { Quiz } from '../../../../models/quiz.model';
 export class QuizFormComponent implements OnInit {
 
   public quizForm: FormGroup;
+  public themeForm: FormGroup;
   public QUIZ_THEMES = ['Sport', 'TV', 'Nature', 'Culture', 'Musique', 'Autre'];
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+    this.quizService.themes$.subscribe((themes: string[]) => {
+      this.QUIZ_THEMES = this.QUIZ_THEMES.concat(themes);
+    });
+    this.themeForm = this.formBuilder.group({
+      new_theme: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(25)
+      ])
+    });
     this.quizForm = this.formBuilder.group({
       name: new FormControl('', [
         Validators.required,
@@ -23,18 +34,24 @@ export class QuizFormComponent implements OnInit {
       ]),
       theme: ['']
     });
-
+    this.quizService.setThemesFromUrl();
   }
 
   ngOnInit() {
   }
 
   addQuiz() {
-    // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     if (this.quizForm.valid) {
       const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
-      console.log('Add quiz: ', quizToCreate);
       this.quizService.addQuiz(quizToCreate);
+    }
+  }
+
+  addTheme() {
+    if (this.themeForm.valid) {
+      const newTheme = this.themeForm.getRawValue() as string;
+      console.log('on ajoute', newTheme);
+      this.quizService.addThemeToServer(newTheme);
     }
   }
 

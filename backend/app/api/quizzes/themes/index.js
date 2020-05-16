@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  console.log({ ...req.body })
     try {
       const themes = Theme.create({ ...req.body })
       res.status(201).json(themes)

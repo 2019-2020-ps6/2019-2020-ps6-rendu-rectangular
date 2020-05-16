@@ -1,11 +1,14 @@
 <div class="card">
   <h2>Créer un nouveau quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
+
     <label for="title">
       Titre (4 à 25 caractères)<br>
       <input class="input-custom" type="text" id="name" [formControlName]="'name'">
     </label>
+
     <br>
+
     <label for="theme">
       Thème <br>
       <select name="theme-field" id="theme" [formControlName]="'theme'">
@@ -13,13 +16,25 @@
           {{theme}}
         </option>
       </select>
+
       <div class="add-theme">
-        <input class="input-custom" type="text">
-        <br>
-        <button>Ajouter le thème</button>
+        <form [formGroup]="themeForm">
+          <div class="form-group">
+            <input type="text" class="form-control" id="new_theme" [formControlName]="'new_theme'">
+          </div>
+          <button type="submit" class="btn btn-success" (click)="addTheme()">Ajouter le thème</button>
+        </form>
       </div>
+
     </label>
+
     <br>
+
+    
+
+
     <button type="submit" [disabled]="!quizForm.valid" class="button-card" (click)="addQuiz()">Créer</button>
   </form>
 </div>
+
+
