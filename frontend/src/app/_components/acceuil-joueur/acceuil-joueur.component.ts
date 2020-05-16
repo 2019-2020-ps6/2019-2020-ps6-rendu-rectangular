@@ -14,6 +14,7 @@ export class AcceuilJoueurComponent implements OnInit {
   user: User;
   colorInHex = '#000';
   rgb = [0, 0, 0];
+  colorHeader = '#3f51b5';
 
   ngOnInit() {
   }
@@ -25,6 +26,11 @@ export class AcceuilJoueurComponent implements OnInit {
         this.size = user.fontSizePreference;
         this.rgb = this.userService.contrast[user.fontContrastPreference];
         this.colorInHex = this.userService.convertToHexa(this.rgb[0]);
+        if (user.isDaltonian) {
+          this.colorHeader = 'gray';
+        } else {
+          this.colorHeader = '#3f51b5';
+        }
     });
   }
 
