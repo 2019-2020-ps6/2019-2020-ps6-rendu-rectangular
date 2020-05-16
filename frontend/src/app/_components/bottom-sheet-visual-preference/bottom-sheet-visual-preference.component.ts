@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
+import { MatSlideToggleChange } from '@angular/material';
 const MIN_FONT_SIZE = 30;
 const MAX_FONT_SIZE = 80;
 
@@ -50,9 +51,11 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
 })
 export class BottomSheetVisualPreferenceSheet {
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private userService: UserService) { }
+  daltonian = false;
+  constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private userService: UserService) {
+    this.daltonian = userService.currentUser.isDaltonian;
+  }
 
-  flag = 0;
 
   backQuestion(): void {
     this._bottomSheetRef.dismiss();
@@ -90,14 +93,8 @@ export class BottomSheetVisualPreferenceSheet {
       console.log('MIN contrast reached');
     }
   }
-  daltonienMode() {
-    if (this.flag === 0) {
-      this.userService.changeDaltonianMode(true);
-      this.flag = 1;
-    } else if (this.flag === 1) {
-      this.userService.changeDaltonianMode(false);
-      this.flag = 0;
-    }
+  onChange(event: MatSlideToggleChange) {
+      this.userService.changeDaltonianMode(event.checked);
   }
 }
 

@@ -4,9 +4,7 @@
         <h3>{{quizgame.quiz.name}}</h3>
         Pourcentage de réponses justes: {{scores[i][0]}}%
         <br>
-        Nombre de réponses justes: {{scores[i][1]}}
-        <br>
-        Nombre de questions du quiz: {{scores[i][2]}}
+        Nombre de réponses justes: {{scores[i][1]}}/{{scores[i][2]}}
         <br>
         Date: {{quizgame.gameDate | date:"dd/MM/yyyy à HH:mm"}}
     </div>
