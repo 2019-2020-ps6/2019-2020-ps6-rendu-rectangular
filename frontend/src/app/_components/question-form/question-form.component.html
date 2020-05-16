@@ -26,10 +26,10 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card" [disabled]="!questionForm.valid" (click)="addAnswer()">Ajouter une
+    <button type="submit" class="button-card" [disabled]="!questionForm.valid || nbAnswers == 4" (click)="addAnswer()">Ajouter une
       réponse</button>
     <br>
-    <button type="submit" class="button-card" [disabled]="!questionForm.valid || (nbAnswers < 2 && nbAnswers > 4)"
+    <button type="submit" class="button-card" [disabled]="!questionForm.valid  || nbAnswers <=1"
       (click)="addQuestion()">Valider</button>
     <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 ou 4 réponses</div>
   </form>
