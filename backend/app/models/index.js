@@ -4,6 +4,7 @@ const Quiz = require('./quiz.model.js')
 const User = require('./user.model.js')
 const QuizGame = require('./quizGame.model')
 const Log = require('./log.model')
+const Theme = require('./theme.model')
 
 module.exports = {
   Answer,
@@ -11,5 +12,6 @@ module.exports = {
   Quiz,
   User,
   QuizGame,
-  Log
+  Log,
+  Theme
 }
