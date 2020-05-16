@@ -10,7 +10,7 @@ import { User } from 'src/models/user.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  size=40;
+  size = 40;
 
   colorHeader = '#3f51b5';
   ngOnInit() {

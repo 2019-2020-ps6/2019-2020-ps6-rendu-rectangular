@@ -19,7 +19,7 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private _bottomSheet: MatBottomSheet, private userService: UserService) { 
+  constructor(private _bottomSheet: MatBottomSheet, private userService: UserService) {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
       if (user.isDaltonian) {
@@ -51,6 +51,8 @@ export class BottomSheetVisualPreferenceComponent implements OnInit {
 export class BottomSheetVisualPreferenceSheet {
 
   constructor(private _bottomSheetRef: MatBottomSheetRef<BottomSheetVisualPreferenceSheet>, private userService: UserService) { }
+
+  flag = 0;
 
   backQuestion(): void {
     this._bottomSheetRef.dismiss();
@@ -88,8 +90,6 @@ export class BottomSheetVisualPreferenceSheet {
       console.log('MIN contrast reached');
     }
   }
-
-  flag = 0;
   daltonienMode() {
     if (this.flag === 0) {
       this.userService.changeDaltonianMode(true);

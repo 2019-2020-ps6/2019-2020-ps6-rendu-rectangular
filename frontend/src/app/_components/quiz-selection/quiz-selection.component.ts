@@ -15,10 +15,10 @@ export class QuizSelectionComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private quizService: QuizService, 
-    private playService: PlayService,
-    private router: Router,
-    private utilService: UtilService) {
+  constructor(private quizService: QuizService,
+              private playService: PlayService,
+              private router: Router,
+              private utilService: UtilService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });

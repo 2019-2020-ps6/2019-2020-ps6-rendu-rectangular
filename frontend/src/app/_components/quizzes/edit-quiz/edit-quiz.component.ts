@@ -17,10 +17,10 @@ export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
 
-  constructor(private route: ActivatedRoute, 
-    private quizService: QuizService, 
-    private router: Router, 
-    private utilService: UtilService
+  constructor(private route: ActivatedRoute,
+              private quizService: QuizService,
+              private router: Router,
+              private utilService: UtilService
     ) {
     this.quizService.selectedQuiz$.subscribe((quiz) => this.quiz = quiz);
   }
