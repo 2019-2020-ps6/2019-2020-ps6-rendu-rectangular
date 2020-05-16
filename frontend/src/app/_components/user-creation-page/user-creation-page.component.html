@@ -1,3 +1,4 @@
+<app-header class="header"></app-header>
 <div class="card">
     <h2>Inscription</h2>
     <form class="userForm" [formGroup]="userForm">
@@ -17,3 +18,4 @@
         <button type="submit" class="button-card" [disabled]="!userForm.valid" (click)="addUser()">Valider</button>
     </form>
 </div>
+<button class="back-button" (click)="this.utilService.goToPage('/acceuil')">Retour</button>

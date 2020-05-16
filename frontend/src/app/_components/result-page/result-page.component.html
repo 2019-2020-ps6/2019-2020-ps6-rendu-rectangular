@@ -1,3 +1,5 @@
+<app-connected-header class="header"></app-connected-header>
+
 <h1 class="result" *ngIf="pourcentageReponsesJustes>=50">Bravo! Vous avez répondu juste à {{ pourcentageReponsesJustes }} % des questions!</h1>
 <h1 class="result" *ngIf="pourcentageReponsesJustes<50">Dommage! Vous n'avez répondu juste qu'à {{ pourcentageReponsesJustes }} % des questions!</h1>
 <button class="button" (click)="this.utilService.goToPage('/quiz-selection')">Retour à la sélection des quiz</button>
