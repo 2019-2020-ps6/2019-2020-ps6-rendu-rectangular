@@ -27,6 +27,14 @@
           </div>
           <button type="submit" class="btn btn-success" (click)="addTheme()">Ajouter le thème</button>
         </form>
+
+        <select id="theme_to_remove" [(ngModel)]="themeToRemove" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let theme of QUIZ_THEMES" [value]="theme">
+            {{theme}}
+          </option>
+        </select>
+        <br>
+        <button (click)="removeTheme()">Supprimer le thème</button>
       </div>
 
     </label>
