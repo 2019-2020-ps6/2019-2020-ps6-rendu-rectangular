@@ -32,6 +32,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material';
 import { MatBottomSheetModule } from '@angular/material';
 import { ScorePageComponent } from './score-page/score-page.component';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +71,17 @@ import { ScorePageComponent } from './score-page/score-page.component';
     MatSliderModule,
     MatSlideToggleModule,
     MatNativeDateModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+  ],
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
   entryComponents: [
     BottomSheetVisualPreferenceComponent,

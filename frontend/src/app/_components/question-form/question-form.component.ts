@@ -73,6 +73,19 @@ export class QuestionFormComponent implements OnInit {
     }
   }
 
+  getErrorMessageLabel() {
+    if (this.questionForm.get('label').hasError('required')) {
+      return 'Entrer une valeur';
+    }
+    if (this.questionForm.get('label').hasError('minlength')) {
+      return '(minimum 4 caractère)';
+    }
+    if (this.questionForm.get('label').hasError('maxlength')) {
+      return '(maximum 35 caractère)';
+    }
+    return "";
+  }
+
   ngOnInit() {
   }
 }

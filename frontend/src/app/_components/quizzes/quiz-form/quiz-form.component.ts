@@ -55,4 +55,17 @@ export class QuizFormComponent implements OnInit {
     }
   }
 
+  getErrorMessage() {
+    if (this.quizForm.get('name').hasError('required')) {
+      return 'Entrer une valeur';
+    }
+    if (this.quizForm.get('name').hasError('minlength')) {
+      return '(minimum 4 caractère)';
+    }
+    if (this.quizForm.get('name').hasError('maxlength')) {
+      return '(maximum 25 caractère)';
+    }
+    return "";
+  }
+
 }

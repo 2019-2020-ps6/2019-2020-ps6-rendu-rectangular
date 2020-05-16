@@ -4,7 +4,10 @@
 
     <label for="title">
       Titre (4 à 25 caractères)<br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+      <mat-form-field>
+        <input matInput class="input-custom" type="text" id="name" [formControlName]="'name'">
+        <mat-error *ngIf="quizForm.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
     </label>
 
     <br>

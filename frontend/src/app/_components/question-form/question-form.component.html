@@ -4,7 +4,10 @@
     <label for="label">
       Question (4 à 35 caractères):
       <br>
-      <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      <mat-form-field>
+        <input matInput class="input-custom" type="text" id="label" [formControlName]="'label'">
+        <mat-error *ngIf="questionForm.invalid">{{getErrorMessageLabel()}}</mat-error>
+      </mat-form-field>
       <br>
       Lien d'une url d'une image (optionnelle):
       <br>
@@ -16,7 +19,7 @@
         <div class="answer-form" [formGroupName]="i">
           <label>
             Réponse (4 à 15 caractères):
-            <input type="text" [formControlName]="'value'">
+              <input type="text" [formControlName]="'value'">
             <br>
             Cocher si la réponse est correcte:
             <input type="checkbox" [formControlName]="'isCorrect'">
@@ -26,7 +29,8 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card" [disabled]="!questionForm.valid || nbAnswers == 4" (click)="addAnswer()">Ajouter une
+    <button type="submit" class="button-card" [disabled]="!questionForm.valid || nbAnswers == 4"
+      (click)="addAnswer()">Ajouter une
       réponse</button>
     <br>
     <button type="submit" class="button-card" [disabled]="!questionForm.valid  || nbAnswers <=1"
