@@ -10,5 +10,17 @@ Ce site a été développé avec le framework Angular et Node.js.
 
 Dans le répertoire que vous souhaitez, comencez par la commande:
 ```
-git clone 
+git clone https://github.com/2019-2020-ps6/2019-2020-ps6-rendu-rectangular.git
+cd ./2019-2020-ps6-rendu-rectangular
+```
+Puis:
+```
+cd ./backend
+npm run dev
+```
+Enfin:
+```
+cd ./frontend
+npm install
+ng serve --open
 ```
