@@ -2,11 +2,11 @@
 
 <app-quiz-form></app-quiz-form>
 <div class="quiz-list">
-    <div class="quiz" *ngFor="let quiz of quizList">
-        <!--Inputs & Output allow communication between parent & child components.-->
-        <!--More information: https://angular.io/guide/component-interaction-->
-        <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (quizToDelete)="quizToDelete($event)" 
-                  (editQuiz)="editQuiz($event)"></app-quiz>
-    </div>
+  <div class="quiz" *ngFor="let quiz of quizList">
+    <!--Inputs & Output allow communication between parent & child components.-->
+    <!--More information: https://angular.io/guide/component-interaction-->
+    <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (quizToDelete)="quizToDelete($event)"
+      (editQuiz)="editQuiz($event)"></app-quiz>
   </div>
-  <button class="back-button" (click)="this.utilService.goToPage('/acceuil-joueur')">Retour</button>
+</div>
+<button class="back-button" (click)="this.utilService.goToPage('/acceuil-joueur')">Retour</button>

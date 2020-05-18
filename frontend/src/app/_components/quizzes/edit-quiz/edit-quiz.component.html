@@ -1,14 +1,10 @@
 <app-connected-header class="header"></app-connected-header>
-<div>
 
 <ng-container *ngIf="quiz">
     <h1>{{quiz.name}}</h1>
     <app-question-form [quiz]="quiz"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
-</div>
-<div class="bottom-div">
-    <button class="back-button" (click)="this.utilService.goToPage('/quiz-list')">Retour</button>
-</div>
+<button class="back-button" (click)="this.utilService.goToPage('/quiz-list')">Retour</button>
 
 
