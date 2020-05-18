@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { Theme } from 'src/models/theme.model';
 
 @Injectable({
   providedIn: 'root'
@@ -71,23 +72,25 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  themes$: Subject<string[]> = new Subject<string[]>();
+  themes$: Subject<Theme[]> = new Subject<Theme[]>();
 
   setThemesFromUrl() {
-    this.http.get<any>(this.themeUrl).subscribe((themesObj: {theme: string}[])=> {
-      const themesFromServer = themesObj.map((themeObj) => themeObj.theme)
-      this.themes$.next(themesFromServer);
-      console.log('Themes retrieved from server', themesFromServer);
+    this.http.get<Theme[]>(this.themeUrl).subscribe((themes: Theme[])=> {
+      this.themes$.next(themes);
+      console.log('Themes retrieved from server', themes);
     });
   }
 
   addThemeToServer(newTheme: string) {
-  
-    const themeJson = {
+    const themeJSON = {
       theme: newTheme
     }
-    this.http.post(this.themeUrl, themeJson, this.httpOptions).subscribe(() => this.setThemesFromUrl());
+    this.http.post(this.themeUrl, themeJSON, this.httpOptions).subscribe(() => this.setThemesFromUrl());
+  }
 
+  removeThemeFromServer(theme: Theme) {
+    const themeToDelUrl = this.themeUrl + '/' + theme.id;
+    this.http.delete(themeToDelUrl, this.httpOptions).subscribe(() => this.setThemesFromUrl());
   }
 
 }

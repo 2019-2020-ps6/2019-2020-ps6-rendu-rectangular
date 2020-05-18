@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, F
 
 import { QuizService } from '../../../../services/quiz.service';
 import { Quiz } from '../../../../models/quiz.model';
+import { Theme } from 'src/models/theme.model';
 
 @Component({
   selector: 'app-quiz-form',
@@ -12,14 +13,16 @@ import { Quiz } from '../../../../models/quiz.model';
 export class QuizFormComponent implements OnInit {
 
   private themeToRemove: string = null;
+  private themeToRemoveObj: Theme;
   public quizForm: FormGroup;
   public themeForm: FormGroup;
   public QUIZ_THEMES = ['Sport', 'TV', 'Nature', 'Culture', 'Musique', 'Autre'];
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
-    this.quizService.themes$.subscribe((themes: string[]) => {
-      this.QUIZ_THEMES = themes;
-      this.themeToRemove = themes[0];
+    this.quizService.themes$.subscribe((themes: Theme[]) => {
+      this.QUIZ_THEMES = themes.map((theme: Theme) => theme.theme);
+      this.themeToRemoveObj = themes[0];
+      this.themeToRemove = this.QUIZ_THEMES[0];
     });
     this.initializeThemeForm();
     this.initializeQuizForm();
@@ -68,7 +71,8 @@ export class QuizFormComponent implements OnInit {
   }
 
   removeTheme() {
-    console.log(this.themeToRemove);
+    console.log(this.themeToRemoveObj);
+    this.quizService.removeThemeFromServer(this.themeToRemoveObj);
   }
 
   getErrorMessage() {

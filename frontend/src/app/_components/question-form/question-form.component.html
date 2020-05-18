@@ -35,6 +35,6 @@
     <br>
     <button type="submit" class="button-card" [disabled]="!questionForm.valid  || nbAnswers <=1"
       (click)="addQuestion()">Valider</button>
-    <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 ou 4 réponses</div>
+    <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 à 4 réponses</div>
   </form>
 </div>
