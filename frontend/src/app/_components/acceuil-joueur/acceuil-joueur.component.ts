@@ -15,7 +15,7 @@ export class AcceuilJoueurComponent implements OnInit {
   colorInHex = '#000';
   rgb = [0, 0, 0];
   colorHeader = '#3f51b5';
-  admin = 1; 
+  scaleText = 1.5; 
 
   ngOnInit() {
   }
@@ -33,9 +33,7 @@ export class AcceuilJoueurComponent implements OnInit {
           this.colorHeader = '#3f51b5';
         }
 
-        if(!user.admin){
-          this.admin = 1.5;
-        }
+        
     });
   }
 

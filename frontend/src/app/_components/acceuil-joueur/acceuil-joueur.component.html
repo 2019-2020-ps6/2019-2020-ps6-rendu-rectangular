@@ -3,11 +3,15 @@
 <h1 class="acceuil" [ngStyle]="{'font-size': size + 'px', 'color': colorInHex}" *ngIf="user"><u>
     {{user.firstName}} {{user.lastName}}
 </u></h1>
-<div class="selection">
-    <div class="card" *ngIf="user">
-        <button [ngStyle]="{'font-size': size/11*admin + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/quiz-selection')">Faire un Quiz</button>
+<div class="selection" *ngIf="user">
+    <div class="card" *ngIf="user.admin">
+        <button [ngStyle]="{'font-size': size/11 + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/quiz-selection')">Faire un Quiz</button>
         <button [ngStyle]="{'font-size': size/11 + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/quiz-list')" *ngIf="user.admin">Editer un Quiz</button>
-        <button [ngStyle]="{'font-size': size/11*admin + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/score-page')">Mes Scores</button>
+        <button [ngStyle]="{'font-size': size/11 + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/score-page')">Mes Scores</button>
+    </div>
+    <div class="card" *ngIf="!user.admin">
+        <button [ngStyle]="{'font-size': size/11*scaleText + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/quiz-selection')">Faire un Quiz</button>
+        <button [ngStyle]="{'font-size': size/11*scaleText + 'vh', 'border': colorHeader}" class="button-card" (click)="this.utilService.goToPage('/score-page')">Mes Scores</button>
     </div>
 </div>
 
