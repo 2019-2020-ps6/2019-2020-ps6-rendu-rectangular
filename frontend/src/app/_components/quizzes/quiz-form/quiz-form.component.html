@@ -1,29 +1,34 @@
 <div class="card">
-  <h2>Créer un nouveau quiz</h2>
+  <h2 class="title">Créer un nouveau quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
 
-    <label for="title">
-      Titre (4 à 25 caractères)<br>
-      <mat-form-field>
-        <input matInput class="input-custom" type="text" id="name" [formControlName]="'name'">
-        <mat-error *ngIf="quizForm.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </label>
+    <div class="title">
+      <label for="title">
+        Titre (4 à 25 caractères)<br>
+        <mat-form-field>
+          <input matInput class="input-custom" type="text" id="name" [formControlName]="'name'">
+          <mat-error *ngIf="quizForm.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </label>
+    </div>
+    
 
     <br>
 
-    <label for="title">
-      Difficulté:
-      <mat-form-field>
-        <select matNativeControl required [formControlName]="'niveau'">
-          <option value="Facile">Facile</option>
-          <option value="Moyen">Moyen</option>
-          <option value="Difficile">Difficile</option>
-        </select>
-      </mat-form-field>
-      <br>
-      
-    </label>
+    <div class="title">
+      <label for="title">
+        Difficulté:
+        <mat-form-field>
+          <select matNativeControl required [formControlName]="'niveau'">
+            <option value="Facile">Facile</option>
+            <option value="Moyen">Moyen</option>
+            <option value="Difficile">Difficile</option>
+          </select>
+        </mat-form-field>
+        <br>
+      </label>
+    </div>
+    
 
     <br>
 
