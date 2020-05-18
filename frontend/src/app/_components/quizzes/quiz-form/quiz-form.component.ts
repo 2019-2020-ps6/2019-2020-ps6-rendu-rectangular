@@ -16,10 +16,13 @@ export class QuizFormComponent implements OnInit {
   private themeToRemoveObj: Theme;
   public quizForm: FormGroup;
   public themeForm: FormGroup;
-  public QUIZ_THEMES = ['Sport', 'TV', 'Nature', 'Culture', 'Musique', 'Autre'];
+  public QUIZ_THEMES: string[];
+  private QUIZ_THEMES_OBJ: Theme [];
+
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     this.quizService.themes$.subscribe((themes: Theme[]) => {
+      this.QUIZ_THEMES_OBJ = themes;
       this.QUIZ_THEMES = themes.map((theme: Theme) => theme.theme);
       this.themeToRemoveObj = themes[0];
       this.themeToRemove = this.QUIZ_THEMES[0];
@@ -71,8 +74,8 @@ export class QuizFormComponent implements OnInit {
   }
 
   removeTheme() {
-    console.log(this.themeToRemoveObj);
-    this.quizService.removeThemeFromServer(this.themeToRemoveObj);
+    const themeToDelete = this.QUIZ_THEMES_OBJ.find((theme: Theme) => theme.theme === this.themeToRemove);
+    this.quizService.removeThemeFromServer(themeToDelete);
   }
 
   getErrorMessage() {
