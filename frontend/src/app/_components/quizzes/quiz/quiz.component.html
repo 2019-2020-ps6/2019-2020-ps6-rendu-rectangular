@@ -2,12 +2,11 @@
     <h2>
         <i *ngIf="quiz.theme==='Sport'" class="fas fa-running"></i>
         <i *ngIf="quiz.theme==='Actor'" class="fas fa-tv"></i>
-        {{quiz.name}}
-    </h2>
-    <h3>
+        {{quiz.name}}<br>
         {{quiz.theme}}
-    </h3>
-    <h4>Nombre de questions: {{quiz.questions.length}}</h4>
+    </h2>
+    
+    <p>Niveau: {{quiz.niveau}}<br>Nombre de questions: {{quiz.questions.length}}</p>
     <button class="button-card edit" (click)="edit()" routerLink="/edit-quiz/{{quiz.id}}">Éditer</button>
     <button class="button-card" (click)="deleteQuiz()">Supprimer</button>
 </div>

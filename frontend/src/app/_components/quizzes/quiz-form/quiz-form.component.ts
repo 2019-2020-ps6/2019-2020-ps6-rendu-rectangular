@@ -43,7 +43,8 @@ export class QuizFormComponent implements OnInit {
         Validators.minLength(4),
         Validators.maxLength(25)
       ]),
-      theme: ['']
+      theme: [''],
+      niveau: new FormControl('',[Validators.required])
     });
   }
 
