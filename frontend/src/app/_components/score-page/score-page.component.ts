@@ -24,7 +24,6 @@ export class ScorePageComponent implements OnInit {
     this.userService.currentUser$.subscribe((user: User) => {
       this.user = user;
       this.playService.quizgamesObservable().subscribe((quizGames: QuizGame[]) => {
-        console.log('Les quizgames sont', quizGames);
         this.playersQuizGame = quizGames
         .filter((game: QuizGame) => game.user.id === this.user.id)
         .reverse();

@@ -36,7 +36,6 @@ export class UserService {
     async updateUser() {
         this.currentUser = await this.setLastUserFromLogs();
         this.currentUser$.next(this.currentUser);
-        console.log("last user retrived form log : ", this.currentUser); 
     }
 
     async setLastUserFromLogs(): Promise<User> {
@@ -65,7 +64,6 @@ export class UserService {
         };
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
-        console.log('New font for user is', this.currentUser);
     }
 
     async changeFontContrast(contrastChange: number) {
@@ -79,7 +77,6 @@ export class UserService {
         };
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
-        console.log('New contrast for user is', this.currentUser);
     }
 
     async changeDaltonianMode(daltonianMode: boolean) {
@@ -93,7 +90,6 @@ export class UserService {
         };
         await this.http.put(this.usersUrl + '/' + this.currentUser.id, modifiedUserJson, httpOptionsBase).toPromise();
         this.updateUser();
-        console.log('New daltonian choice for user is', this.currentUser);
     }
 
     createNewUser(firstName: string, lastName: string, admin: boolean) {

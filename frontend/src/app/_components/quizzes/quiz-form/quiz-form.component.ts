@@ -50,7 +50,7 @@ export class QuizFormComponent implements OnInit {
         Validators.maxLength(25)
       ]),
       theme: [''],
-      niveau: new FormControl('',[Validators.required])
+      niveau: new FormControl('', [Validators.required])
     });
   }
 
@@ -67,7 +67,6 @@ export class QuizFormComponent implements OnInit {
   addTheme() {
     if (this.themeForm.valid) {
       const newTheme = this.themeForm.get('new_theme').value;
-      console.log('on ajoute', newTheme);
       this.quizService.addThemeToServer(newTheme);
       this.initializeThemeForm();
     }
@@ -88,7 +87,7 @@ export class QuizFormComponent implements OnInit {
     if (this.quizForm.get('name').hasError('maxlength')) {
       return '(maximum 25 caractères)';
     }
-    return "";
+    return '';
   }
 
 }

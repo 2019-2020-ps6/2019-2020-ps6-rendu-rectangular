@@ -2,7 +2,7 @@ export interface User {
     id: string;
     firstName: string;
     lastName: string;
-    admin: boolean; 
+    admin: boolean;
     fontSizePreference: number;
     fontContrastPreference: number;
     isDaltonian: boolean;

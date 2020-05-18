@@ -56,8 +56,6 @@ export class PlayService {
                 this.currentQuestion$.next(currentQuestion);
                 this.currentQuiz = currentQuizGame.quiz;
                 this.currentQuizGame = currentQuizGame;
-                console.log("Le premier quizgame est", quizgames[0]);
-                console.log("La date du premier quizgame est", quizgames[0].gameDate);
             });
     }
 

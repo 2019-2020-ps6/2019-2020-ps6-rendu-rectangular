@@ -14,6 +14,10 @@ import { Theme } from 'src/models/theme.model';
 })
 export class QuizService {
 
+  constructor(public http: HttpClient) {
+
+  }
+
   private quizzes: Quiz[];
   private quizUrl = serverUrl + '/quizzes';
   private quizGameUrl = serverUrl + '/quiz-game';
@@ -25,9 +29,7 @@ export class QuizService {
   public quizzes$: BehaviorSubject<Quiz[]> = new BehaviorSubject(this.quizzes);
   public selectedQuiz$: Subject <Quiz> = new Subject();
 
-  constructor(public http: HttpClient) {
-
-  }
+  themes$: Subject<Theme[]> = new Subject<Theme[]>();
 
   setSelectedQuiz(quizId: string) {
     const urlWithId = this.quizUrl + '/' + quizId;
@@ -72,19 +74,16 @@ export class QuizService {
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
 
-  themes$: Subject<Theme[]> = new Subject<Theme[]>();
-
   setThemesFromUrl() {
-    this.http.get<Theme[]>(this.themeUrl).subscribe((themes: Theme[])=> {
+    this.http.get<Theme[]>(this.themeUrl).subscribe((themes: Theme[]) => {
       this.themes$.next(themes);
-      console.log('Themes retrieved from server', themes);
     });
   }
 
   addThemeToServer(newTheme: string) {
     const themeJSON = {
       theme: newTheme
-    }
+    };
     this.http.post(this.themeUrl, themeJSON, this.httpOptions).subscribe(() => this.setThemesFromUrl());
   }
 

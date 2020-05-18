@@ -12,6 +12,14 @@ import { QuizService } from 'src/services/quiz.service';
 })
 export class QuestionFormComponent implements OnInit {
 
+  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
+    this.initializeQuestionForm();
+  }
+
+  get answers() {
+    return this.questionForm.get('answers') as FormArray;
+  }
+
   public questionForm: FormGroup;
   private nbAnswers = 0;
   private control = 0;
@@ -20,9 +28,7 @@ export class QuestionFormComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
-    this.initializeQuestionForm();
-  }
+  isValid = false;
 
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
@@ -35,10 +41,6 @@ export class QuestionFormComponent implements OnInit {
       image: ['']
     });
     this.nbAnswers = 0;
-  }
-
-  get answers() {
-    return this.questionForm.get('answers') as FormArray;
   }
 
   private createAnswer() {
@@ -64,13 +66,9 @@ export class QuestionFormComponent implements OnInit {
     this.nbAnswers--;
   }
 
-  isValid = false;
-
   addQuestion() {
     if (this.questionForm.valid) {
       const questionToCreate = this.questionForm.getRawValue() as Question;
-      console.log(questionToCreate);
-      console.log(questionToCreate.image);
       this.quizService.addQuestion(questionToCreate, this.quiz);
       this.initializeQuestionForm();
     }
@@ -86,14 +84,14 @@ export class QuestionFormComponent implements OnInit {
     if (this.questionForm.get('label').hasError('maxlength')) {
       return '(maximum 35 caractère)';
     }
-    return "";
+    return '';
   }
 
-  onNativeChange(e){
-    if(e.target.checked){
+  onNativeChange(e) {
+    if (e.target.checked) {
       this.control += 1;
     }
-    if(!e.target.checked){
+    if (!e.target.checked) {
       this.control -= 1;
     }
   }
@@ -102,16 +100,3 @@ export class QuestionFormComponent implements OnInit {
   }
 }
 
-function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const forbidden = nameRe.test(control.value);
-    return forbidden ? { forbiddenName: { value: control.value } } : null;
-  };
-}
-
-function correctNbOfAnswersValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const forbidden = this.answers !== 2 || this.answers !== 4;
-    return forbidden ? { 'nb of answers not correct': { value: control.value } } : null;
-  };
-}

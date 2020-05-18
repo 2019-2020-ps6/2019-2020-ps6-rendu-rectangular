@@ -3,8 +3,8 @@
         <i *ngIf="quiz.theme==='Sport'" class="fas fa-running"></i>
         <i *ngIf="quiz.theme==='Actor'" class="fas fa-tv"></i>
         {{quiz.name}}<br>
-        {{quiz.theme}}
     </h2>
+    <h3>{{quiz.theme}}</h3>
     
     <p>Niveau: {{quiz.niveau}}<br>Nombre de questions: {{quiz.questions.length}}</p>
     <button class="button-card edit" (click)="edit()" routerLink="/edit-quiz/{{quiz.id}}">Éditer</button>

@@ -25,7 +25,7 @@ export class QuizSelectionComponent implements OnInit {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
-    this.userService.currentUser$.subscribe((user: User) => this.user = user)
+    this.userService.currentUser$.subscribe((user: User) => this.user = user);
   }
 
   ngOnInit() {

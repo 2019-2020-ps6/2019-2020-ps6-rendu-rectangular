@@ -25,7 +25,6 @@ export class UserSelectionPageComponent implements OnInit {
     this.userService.setUsersFromUrl();
     this.userService.availableUsers$.subscribe((users: User[]) => {
       this.availableUsers = users;
-      console.log(this.availableUsers);
     });
   }
 

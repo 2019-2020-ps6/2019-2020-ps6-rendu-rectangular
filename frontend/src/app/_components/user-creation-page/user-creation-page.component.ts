@@ -31,8 +31,6 @@ export class UserCreationPageComponent implements OnInit {
   }
 
   addUser() {
-    const cheched = this.userForm.get('valueCheched').value; 
-    console.log('Checked value : ',cheched);
     this.userService.createNewUser(this.userForm.get('firstName').value, this.userForm.get('lastName').value, this.userForm.get('valueCheched').value);
     this.utilService.goToPage('/user-selection-page');
   }
