@@ -14,6 +14,7 @@ export class QuestionFormComponent implements OnInit {
 
   public questionForm: FormGroup;
   private nbAnswers = 0;
+  private control = 0;
 
 
   @Input()
@@ -63,6 +64,8 @@ export class QuestionFormComponent implements OnInit {
     this.nbAnswers--;
   }
 
+  isValid = false;
+
   addQuestion() {
     if (this.questionForm.valid) {
       const questionToCreate = this.questionForm.getRawValue() as Question;
@@ -84,6 +87,15 @@ export class QuestionFormComponent implements OnInit {
       return '(maximum 35 caractère)';
     }
     return "";
+  }
+
+  onNativeChange(e){
+    if(e.target.checked){
+      this.control += 1;
+    }
+    if(!e.target.checked){
+      this.control -= 1;
+    }
   }
 
   ngOnInit() {

@@ -22,7 +22,7 @@
               <input type="text" [formControlName]="'value'">
             <br>
             Cocher si la réponse est correcte:
-            <input type="checkbox" [formControlName]="'isCorrect'">
+            <input type="checkbox" [formControlName]="'isCorrect'" (change)="onNativeChange($event)">
             <br>
             <button type="submit" class="button-card" (click)="deleteAnswer(i)">Supprimer</button>
           </label>
@@ -30,10 +30,9 @@
       </div>
     </div>
     <button type="submit" class="button-card" [disabled]="!questionForm.valid || nbAnswers == 4"
-      (click)="addAnswer()">Ajouter une
-      réponse</button>
+      (click)="addAnswer()">Ajouter une réponse</button>
     <br>
-    <button type="submit" class="button-card" [disabled]="!questionForm.valid  || nbAnswers <=1"
+    <button type="submit" class="button-card" [disabled]="!questionForm.valid  || nbAnswers <=1 || control <=0"
       (click)="addQuestion()">Valider</button>
     <div class="warning" *ngIf="nbAnswers!=2 && nbAnswers!=4">Votre question doit comporter 2 à 4 réponses</div>
   </form>
