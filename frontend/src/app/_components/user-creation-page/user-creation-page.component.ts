@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { UserService } from 'src/services/user.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { UtilService } from 'src/services/util.service';
+
 
 
 
@@ -24,12 +25,15 @@ export class UserCreationPageComponent implements OnInit {
   private initializeUserForm() {
     this.userForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
-      lastName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)])
+      lastName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(32)]),
+      valueCheched: [false]
     });
   }
 
   addUser() {
-    this.userService.createNewUser(this.userForm.get('firstName').value, this.userForm.get('lastName').value);
+    const cheched = this.userForm.get('valueCheched').value; 
+    console.log('Checked value : ',cheched);
+    this.userService.createNewUser(this.userForm.get('firstName').value, this.userForm.get('lastName').value, this.userForm.get('valueCheched').value);
     this.utilService.goToPage('/user-selection-page');
   }
 

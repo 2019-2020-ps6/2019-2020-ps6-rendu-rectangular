@@ -36,6 +36,7 @@ export class UserService {
     async updateUser() {
         this.currentUser = await this.setLastUserFromLogs();
         this.currentUser$.next(this.currentUser);
+        console.log("last user retrived form log : ", this.currentUser); 
     }
 
     async setLastUserFromLogs(): Promise<User> {
@@ -57,6 +58,7 @@ export class UserService {
         const modifiedUserJson = {
             firstName: this.currentUser.firstName,
             lastName: this.currentUser.lastName,
+            admin: this.currentUser.admin,
             fontSizePreference: this.currentUser.fontSizePreference + sizeChange,
             fontContrastPreference: this.currentUser.fontContrastPreference,
             isDaltonian: this.currentUser.isDaltonian
@@ -70,6 +72,7 @@ export class UserService {
         const modifiedUserJson = {
             firstName: this.currentUser.firstName,
             lastName: this.currentUser.lastName,
+            admin: this.currentUser.admin,
             fontSizePreference: this.currentUser.fontSizePreference,
             fontContrastPreference: this.currentUser.fontContrastPreference + contrastChange,
             isDaltonian: this.currentUser.isDaltonian
@@ -83,6 +86,7 @@ export class UserService {
         const modifiedUserJson = {
             firstName: this.currentUser.firstName,
             lastName: this.currentUser.lastName,
+            admin: this.currentUser.admin,
             fontSizePreference: this.currentUser.fontSizePreference,
             fontContrastPreference: this.currentUser.fontContrastPreference,
             isDaltonian: daltonianMode
@@ -92,10 +96,11 @@ export class UserService {
         console.log('New daltonian choice for user is', this.currentUser);
     }
 
-    createNewUser(firstName: string, lastName: string) {
+    createNewUser(firstName: string, lastName: string, admin: boolean) {
         const newUserJson = {
             firstName,
             lastName,
+            admin,
             fontSizePreference: 40,
             fontContrastPreference: this.contrast.length - 1,
             isDaltonian: false

@@ -9,12 +9,19 @@
         </label>
         <br>
         <label for="label">
-            nom: 
+            Nom: 
             <br>
             <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
         </label>
         <br>
-    
+        <br>
+        <label for="label">
+            Cochez si vous êtes auxiliaire de vie: 
+            <br>
+            <input type="checkbox" class="checkbox" id="valueCheched" [formControlName]="'valueCheched'">
+        </label>
+        <br>
+        <br>
         <button type="submit" class="button-card" [disabled]="!userForm.valid" (click)="addUser()">Valider</button>
     </form>
 </div>

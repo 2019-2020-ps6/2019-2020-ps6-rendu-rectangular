@@ -35,6 +35,7 @@ import { ScorePageComponent } from './score-page/score-page.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -76,13 +77,15 @@ import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } 
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ],
   exports: [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     BottomSheetVisualPreferenceComponent,

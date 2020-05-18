@@ -4,6 +4,10 @@
         <div class="card">
             <h3>{{user.firstName}}</h3>
             <h3>{{user.lastName}}</h3>
+            <h3>Auxiliaire de vie: 
+                <i class="fas fa-check" *ngIf="user.admin"></i>
+                <i class="fas fa-times" *ngIf="!user.admin"></i>
+            </h3>
             <button class="button-card" (click)="onSelectUser(user)">Sélectionner</button>
             <button class="button-card" (click)="deleteUser(user)">Supprimer</button>
         </div>
