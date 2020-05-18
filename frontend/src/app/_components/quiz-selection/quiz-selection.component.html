@@ -1,8 +1,14 @@
 <app-connected-header class="header"></app-connected-header>
 
-<div class="result" *ngIf="quizList === undefined || quizList.length === 0">
-    <button class="button" (click)="this.utilService.goToPage('/quiz-list')">Aucun quiz n'a été trouvé. Cliquer pour en créer un.</button>
-</div> 
+<div *ngIf="user">
+    <div class="result" *ngIf="(quizList === undefined || quizList.length === 0) && user.admin">
+        <button class="button" (click)="this.utilService.goToPage('/quiz-list')">Aucun quiz n'a été trouvé. Cliquer pour en créer un.</button>
+    </div>
+    <div class="result" *ngIf="(quizList === undefined || quizList.length === 0) && !user.admin">
+        <button class="button">Aucun quiz n'a été trouvé. Appelez un aide soignant pour en créer un.</button>
+    </div>
+</div>
+
 <div class="quiz-selection">
     <div class="quiz" *ngFor="let quiz of quizList">
         <app-quiz-selection-view [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
