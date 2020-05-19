@@ -32,41 +32,44 @@
 
     <br>
 
-    <label for="theme">
-      Thème <br>
-      <mat-form-field>
-      <select matNativeControl name="theme-field" id="theme" [formControlName]="'theme'">
-        <option *ngFor="let theme of QUIZ_THEMES" [value]="theme">
-          {{theme}}
-        </option>
-      </select>
-      </mat-form-field>
-
-      <div class="add-theme">
-        <form [formGroup]="themeForm">
-          <div class="form-group">
-            <input type="text" class="form-control" id="new_theme" [formControlName]="'new_theme'">
-          </div>
-          <button type="submit" class="button-card" (click)="addTheme()">Ajouter le thème</button>
-        </form>
-
-        <select id="theme_to_remove" [(ngModel)]="themeToRemove" [ngModelOptions]="{standalone: true}">
+    <div class="theme-handle">
+      <label for="theme">
+        Thème <br>
+        <mat-form-field>
+        <select matNativeControl name="theme-field" id="theme" [formControlName]="'theme'">
           <option *ngFor="let theme of QUIZ_THEMES" [value]="theme">
             {{theme}}
           </option>
         </select>
-        <br>
-        <button (click)="removeTheme()" class="button-card">Supprimer le thème</button>
-      </div>
-
-    </label>
-
-    <br>
-
+        </mat-form-field>
+  
+        <div class="add-theme">
+          <form [formGroup]="themeForm">
+            <div class="form-group">
+              <input type="text" class="form-control" id="new_theme" [formControlName]="'new_theme'">
+            </div>
+            <button type="submit" class="button-card" (click)="addTheme()">Ajouter le thème</button>
+          </form>
+  
+          <select id="theme_to_remove" [(ngModel)]="themeToRemove" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let theme of QUIZ_THEMES" [value]="theme">
+              {{theme}}
+            </option>
+          </select>
+          <br>
+          <button (click)="removeTheme()" class="button-card">Supprimer le thème</button>
+        </div>
+  
+      </label>
+      
+    </div>
+    
+      <br>
+  
+      <button type="submit" [disabled]="!quizForm.valid" class="button-card" (click)="addQuiz()">Créer le quiz</button>
+    
     
 
-
-    <button type="submit" [disabled]="!quizForm.valid" class="button-card" (click)="addQuiz()">Créer le quiz</button>
   </form>
 </div>
 

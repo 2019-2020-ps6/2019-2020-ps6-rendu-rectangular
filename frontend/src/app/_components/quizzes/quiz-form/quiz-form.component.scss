@@ -6,6 +6,7 @@ button:disabled {
 
 .add-theme {
     float: right;
+    margin-left: 100px;
 }
 
 .card{
@@ -13,6 +14,11 @@ button:disabled {
 }
 
 .title {
+    display: flex;
+    justify-content: center;
+}
+
+.theme-handle {
     display: flex;
     justify-content: center;
 }
