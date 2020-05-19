@@ -7,6 +7,7 @@ import { UserService } from 'src/services/user.service';
 import { UtilService } from 'src/services/util.service';
 import { User } from 'src/models/user.model';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Theme } from 'src/models/theme.model';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -18,6 +19,8 @@ export class QuizSelectionComponent implements OnInit {
   public quizList: Quiz[] = [];
   user: User;
   niveau: string = "all";
+  themesStr: string[];
+  themeSelected: string = "all";
 
   constructor(private quizService: QuizService,
               private playService: PlayService,
@@ -28,7 +31,10 @@ export class QuizSelectionComponent implements OnInit {
       this.quizList = quizzes;
     });
     this.userService.currentUser$.subscribe((user: User) => this.user = user);
-    console.log(this.niveau);
+    this.quizService.setThemesFromUrl();
+    this.quizService.themes$.subscribe((themes: Theme[]) => {
+      this.themesStr = themes.map((theme: Theme) => theme.theme);
+    });
   }
 
   ngOnInit() {

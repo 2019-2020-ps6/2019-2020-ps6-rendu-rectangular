@@ -9,7 +9,8 @@
     </div>
 </div>
 
-<div class="select-level">
+<div class="selection-menu">
+    <div class="select-level">
     Sélectionner le niveau:
     <select class= "select" id="niveau_quiz" [(ngModel)]="niveau" [ngModelOptions]="{standalone: true}">
         <option value="all">Tous niveaux</option>
@@ -17,18 +18,49 @@
         <option value="Moyen">Moyen</option>
         <option value="Difficile">Difficile</option>
       </select>
+    </div>
+      <div class="select-theme">
+        Sélectionner le thème:
+        <select [(ngModel)]="themeSelected" class= "select">
+            <option value="all">Tous les thèmes</option>
+            <option *ngFor="let theme of themesStr" [value]="theme">{{theme}}</option>
+        </select>
+    </div>
 </div>
 <div class="quiz-selection">
+
     <div *ngIf="niveau === 'all'">
-        <div class="quiz" *ngFor="let quiz of quizList" >
-            <app-quiz-selection-view [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
+
+        <div *ngIf="themeSelected === 'all'">
+            <div class="quiz" *ngFor="let quiz of quizList" >
+                <app-quiz-selection-view [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
+            </div>
+        </div> 
+
+        <div *ngIf="themeSelected !== 'all'">
+            <div class="quiz" *ngFor="let quiz of quizList" >
+                <app-quiz-selection-view *ngIf="quiz.theme === themeSelected" [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
+            </div>
         </div>
+
     </div>
+    
+
+
     <div *ngIf="niveau !== 'all'">
-        <div class="quiz" *ngFor="let quiz of quizList" >
-            <app-quiz-selection-view *ngIf="quiz.niveau === niveau" [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
+        <div *ngIf="themeSelected === 'all'">
+            <div class="quiz" *ngFor="let quiz of quizList" >
+                <app-quiz-selection-view *ngIf="quiz.niveau === niveau" [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
+            </div>
+        </div>
+        <div *ngIf="themeSelected !== 'all'">
+            <div class="quiz" *ngFor="let quiz of quizList" >
+                <app-quiz-selection-view *ngIf="(quiz.niveau === niveau) && (quiz.theme === themeSelected)" [quiz]="quiz" (quizSelected)="selectQuiz($event)"></app-quiz-selection-view>
+            </div>
         </div>
     </div>
     
 </div> 
 <button class="back-button" (click)="this.utilService.goToPage('/acceuil-joueur')">Retour</button>
+
+

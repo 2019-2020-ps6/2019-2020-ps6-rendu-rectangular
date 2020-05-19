@@ -5,11 +5,21 @@
     display: flex;
 }
 
+.selection-menu {
+    display: flex;
+    justify-content: center;
+}
+
 .select-level {
     margin-top: 40px;
     font-size: larger;
-    display: flex;
-    justify-content: center;
+    
+}
+
+.select-theme {
+    margin-top: 40px;
+    font-size: larger;
+    margin-left: 40px;
 }
 
 .select {
