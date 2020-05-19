@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
 import { UtilService } from 'src/services/util.service';
 import { User } from 'src/models/user.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-quiz-selection',
@@ -16,6 +17,7 @@ export class QuizSelectionComponent implements OnInit {
 
   public quizList: Quiz[] = [];
   user: User;
+  niveau: string = "all";
 
   constructor(private quizService: QuizService,
               private playService: PlayService,
@@ -26,6 +28,7 @@ export class QuizSelectionComponent implements OnInit {
       this.quizList = quizzes;
     });
     this.userService.currentUser$.subscribe((user: User) => this.user = user);
+    console.log(this.niveau);
   }
 
   ngOnInit() {

@@ -2,5 +2,19 @@
 @import '../../../styles/not-found-button.scss';
 
 .quiz-selection {
-    display: flex
+    display: flex;
+}
+
+.select-level {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.select {
+    margin-left: 20px;
+}
+
+.quiz {
+    float: left;
 }
