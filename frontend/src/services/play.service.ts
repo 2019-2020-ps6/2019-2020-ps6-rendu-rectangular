@@ -67,7 +67,6 @@ export class PlayService {
             gameDate: new Date(),
             usersAnswers: []
         };
-        console.log(newGameJson);
         this.http.post(this.gameQuizzesUrl, newGameJson, httpOptionsBase).subscribe(() => this.setGameQuizzesFromUrl());
     }
 

@@ -3,8 +3,9 @@
         <i *ngIf="quiz.theme==='Sport'" class="fas fa-running"></i>
         <i *ngIf="quiz.theme==='Actor'" class="fas fa-tv"></i>
         {{quiz.name}}
-        {{quiz.theme}}
+        
     </h2>
+    <h3>{{quiz.theme}}</h3>
     <p>Niveau: {{quiz.niveau}}<br>Nombre de questions: {{quiz.questions.length}}</p>
     <button class="button-card" [disabled]="quiz.questions.length===0" (click)="selectQuiz()">Faire le quiz</button>
 </div>
