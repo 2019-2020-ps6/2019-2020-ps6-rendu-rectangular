@@ -18,4 +18,26 @@
     position: relative;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
     padding: 0 1em 1em 1em;
-  }
+}
+
+.selection-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.select-level {
+    margin-top: 40px;
+    font-size: larger;
+    
+}
+
+.select-theme {
+    margin-top: 40px;
+    font-size: larger;
+    margin-left: 40px;
+}
+
+.select {
+    margin-left: 20px;
+    font-size: larger;
+}
