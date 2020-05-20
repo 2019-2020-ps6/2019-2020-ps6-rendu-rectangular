@@ -62,6 +62,9 @@ export class QuestionFormComponent implements OnInit {
   }
 
   deleteAnswer(i: number) {
+    if(this.answers.value[i].isCorrect){
+      this.control -= 1;
+    }
     this.answers.removeAt(i);
     this.nbAnswers--;
   }
