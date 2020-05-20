@@ -12,6 +12,7 @@ import { UtilService } from 'src/services/util.service';
 export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
+  public quizzes: Quiz[];
 
   constructor(private route: ActivatedRoute,
               private quizService: QuizService,
