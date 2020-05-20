@@ -17,6 +17,7 @@ cd ./2019-2020-ps6-rendu-rectangular
 Dans ce même terminal, tapez:
 ```
 cd ./backend
+npm install
 npm run dev
 ```
 Enfin, dans le répertoire où vous avez installé le projet, ouvrez un second terminal et tapez:
