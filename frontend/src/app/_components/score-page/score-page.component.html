@@ -34,7 +34,7 @@
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
                 <div class="game" *ngIf="quizgame.quiz.name.includes(query)">
                     <h3>{{quizgame.quiz.name}}</h3>
-                    Pourcentage de réponses justes: {{scores[i][0]}}%
+                    Pourcentage de réponses justes: {{scores[i][0] || 0}}%
                     <br>
                     Nombre de réponses justes: {{scores[i][1]}}/{{scores[i][2]}}
                     <br>
@@ -49,7 +49,7 @@
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
                 <div class="game" *ngIf="quizgame.quiz.theme === themeSelected && quizgame.quiz.name.includes(query)">
                     <h3>{{quizgame.quiz.name}}</h3>
-                    Pourcentage de réponses justes: {{scores[i][0]}}%
+                    Pourcentage de réponses justes: {{scores[i][0] || 0}}%
                     <br>
                     Nombre de réponses justes: {{scores[i][1]}}/{{scores[i][2]}}
                     <br>
@@ -69,7 +69,7 @@
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
                 <div class="game" *ngIf="quizgame.quiz.niveau === niveau && quizgame.quiz.name.includes(query)">
                     <h3>{{quizgame.quiz.name}}</h3>
-                    Pourcentage de réponses justes: {{scores[i][0]}}%
+                    Pourcentage de réponses justes: {{scores[i][0] || 0}}%
                     <br>
                     Nombre de réponses justes: {{scores[i][1]}}/{{scores[i][2]}}
                     <br>
@@ -83,7 +83,7 @@
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
                 <div class="game" *ngIf="(quizgame.quiz.niveau === niveau) && quizgame.quiz.name.includes(query) && (quizgame.quiz.theme === themeSelected)">
                     <h3>{{quizgame.quiz.name}}</h3>
-                    Pourcentage de réponses justes: {{scores[i][0]}}%
+                    Pourcentage de réponses justes: {{scores[i][0] || 0}}%
                     <br>
                     Nombre de réponses justes: {{scores[i][1]}}/{{scores[i][2]}}
                     <br>
