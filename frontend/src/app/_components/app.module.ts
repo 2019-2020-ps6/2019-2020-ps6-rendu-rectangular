@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
-import { ConnectedHeaderComponent} from './connected-header/connected-header.component';
+
+import { ConnectedHeaderComponent, LogoutPopup} from './connected-header/connected-header.component';
+
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -36,6 +38,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatRippleModule } from '@angular/material';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -61,7 +65,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     BottomSheetVisualPreferenceComponent,
     BottomSheetVisualPreferenceSheet,
     UserCreationPageComponent,
-    ScorePageComponent
+    ScorePageComponent,
+    LogoutPopup
   ],
   imports: [
     BrowserModule,
@@ -78,18 +83,22 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatRippleModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    LogoutPopup
   ],
   entryComponents: [
     BottomSheetVisualPreferenceComponent,
-    BottomSheetVisualPreferenceSheet
+    BottomSheetVisualPreferenceSheet,
+    ConnectedHeaderComponent,
+    LogoutPopup
   ],
   providers: [{provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]
