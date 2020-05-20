@@ -9,7 +9,7 @@ import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
 
-import { ConnectedHeaderComponent, LogoutPopup} from './connected-header/connected-header.component';
+import { ConnectedHeaderComponent, LogoutPopup, BackToAccueil} from './connected-header/connected-header.component';
 
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
@@ -66,7 +66,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     BottomSheetVisualPreferenceSheet,
     UserCreationPageComponent,
     ScorePageComponent,
-    LogoutPopup
+    LogoutPopup, 
+    BackToAccueil
   ],
   imports: [
     BrowserModule,
@@ -92,13 +93,15 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatInputModule,
     MatRippleModule,
     MatCheckboxModule,
-    LogoutPopup
+    LogoutPopup, 
+    BackToAccueil
   ],
   entryComponents: [
     BottomSheetVisualPreferenceComponent,
     BottomSheetVisualPreferenceSheet,
     ConnectedHeaderComponent,
-    LogoutPopup
+    LogoutPopup, 
+    BackToAccueil
   ],
   providers: [{provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 import {MatDialog} from '@angular/material/dialog';
+import { UtilService } from 'src/services/util.service';
 
 @Component({
   selector: 'app-connected-header',
@@ -16,7 +17,7 @@ export class ConnectedHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private router: Router, private userService: UserService, public dialog: MatDialog) {
+  constructor(private userService: UserService, public dialog: MatDialog) {
     this.userService.updateUser();
     this.userService.currentUser$.subscribe((user: User) => {
       if (user.isDaltonian) {
@@ -29,7 +30,7 @@ export class ConnectedHeaderComponent implements OnInit {
     
   }
 
-  openDialog() {
+  openDialogLogout() {
     const dialogRef = this.dialog.open(LogoutPopup);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -37,9 +38,15 @@ export class ConnectedHeaderComponent implements OnInit {
     });
   }
 
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
+  openDialogAccueil() {
+    const dialogRef = this.dialog.open(BackToAccueil);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
+
+  
 
 }
 
@@ -49,14 +56,16 @@ export class ConnectedHeaderComponent implements OnInit {
 })
 export class LogoutPopup {
 
-  constructor(private router: Router, private userService: UserService, public dialog: MatDialog) {}
+  constructor(private userService: UserService, public dialog: MatDialog, private utilService: UtilService) {}
   
-  private goToPage(pageName: string) {
-    this.router.navigate([`${pageName}`]);
-    this.dialog.closeAll;
-  }
+}
 
+@Component({
+  selector: 'BackToAccueil',
+  templateUrl: 'BackToAccueil.html',
+})
+export class BackToAccueil {
+
+  constructor(private userService: UserService, public dialog: MatDialog, private utilService: UtilService) {}
   
-
-
 }
