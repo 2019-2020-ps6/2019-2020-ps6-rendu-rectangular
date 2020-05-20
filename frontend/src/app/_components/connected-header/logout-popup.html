@@ -1,0 +1,41 @@
+<h1>Souhaitez-vous vraiment vous déconnecter ?</h1>
+<br><br>
+<div class="both-button">
+    <button class="button-card" id="button1"  mat-dialog-close (click)="goToPage('/acceuil')">Oui</button>
+    <button class="button-card" id="button2" mat-dialog-close>Non</button>
+</div>
+
+<style>
+    .both-button{
+        display: flex;
+        justify-content: center;
+    }
+
+    #button1{
+        margin-right: 20px;
+    }
+
+    #button2{
+        margin-left: 20px;
+    }
+
+    .button-card {
+    position: relative;
+    background-color: white;
+    border: solid 1px #3f51b5;
+    font-size: 50px;
+    color: #3f51b5;
+    font-weight: bold;
+    transition: #f2f2f2 1s;
+    }
+
+    .button-card:hover {
+    cursor: pointer;
+    background-color: #3f51b5;
+    border:  solid 1px white;
+    color: white;
+  }
+
+
+
+</style>
