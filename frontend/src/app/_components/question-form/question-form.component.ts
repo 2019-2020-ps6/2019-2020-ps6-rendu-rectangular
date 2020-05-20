@@ -91,7 +91,6 @@ export class QuestionFormComponent implements OnInit {
   }
 
   getErrorMessageAnswer(i: number) {
-    console.log(this.questionForm.get("answers").get(i.toString()));
     if (this.questionForm.get("answers").get(i.toString()).get("value").hasError('required')) {
       return 'Entrer une valeur';
     }
