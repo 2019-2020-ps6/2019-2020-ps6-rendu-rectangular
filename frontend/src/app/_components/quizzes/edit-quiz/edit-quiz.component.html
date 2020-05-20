@@ -5,6 +5,10 @@
     <app-question-form class="form" [quiz]="quiz"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
-<button class="back-button-perso" (click)="this.utilService.goToPage('/quiz-list')">Retour</button>
+<div *ngIf="quiz">
+    <button class="back-button" *ngIf="quiz.questions.length === 0" (click)="this.utilService.goToPage('/quiz-list')">Retour</button>
+    <button class="back-button-perso" *ngIf="quiz.questions.length !== 0" (click)="this.utilService.goToPage('/quiz-list')">Retour</button>
+</div>
+
 
 
