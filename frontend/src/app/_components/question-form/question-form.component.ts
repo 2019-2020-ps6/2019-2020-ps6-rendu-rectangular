@@ -79,10 +79,10 @@ export class QuestionFormComponent implements OnInit {
       return 'Entrer une valeur';
     }
     if (this.questionForm.get('label').hasError('minlength')) {
-      return '(minimum 4 caractère)';
+      return '(minimum 4 caractères)';
     }
     if (this.questionForm.get('label').hasError('maxlength')) {
-      return '(maximum 35 caractère)';
+      return '(maximum 35 caractères)';
     }
     return '';
   }
