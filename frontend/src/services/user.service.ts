@@ -114,9 +114,10 @@ export class UserService {
         const usersUrlWithId = this.usersUrl + '/' + user.id;
         const quizGameUrlWithId = this.quizGameUrl + '/' + user.id;
         const logUrlWithId = this.logsUrls + '/' + user.id;
-        this.http.delete(quizGameUrlWithId, httpOptionsBase);
-        this.http.delete(logUrlWithId, httpOptionsBase);
+        this.http.delete(quizGameUrlWithId, httpOptionsBase).subscribe(() => {});
+        this.http.delete(logUrlWithId, httpOptionsBase).subscribe(() => {});
         this.http.delete(usersUrlWithId, httpOptionsBase).subscribe(() => this.setUsersFromUrl());
+        this.updateUser();
     }
 
     convertToHexa(number: number): string {
