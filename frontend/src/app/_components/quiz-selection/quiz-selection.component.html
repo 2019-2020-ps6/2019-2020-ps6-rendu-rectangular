@@ -1,15 +1,5 @@
 <app-connected-header class="header"></app-connected-header>
 
-<div *ngIf="user">
-  <div class="result" *ngIf="(quizList === undefined || quizList.length === 0) && user.admin">
-    <button class="button" (click)="this.utilService.goToPage('/quiz-list')">Aucun quiz n'a été trouvé. Cliquer pour en
-      créer un.</button>
-  </div>
-  <div class="result" *ngIf="(quizList === undefined || quizList.length === 0) && !user.admin">
-    <button class="button">Aucun quiz n'a été trouvé. Appelez un auxiliaire de vie pour en créer un.</button>
-  </div>
-</div>
-
 <div class="selection-menu">
   <div class="select-level">
     Sélectionner le niveau:
@@ -34,6 +24,17 @@
     </mat-form-field>
   </div>
 </div>
+
+<div *ngIf="user">
+  <div class="result" *ngIf="(quizList === undefined || quizList.length === 0) && user.admin">
+    <button class="button" (click)="this.utilService.goToPage('/quiz-list')">Aucun quiz n'a été trouvé. Cliquer pour en
+      créer un.</button>
+  </div>
+  <div class="result" *ngIf="(quizList === undefined || quizList.length === 0) && !user.admin">
+    <button class="button">Aucun quiz n'a été trouvé. Appelez un auxiliaire de vie pour en créer un.</button>
+  </div>
+</div>
+
 <div class="quiz-selection">
 
   <div *ngIf="niveau === 'all'">
