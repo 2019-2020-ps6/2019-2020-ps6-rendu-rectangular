@@ -27,3 +27,8 @@ npm install
 ng serve --open
 ```
 Voilà. Normalement vous devriez pouvoir commencer à utiliser notre site. Enjoy!
+
+# Au cas où
+
+Cela ne devrait pas arriver, mais si jamais le site crash et que vous n'arrivez pas à le redémarrer en relançant le back-end et le front-end, il vous faut supprimer tous les fichiers .mocks.json dans le répertoire ./2019-2020-ps6-rendu-rectangular/backend/mocks.
+Vous pouvez ensuite relancer le site, et constater que tout fonctionne à nouveau.
