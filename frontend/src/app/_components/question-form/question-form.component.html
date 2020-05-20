@@ -11,7 +11,10 @@
       <br>
       Lien d'une url d'une image (optionnelle):
       <br>
-      <input class="input-custom" type="text" id="image" [formControlName]="'image'">
+      <mat-form-field class="im-input">
+        <input matInput class="input-custom" type="text" id="image" [formControlName]="'image'">
+        <mat-label>Préférez une image avec une grande résolution</mat-label>
+      </mat-form-field>
     </label>
     <br>
     <div class="answer" formArrayName="answers">
