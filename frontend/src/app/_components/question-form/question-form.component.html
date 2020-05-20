@@ -19,7 +19,10 @@
         <div class="answer-form" [formGroupName]="i">
           <label>
             Réponse (4 à 15 caractères):
-              <input type="text" [formControlName]="'value'">
+            <mat-form-field>
+              <input matInput class="input-custom" type="text" [formControlName]="'value'">
+              <mat-error *ngIf="questionForm.invalid">{{getErrorMessageAnswer(i)}}</mat-error>
+            </mat-form-field>
             <br>
             Cocher si la réponse est correcte:
             <input type="checkbox" [formControlName]="'isCorrect'" (change)="onNativeChange($event)">

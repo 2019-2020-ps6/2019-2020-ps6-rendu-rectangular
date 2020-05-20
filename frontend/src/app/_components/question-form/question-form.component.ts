@@ -90,6 +90,20 @@ export class QuestionFormComponent implements OnInit {
     return '';
   }
 
+  getErrorMessageAnswer(i: number) {
+    console.log(this.questionForm.get("answers").get(i.toString()));
+    if (this.questionForm.get("answers").get(i.toString()).get("value").hasError('required')) {
+      return 'Entrer une valeur';
+    }
+    if (this.questionForm.get("answers").get(i.toString()).get("value").hasError('minlength')) {
+      return '(minimum 4 caractères)';
+    }
+    if (this.questionForm.get("answers").get(i.toString()).get("value").hasError('maxlength')) {
+      return '(maximum 15 caractères)';
+    }
+    return '';
+  }
+
   onNativeChange(e) {
     if (e.target.checked) {
       this.control += 1;
