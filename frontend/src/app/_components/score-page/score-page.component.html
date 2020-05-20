@@ -18,6 +18,12 @@
             <option *ngFor="let theme of themesStr" [value]="theme">{{theme}}</option>
         </select>
     </div>
+    <div class="query">
+        <mat-form-field class="input-custom-query">
+          <input matInput  type="text" id="name" [(ngModel)]="query">
+          <mat-label>Rechercher un quiz</mat-label>
+        </mat-form-field>
+      </div>
 </div>
 
 <div class="quiz-selection">
@@ -26,7 +32,7 @@
 
         <div *ngIf="themeSelected === 'all'">
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
-                <div class="game">
+                <div class="game" *ngIf="quizgame.quiz.name.includes(query)">
                     <h3>{{quizgame.quiz.name}}</h3>
                     Pourcentage de réponses justes: {{scores[i][0]}}%
                     <br>
@@ -41,7 +47,7 @@
 
         <div *ngIf="themeSelected !== 'all'">
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
-                <div class="game" *ngIf="quizgame.quiz.theme === themeSelected">
+                <div class="game" *ngIf="quizgame.quiz.theme === themeSelected && quizgame.quiz.name.includes(query)">
                     <h3>{{quizgame.quiz.name}}</h3>
                     Pourcentage de réponses justes: {{scores[i][0]}}%
                     <br>
@@ -61,7 +67,7 @@
     <div *ngIf="niveau !== 'all'">
         <div *ngIf="themeSelected === 'all'">
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
-                <div class="game" *ngIf="quizgame.quiz.niveau === niveau">
+                <div class="game" *ngIf="quizgame.quiz.niveau === niveau && quizgame.quiz.name.includes(query)">
                     <h3>{{quizgame.quiz.name}}</h3>
                     Pourcentage de réponses justes: {{scores[i][0]}}%
                     <br>
@@ -75,7 +81,7 @@
         </div>
         <div *ngIf="themeSelected !== 'all'">
             <div class="games" *ngFor="let quizgame of playersQuizGame; let i=index">
-                <div class="game" *ngIf="(quizgame.quiz.niveau === niveau) && (quizgame.quiz.theme === themeSelected)">
+                <div class="game" *ngIf="(quizgame.quiz.niveau === niveau) && quizgame.quiz.name.includes(query) && (quizgame.quiz.theme === themeSelected)">
                     <h3>{{quizgame.quiz.name}}</h3>
                     Pourcentage de réponses justes: {{scores[i][0]}}%
                     <br>

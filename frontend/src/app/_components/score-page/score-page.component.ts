@@ -20,6 +20,7 @@ export class ScorePageComponent implements OnInit {
   niveau: string = "all";
   themesStr: string[];
   themeSelected: string = "all";
+  query: string = "";
 
   constructor(private playService: PlayService,
               private userService: UserService,
