@@ -21,6 +21,7 @@ export class QuizSelectionComponent implements OnInit {
   niveau: string = "all";
   themesStr: string[];
   themeSelected: string = "all";
+  query: string = "";
 
   constructor(private quizService: QuizService,
               private playService: PlayService,
